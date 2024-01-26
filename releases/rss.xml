@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>MLflow Blog</title>
+        <link>https://your-docusaurus-site.example.com/mlflow-website/releases</link>
+        <description>MLflow Blog</description>
+        <lastBuildDate>Fri, 26 Jan 2024 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[MLflow 2.10.0]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2024/01/26/2.10.0-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2024/01/26/2.10.0-release</guid>
+            <pubDate>Fri, 26 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[MLflow 2.10.0 includes several major features and improvements]]></description>
+            <content:encoded><![CDATA[<p>MLflow 2.10.0 includes several major features and improvements</p>
+<p>In MLflow 2.10, we're introducing a number of significant new features that are preparing the way for current and future enhanced support for Deep Learning use cases, new features to support a broadened support for GenAI applications, and some quality of life improvements for the MLflow Deployments Server (formerly the AI Gateway).</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="new-mlflow-website">New MLflow Website<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2024/01/26/2.10.0-release#new-mlflow-website" class="hash-link" aria-label="Direct link to New MLflow Website" title="Direct link to New MLflow Website">​</a></h3>
+<p>We have a new <a href="https://mlflow.org/" target="_blank" rel="noopener noreferrer">home</a>. The new site landing page is fresh, modern, and contains more content than ever. We're adding new content and blogs all of the time.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="model-signature-supports-objects-and-arrays-9936-serena-ruan">Model Signature Supports Objects and Arrays (#9936, @serena-ruan)<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2024/01/26/2.10.0-release#model-signature-supports-objects-and-arrays-9936-serena-ruan" class="hash-link" aria-label="Direct link to Model Signature Supports Objects and Arrays (#9936, @serena-ruan)" title="Direct link to Model Signature Supports Objects and Arrays (#9936, @serena-ruan)">​</a></h3>
+<p>Objects and Arrays are now available as configurable input and output schema elements. These new types are particularly useful for GenAI-focused flavors that can have complex input and output types. See the new <a href="https://mlflow.org/docs/latest/model/signatures.html" target="_blank" rel="noopener noreferrer">Signature and Input Example documentation</a> to learn more about how to use these new signature types.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="langchain-autologging-10801-serena-ruan">Langchain Autologging (#10801, @serena-ruan)<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2024/01/26/2.10.0-release#langchain-autologging-10801-serena-ruan" class="hash-link" aria-label="Direct link to Langchain Autologging (#10801, @serena-ruan)" title="Direct link to Langchain Autologging (#10801, @serena-ruan)">​</a></h3>
+<p>LangChain has autologging support now! When you invoke a chain, with autologging enabled, we will automatically log most chain implementations, recording and storing your configured LLM application for you. See the new <a href="https://mlflow.org/docs/latest/llms/langchain/index.html#mlflow-langchain-autologging" target="_blank" rel="noopener noreferrer">Langchain documentation</a> to learn more about how to use this feature.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="prompt-templating-for-transformers-models">Prompt Templating for Transformers Models<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2024/01/26/2.10.0-release#prompt-templating-for-transformers-models" class="hash-link" aria-label="Direct link to Prompt Templating for Transformers Models" title="Direct link to Prompt Templating for Transformers Models">​</a></h3>
+<p>The MLflow <code>transformers</code> flavor now supports prompt templates. You can now specify an application-specific set of instructions to submit to your GenAI pipeline in order to simplify, streamline, and integrate sets of system prompts to be supplied with each input request. Check out the updated <a href="https://www.mlflow.org/docs/latest/llms/transformers/index.html" target="_blank" rel="noopener noreferrer">guide to transformers</a> to learn more and see examples!</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mlflow-deployments-server-enhancement">MLflow Deployments Server Enhancement<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2024/01/26/2.10.0-release#mlflow-deployments-server-enhancement" class="hash-link" aria-label="Direct link to MLflow Deployments Server Enhancement" title="Direct link to MLflow Deployments Server Enhancement">​</a></h3>
+<p>The MLflow Deployments Server now supports two new requested features: (1) OpenAI endpoints that support streaming responses. You can now configure an endpoint to return realtime responses for Chat and Completions instead of waiting for the entire text contents to be completed. (2) Rate limits can now be set per endpoint in order to help control cost overrun when using SaaS models.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="further-document-improvements">Further Document Improvements<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2024/01/26/2.10.0-release#further-document-improvements" class="hash-link" aria-label="Direct link to Further Document Improvements" title="Direct link to Further Document Improvements">​</a></h3>
+<p>Continued the push for enhanced documentation, guides, tutorials, and examples by expanding on core MLflow functionality (Deployments, Signatures, and Model Dependency management), as well as entirely new pages for GenAI flavors. Check them out today!</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="other-features">Other Features:<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2024/01/26/2.10.0-release#other-features" class="hash-link" aria-label="Direct link to Other Features:" title="Direct link to Other Features:">​</a></h3>
+<ul>
+<li>[Models] Enhance the MLflow Models <code>predict</code> API to serve as a pre-logging validator of environment compatibility. (#10759, @B-Step62)</li>
+<li>[Models] Add support for Image Classification pipelines within the transformers flavor (#10538, @KonakanchiSwathi)</li>
+<li>[Models] Add support for retrieving and storing license files for transformers models (#10871, @BenWilson2)</li>
+<li>[Models] Add support for model serialization in the Visual NLP format for JohnSnowLabs flavor (#10603, @C-K-Loan)</li>
+<li>[Models] Automatically convert OpenAI input messages to LangChain chat messages for <code>pyfunc</code> predict (#10758, @dbczumar)</li>
+<li>[Tracking] Enhance async logging functionality by ensuring flush is called on <code>Futures</code> objects (#10715, @chenmoneygithub)</li>
+<li>[Tracking] Add support for a non-interactive mode for the <code>login()</code> API (#10623, @henxing)</li>
+<li>[Scoring] Allow MLflow model serving to support direct <code>dict</code> inputs with the <code>messages</code> key (#10742, @daniellok-db, @B-Step62)</li>
+<li>[Deployments] Add streaming support to the MLflow Deployments Server for OpenAI streaming return compatible routes (#10765, @gabrielfu)</li>
+<li>[Deployments] Add support for directly interfacing with OpenAI via the MLflow Deployments server (#10473, @prithvikannan)</li>
+<li>[UI] Introduce a number of new features for the MLflow UI (#10864, @daniellok-db)</li>
+<li>[Server-infra] Add an environment variable that can disallow HTTP redirects (#10655, @daniellok-db)</li>
+<li>[Artifacts] Add support for Multipart Upload for Azure Blob Storage (#10531, @gabrielfu)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="bug-fixes">Bug fixes<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2024/01/26/2.10.0-release#bug-fixes" class="hash-link" aria-label="Direct link to Bug fixes" title="Direct link to Bug fixes">​</a></h3>
+<ul>
+<li>[Models] Add deduplication logic for pip requirements and extras handling for MLflow models (#10778, @BenWilson2)</li>
+<li>[Models] Add support for paddle 2.6.0 release (#10757, @WeichenXu123)</li>
+<li>[Tracking] Fix an issue with an incorrect retry default timeout for urllib3 1.x (#10839, @BenWilson2)</li>
+<li>[Recipes] Fix an issue with MLflow Recipes card display format (#10893, @WeichenXu123)</li>
+<li>[Java] Fix an issue with metadata collection when using Streaming Sources on certain versions of Spark where Delta is the source (#10729, @daniellok-db)</li>
+<li>[Scoring] Fix an issue where SageMaker tags were not propagating correctly (#9310, @clarkh-ncino)</li>
+<li>[Windows / Databricks] Fix an issue with executing Databricks run commands from within a Window environment (#10811, @wolpl)</li>
+<li>[Models / Databricks] Disable <code>mlflowdbfs</code> mounts for JohnSnowLabs flavor due to flakiness (#9872, @C-K-Loan)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="documentation-updates">Documentation updates:<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2024/01/26/2.10.0-release#documentation-updates" class="hash-link" aria-label="Direct link to Documentation updates:" title="Direct link to Documentation updates:">​</a></h3>
+<ul>
+<li>[Docs] Fixed the <code>KeyError: 'loss'</code> bug for the Quickstart guideline (#10886, @yanmxa)</li>
+<li>[Docs] Relocate and supplement Model Signature and Input Example docs (#10838, @BenWilson2)</li>
+<li>[Docs] Add the HuggingFace Model Evaluation Notebook to the website (#10789, @BenWilson2)</li>
+<li>[Docs] Rewrite the search run documentation (#10863, @chenmoneygithub)</li>
+<li>[Docs] Create documentation for transformers prompt templates (#10836, @daniellok-db)</li>
+<li>[Docs] Refactoring of the Getting Started page (#10798, @BenWilson2)</li>
+<li>[Docs] Add a guide for model dependency management (#10807, @B-Step62)</li>
+<li>[Docs] Add tutorials and guides for LangChain (#10770, @BenWilson2)</li>
+<li>[Docs] Refactor portions of the Deep Learning documentation landing page (#10736, @chenmoneygithub)</li>
+<li>[Docs] Refactor and overhaul the Deployment documentation and add new tutorials (#10726, @B-Step62)</li>
+<li>[Docs] Add a PyTorch landing page, quick start, and guide (#10687, #10737 @chenmoneygithub)</li>
+<li>[Docs] Add additional tutorials to OpenAI flavor docs (#10700, @BenWilson2)</li>
+<li>[Docs] Enhance the guides on quickly getting started with MLflow by demonstrating how to use Databricks Community Edition (#10663, @BenWilson2)</li>
+<li>[Docs] Create the OpenAI Flavor landing page and intro notebooks (#10622, @BenWilson2)</li>
+<li>[Docs] Refactor the Tensorflow flavor API docs (#10662, @chenmoneygithub)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.10.0" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.9.2]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/12/14/2.9.2-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/12/14/2.9.2-release</guid>
+            <pubDate>Thu, 14 Dec 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[MLflow 2.9.2 is a patch release, containing several critical security fixes and configuration updates to support extremely large model artifacts.]]></description>
+            <content:encoded><![CDATA[<p>MLflow 2.9.2 is a patch release, containing several critical security fixes and configuration updates to support extremely large model artifacts.</p>
+<p>Features:</p>
+<ul>
+<li>[Deployments] Add the <code>mlflow.deployments.openai</code> API to simplify direct access to OpenAI services through the deployments API (#10473, @prithvikannan)</li>
+<li>[Server-infra] Add a new environment variable that permits disabling http redirects within the Tracking Server for enhanced security in publicly accessible tracking server deployments (#10673, @daniellok-db)</li>
+<li>[Artifacts] Add environment variable configurations for both Multi-part upload and Multi-part download that permits modifying the per-chunk size to support extremely large model artifacts (#10648, @harupy)</li>
+</ul>
+<p>Security fixes:</p>
+<ul>
+<li>[Server-infra] Disable the ability to inject malicious code via manipulated YAML files by forcing YAML rendering to be performed in a secure Sandboxed mode (#10676, @BenWilson2, #10640, @harupy)</li>
+<li>[Artifacts] Prevent path traversal attacks when querying artifact URI locations by disallowing <code>..</code> path traversal queries (#10653, @B-Step62)</li>
+<li>[Data] Prevent a mechanism for conducting a malicious file traversal attack on Windows when using tracking APIs that interface with <code>HTTPDatasetSource</code> (#10647, @BenWilson2)</li>
+<li>[Artifacts] Prevent a potential path traversal attack vector via encoded url traversal paths by decoding paths prior to evaluation (#10650, @B-Step62)</li>
+<li>[Artifacts] Prevent the ability to conduct path traversal attacks by enforcing the use of sanitized paths with the tracking server (#10666, @harupy)</li>
+<li>[Artifacts] Prevent path traversal attacks when using an FTP server as a backend store by enforcing base path declarations prior to accessing user-supplied paths (#10657, @harupy)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Docs] Add an end-to-end tutorial for RAG creation and evaluation (#10661, @AbeOmor)</li>
+<li>[Docs] Add Tensorflow landing page (#10646, @chenmoneygithub)</li>
+<li>[Deployments / Tracking] Add endpoints to LLM evaluation docs (#10660, @prithvikannan)</li>
+<li>[Examples] Add retriever evaluation tutorial for LangChain and improve the Question Generation tutorial notebook (#10419, @liangz1)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.9.2" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.9.1]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/12/07/2.9.1-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/12/07/2.9.1-release</guid>
+            <pubDate>Thu, 07 Dec 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[MLflow 2.9.1 is a patch release, containing a critical bug fix related to loading pyfunc models that were saved in previous versions of MLflow.]]></description>
+            <content:encoded><![CDATA[<p>MLflow 2.9.1 is a patch release, containing a critical bug fix related to loading <code>pyfunc</code> models that were saved in previous versions of MLflow.</p>
+<p>Bug fixes:</p>
+<ul>
+<li>[Models] Revert Changes to PythonModel that introduced loading issues for models saved in earlier versions of MLflow (#10626, @BenWilson2)</li>
+</ul>
+<p>Small bug fixes and documentation updates:</p>
+<p>#10625, @BenWilson2</p>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.9.1" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.9.0]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/12/06/2.9.0-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/12/06/2.9.0-release</guid>
+            <pubDate>Wed, 06 Dec 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[MLflow 2.9.0 includes several major features and improvements.]]></description>
+            <content:encoded><![CDATA[<p>MLflow 2.9.0 includes several major features and improvements.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mlflow-ai-gateway-deprecation-10420-harupy">MLflow AI Gateway deprecation (#10420, @harupy)<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2023/12/06/2.9.0-release#mlflow-ai-gateway-deprecation-10420-harupy" class="hash-link" aria-label="Direct link to MLflow AI Gateway deprecation (#10420, @harupy)" title="Direct link to MLflow AI Gateway deprecation (#10420, @harupy)">​</a></h3>
+<p>The feature previously known as MLflow AI Gateway has been moved to utilize <a href="https://mlflow.org/docs/latest/llms/deployments/index.html" target="_blank" rel="noopener noreferrer">the MLflow deployments API</a>.
+For guidance on migrating from the AI Gateway to the new deployments API, please see the [MLflow AI Gateway Migration Guide](<a href="https://mlflow.org/docs/latest/llms/gateway/migration.html" target="_blank" rel="noopener noreferrer">https://mlflow.org/docs/latest/llms/gateway/migration.html</a>.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mlflow-tracking-docs-overhaul-10471-b-step62">MLflow Tracking docs overhaul (#10471, @B-Step62)<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2023/12/06/2.9.0-release#mlflow-tracking-docs-overhaul-10471-b-step62" class="hash-link" aria-label="Direct link to MLflow Tracking docs overhaul (#10471, @B-Step62)" title="Direct link to MLflow Tracking docs overhaul (#10471, @B-Step62)">​</a></h3>
+<p><a href="https://mlflow.org/docs/latest/tracking.html" target="_blank" rel="noopener noreferrer">The MLflow tracking docs</a> have been overhauled. We'd like your feedback on the new tracking docs!</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="security-fixes">Security fixes<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2023/12/06/2.9.0-release#security-fixes" class="hash-link" aria-label="Direct link to Security fixes" title="Direct link to Security fixes">​</a></h3>
+<p>Three security patches have been filed with this release and CVE's have been issued with the details involved in the security patch and potential attack vectors. Please review and update your tracking server deployments if your tracking server is not securely deployed and has open access to the internet.</p>
+<ul>
+<li>Sanitize <code>path</code> in <code>HttpArtifactRepository.list_artifacts</code> (#10585, @harupy)</li>
+<li>Sanitize <code>filename</code> in <code>Content-Disposition</code> header for <code>HTTPDatasetSource</code> (#10584, @harupy).</li>
+<li>Validate <code>Content-Type</code> header to prevent POST XSS (#10526, @B-Step62)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="features">Features<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2023/12/06/2.9.0-release#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h3>
+<ul>
+<li>[Tracking] Use <code>backoff_jitter</code> when making HTTP requests (#10486, @ajinkyavbhandare)</li>
+<li>[Tracking] Add default <code>aggregate_results</code> if the score type is numeric in <code>make_metric</code> API (#10490, @sunishsheth2009)</li>
+<li>[Tracking] Add string type of score types for metric value for genai (#10307, @sunishsheth2009)</li>
+<li>[Artifacts] Support multipart upload for for proxy artifact access (#9521, @harupy)</li>
+<li>[Models] Support saving <code>torch_dtype</code> for transformers models (#10586, @serena-ruan)</li>
+<li>[Models] Add built-in metric <code>ndcg_at_k</code> to retriever evaluation (#10284, @liangz1)</li>
+<li>[Model Registry] Implement universal <code>copy_model_version</code> (#10308, @jerrylian-db)</li>
+<li>[Models] Support saving/loading <code>RunnableSequence</code>, <code>RunnableParallel</code>, and <code>RunnableBranch</code> (#10521, #10611, @serena-ruan)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="bug-fixes">Bug fixes<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2023/12/06/2.9.0-release#bug-fixes" class="hash-link" aria-label="Direct link to Bug fixes" title="Direct link to Bug fixes">​</a></h3>
+<ul>
+<li>[Tracking] Resume system metrics logging when resuming an existing run (#10312, @chenmoneygithub)</li>
+<li>[UI] Fix incorrect sorting order in line chart (#10553, @B-Step62)</li>
+<li>[UI] Remove extra whitespace in git URLs (#10506, @mrplants)</li>
+<li>[Models] Make spark_udf use NFS to broadcast model to spark executor on databricks runtime and spark connect mode (#10463, @WeichenXu123)</li>
+<li>[Models] Fix promptlab pyfunc models not working for chat routes (#10346, @daniellok-db)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="documentation-updates">Documentation updates<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2023/12/06/2.9.0-release#documentation-updates" class="hash-link" aria-label="Direct link to Documentation updates" title="Direct link to Documentation updates">​</a></h3>
+<ul>
+<li>[Docs] Add a quickstart guide for Tensorflow (#10398, @chenmoneygithub)</li>
+<li>[Docs] Improve the parameter tuning guide (#10344, @chenmoneygithub)</li>
+<li>[Docs] Add a guide for system metrics logging (#10429, @chenmoneygithub)</li>
+<li>[Docs] Add instructions on how to configure credentials for Azure OpenAI (#10560, @BenWilson2)</li>
+<li>[Docs] Add docs and tutorials for Sentence Transformers flavor (#10476, @BenWilson2)</li>
+<li>[Docs] Add tutorials, examples, and guides for Transformers Flavor (#10360, @BenWilson2)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.9.0" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.8.1]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/11/15/2.8.1-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/11/15/2.8.1-release</guid>
+            <pubDate>Wed, 15 Nov 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[MLflow 2.8.1 is a patch release, containing some critical bug fixes and an update to our continued work on reworking our docs.]]></description>
+            <content:encoded><![CDATA[<p>MLflow 2.8.1 is a patch release, containing some critical bug fixes and an update to our continued work on reworking our docs.</p>
+<p>Notable details:</p>
+<ul>
+<li>The API <code>mlflow.llm.log_predictions</code> is being marked as deprecated, as its functionality has been incorporated into <code>mlflow.log_table</code>. This API will be removed in the 2.9.0 release. (#10414, @dbczumar)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Artifacts] Fix a regression in 2.8.0 where downloading a single file from a registered model would fail (#10362, @BenWilson2)</li>
+<li>[Evaluate] Fix the <code>Azure OpenAI</code> integration for <code>mlflow.evaluate</code> when using LLM <code>judge</code> metrics (#10291, @prithvikannan)</li>
+<li>[Evaluate] Change <code>Examples</code> to optional for the <code>make_genai_metric</code> API (#10353, @prithvikannan)</li>
+<li>[Evaluate] Remove the <code>fastapi</code> dependency when using <code>mlflow.evaluate</code> for LLM results (#10354, @prithvikannan)</li>
+<li>[Evaluate] Fix syntax issues and improve the formatting for generated prompt templates (#10402, @annzhang-db)</li>
+<li>[Gateway] Fix the Gateway configuration validator pre-check for OpenAI to perform instance type validation (#10379, @BenWilson2)</li>
+<li>[Tracking] Fix an intermittent issue with hanging threads when using asynchronous logging (#10374, @chenmoneygithub)</li>
+<li>[Tracking] Add a timeout for the <code>mlflow.login()</code> API to catch invalid hostname configuration input errors (#10239, @chenmoneygithub)</li>
+<li>[Tracking] Add a <code>flush</code> operation at the conclusion of logging system metrics (#10320, @chenmoneygithub)</li>
+<li>[Models] Correct the prompt template generation logic within the Prompt Engineering UI so that the prompts can be used in the Python API (#10341, @daniellok-db)</li>
+<li>[Models] Fix an issue in the <code>SHAP</code> model explainability functionality within <code>mlflow.shap.log_explanation</code> so that duplicate or conflicting dependencies are not registered when logging (#10305, @BenWilson2)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Docs] Add MLflow Tracking Quickstart (#10285, @BenWilson2)</li>
+<li>[Docs] Add tracking server configuration guide (#10241, @chenmoneygithub)</li>
+<li>[Docs] Refactor and improve the model deployment quickstart guide (#10322, @prithvikannan)</li>
+<li>[Docs] Add documentation for system metrics logging (#10261, @chenmoneygithub)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.8.1" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.8.0]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/10/29/2.8.0-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/10/29/2.8.0-release</guid>
+            <pubDate>Sun, 29 Oct 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[MLflow 2.8.0 includes several notable new features and improvements]]></description>
+            <content:encoded><![CDATA[<p>MLflow 2.8.0 includes several notable new features and improvements</p>
+<ul>
+<li>The MLflow Evaluate API has had extensive feature development in this release to support LLM workflows and multiple new evaluation modalities. See the new documentation, guides, and tutorials for MLflow LLM Evaluate to learn more.</li>
+<li>The MLflow Docs modernization effort has started. You will see a very different look and feel to the docs when visiting them, along with a batch of new tutorials and guides. More changes will be coming soon to the docs!</li>
+<li>4 new LLM providers have been added! Google PaLM 2, AWS Bedrock, AI21 Labs, and HuggingFace TGI can now be configured and used within the AI Gateway. Learn more in the new AI Gateway docs!</li>
+</ul>
+<p>Features:</p>
+<ul>
+<li>[Gateway] Add support for AWS Bedrock as a provider in the AI Gateway (#9598, @andrew-christianson)</li>
+<li>[Gateway] Add support for Huggingface Text Generation Inference as a provider in the AI Gateway (#10072, @SDonkelaarGDD)</li>
+<li>[Gateway] Add support for Google PaLM 2 as a provider in the AI Gateway (#9797, @arpitjasa-db)</li>
+<li>[Gateway] Add support for AI21labs as a provider in the AI Gateway (#9828, #10168, @zhe-db)</li>
+<li>[Gateway] Introduce a simplified method for setting the configuration file location for the AI Gateway via environment variable (#9822, @danilopeixoto)</li>
+<li>[Evaluate] Introduce default provided LLM evaluation metrics for MLflow evaluate (#9913, @prithvikannan)</li>
+<li>[Evaluate] Add support for evaluating inference datasets in MLflow evaluate (#9830, @liangz1)</li>
+<li>[Evaluate] Add support for evaluating single argument functions in MLflow evaluate (#9718, @liangz1)</li>
+<li>[Evaluate] Add support for Retriever LLM model type evaluation within MLflow evaluate (#10079, @liangz1)</li>
+<li>[Models] Add configurable parameter for external model saving in the ONNX flavor to address a regression (#10152, @daniellok-db)</li>
+<li>[Models] Add support for saving inference parameters in a logged model's input example (#9655, @serena-ruan)</li>
+<li>[Models] Add support for <code>completions</code> in the OpenAI flavor (#9838, @santiagxf)</li>
+<li>[Models] Add support for inference parameters for the OpenAI flavor (#9909, @santiagxf)</li>
+<li>[Models] Introduce support for configuration arguments to be specified when loading a model (#9251, @santiagxf)</li>
+<li>[Models] Add support for integrated Azure AD authentication for the OpenAI flavor (#9704, @santiagxf)</li>
+<li>[Models / Scoring] Introduce support for model training lineage in model serving (#9402, @M4nouel)</li>
+<li>[Model Registry] Introduce the <code>copy_model_version</code> client API for copying model versions across registered models (#9946, #10078, #10140, @jerrylian-db)</li>
+<li>[Tracking] Expand the limits of parameter value length from 500 to 6000 (#9709, @serena-ruan)</li>
+<li>[Tracking] Introduce support for Spark 3.5's SparkConnect mode within MLflow to allow logging models created using this operation mode of Spark (#9534, @WeichenXu123)</li>
+<li>[Tracking] Add support for logging system metrics to the MLflow fluent API (#9557, #9712, #9714, @chenmoneygithub)</li>
+<li>[Tracking] Add callbacks within MLflow for Keras and Tensorflow (#9454, #9637, #9579, @chenmoneygithub)</li>
+<li>[Tracking] Introduce a fluent login API for Databricks within Mlflow (#9665, #10180, @chenmoneygithub)</li>
+<li>[Tracking] Add support for customizing auth for http requests from the MLflow client via a plugin extension (#10049, @lu-ohai)</li>
+<li>[Tracking] Introduce experimental asynchronous logging support for metrics, params, and tags (#9705, @sagarsumant)</li>
+<li>[Auth] Modify the behavior of user creation in MLflow Authentication so that only admins can create new users (#9700, @gabrielfu)</li>
+<li>[Artifacts] Add support for using <code>xethub</code> as an artifact store via a plugin extension (#9957, @Kelton8Z)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Evaluate] Fix a bug with Azure OpenAI configuration usage within MLflow evaluate (#9982, @sunishsheth2009)</li>
+<li>[Models] Fix a data consistency issue when saving models that have been loaded in heterogeneous memory configuration within the transformers flavor (#10087, @BenWilson2)</li>
+<li>[Models] Fix an issue in the transformers flavor for complex input types by adding dynamic dataframe typing (#9044, @wamartin-aml)</li>
+<li>[Models] Fix an issue in the langchain flavor to provide support for chains with multiple outputs (#9497, @bbqiu)</li>
+<li>[Docker] Fix an issue with Docker image generation by changing the default env-manager to virtualenv (#9938, @Beramos)</li>
+<li>[Auth] Fix an issue with complex passwords in MLflow Auth to support a richer character set range (#9760, @dotdothu)</li>
+<li>[R] Fix a bug with configuration access when running MLflow R in Databricks (#10117, @zacdav-db)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Docs] Introduce the first phase of a larger documentation overhaul (#10197, @BenWilson2)</li>
+<li>[Docs] Add guide for LLM eval (#10058, #10199, @chenmoneygithub)</li>
+<li>[Docs] Add instructions on how to force single file serialization within the onnx flavor's save and log functions (#10178, @BenWilson2)</li>
+<li>[Docs] Add documentation for the relevance metric for MLflow evaluate (#10170, @sunishsheth2009)</li>
+<li>[Docs] Add a style guide for the contributing guide for how to structure pydoc strings (#9907, @mberk06)</li>
+<li>[Docs] Fix issues with the pytorch lightning autolog code example (#9964, @chenmoneygithub)</li>
+<li>[Docs] Update the example for <code>mlflow.data.from_numpy()</code> (#9885, @chenmoneygithub)</li>
+<li>[Docs] Add clear instructions for installing MLflow within R (#9835, @darshan8850)</li>
+<li>[Docs] Update model registry documentation to add content regarding support for model aliases (#9721, @jerrylian-db)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.8.0" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.8.0]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/10/28/2.8.0-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/10/28/2.8.0-release</guid>
+            <pubDate>Sat, 28 Oct 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[MLflow 2.8.0 includes several notable new features and improvements]]></description>
+            <content:encoded><![CDATA[<p>MLflow 2.8.0 includes several notable new features and improvements</p>
+<ul>
+<li>The MLflow Evaluate API has had extensive feature development in this release to support LLM workflows and multiple new evaluation modalities. See the new documentation, guides, and tutorials for MLflow LLM Evaluate to learn more.</li>
+<li>The MLflow Docs modernization effort has started. You will see a very different look and feel to the docs when visiting them, along with a batch of new tutorials and guides. More changes will be coming soon to the docs!</li>
+<li>4 new LLM providers have been added! Google PaLM 2, AWS Bedrock, AI21 Labs, and HuggingFace TGI can now be configured and used within the AI Gateway. Learn more in the new AI Gateway docs!</li>
+</ul>
+<p>Features:</p>
+<ul>
+<li>[Gateway] Add support for AWS Bedrock as a provider in the AI Gateway (#9598, @andrew-christianson)</li>
+<li>[Gateway] Add support for Huggingface Text Generation Inference as a provider in the AI Gateway (#10072, @SDonkelaarGDD)</li>
+<li>[Gateway] Add support for Google PaLM 2 as a provider in the AI Gateway (#9797, @arpitjasa-db)</li>
+<li>[Gateway] Add support for AI21labs as a provider in the AI Gateway (#9828, #10168, @zhe-db)</li>
+<li>[Gateway] Introduce a simplified method for setting the configuration file location for the AI Gateway via environment variable (#9822, @danilopeixoto)</li>
+<li>[Evaluate] Introduce default provided LLM evaluation metrics for MLflow evaluate (#9913, @prithvikannan)</li>
+<li>[Evaluate] Add support for evaluating inference datasets in MLflow evaluate (#9830, @liangz1)</li>
+<li>[Evaluate] Add support for evaluating single argument functions in MLflow evaluate (#9718, @liangz1)</li>
+<li>[Evaluate] Add support for Retriever LLM model type evaluation within MLflow evaluate (#10079, @liangz1)</li>
+<li>[Models] Add configurable parameter for external model saving in the ONNX flavor to address a regression (#10152, @daniellok-db)</li>
+<li>[Models] Add support for saving inference parameters in a logged model's input example (#9655, @serena-ruan)</li>
+<li>[Models] Add support for <code>completions</code> in the OpenAI flavor (#9838, @santiagxf)</li>
+<li>[Models] Add support for inference parameters for the OpenAI flavor (#9909, @santiagxf)</li>
+<li>[Models] Introduce support for configuration arguments to be specified when loading a model (#9251, @santiagxf)</li>
+<li>[Models] Add support for integrated Azure AD authentication for the OpenAI flavor (#9704, @santiagxf)</li>
+<li>[Models / Scoring] Introduce support for model training lineage in model serving (#9402, @M4nouel)</li>
+<li>[Model Registry] Introduce the <code>copy_model_version</code> client API for copying model versions across registered models (#9946, #10078, #10140, @jerrylian-db)</li>
+<li>[Tracking] Expand the limits of parameter value length from 500 to 6000 (#9709, @serena-ruan)</li>
+<li>[Tracking] Introduce support for Spark 3.5's SparkConnect mode within MLflow to allow logging models created using this operation mode of Spark (#9534, @WeichenXu123)</li>
+<li>[Tracking] Add support for logging system metrics to the MLflow fluent API (#9557, #9712, #9714, @chenmoneygithub)</li>
+<li>[Tracking] Add callbacks within MLflow for Keras and Tensorflow (#9454, #9637, #9579, @chenmoneygithub)</li>
+<li>[Tracking] Introduce a fluent login API for Databricks within Mlflow (#9665, #10180, @chenmoneygithub)</li>
+<li>[Tracking] Add support for customizing auth for http requests from the MLflow client via a plugin extension (#10049, @lu-ohai)</li>
+<li>[Tracking] Introduce experimental asynchronous logging support for metrics, params, and tags (#9705, @sagarsumant)</li>
+<li>[Auth] Modify the behavior of user creation in MLflow Authentication so that only admins can create new users (#9700, @gabrielfu)</li>
+<li>[Artifacts] Add support for using <code>xethub</code> as an artifact store via a plugin extension (#9957, @Kelton8Z)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Evaluate] Fix a bug with Azure OpenAI configuration usage within MLflow evaluate (#9982, @sunishsheth2009)</li>
+<li>[Models] Fix a data consistency issue when saving models that have been loaded in heterogeneous memory configuration within the transformers flavor (#10087, @BenWilson2)</li>
+<li>[Models] Fix an issue in the transformers flavor for complex input types by adding dynamic dataframe typing (#9044, @wamartin-aml)</li>
+<li>[Models] Fix an issue in the langchain flavor to provide support for chains with multiple outputs (#9497, @bbqiu)</li>
+<li>[Docker] Fix an issue with Docker image generation by changing the default env-manager to virtualenv (#9938, @Beramos)</li>
+<li>[Auth] Fix an issue with complex passwords in MLflow Auth to support a richer character set range (#9760, @dotdothu)</li>
+<li>[R] Fix a bug with configuration access when running MLflow R in Databricks (#10117, @zacdav-db)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Docs] Introduce the first phase of a larger documentation overhaul (#10197, @BenWilson2)</li>
+<li>[Docs] Add guide for LLM eval (#10058, #10199, @chenmoneygithub)</li>
+<li>[Docs] Add instructions on how to force single file serialization within the onnx flavor's save and log functions (#10178, @BenWilson2)</li>
+<li>[Docs] Add documentation for the relevance metric for MLflow evaluate (#10170, @sunishsheth2009)</li>
+<li>[Docs] Add a style guide for the contributing guide for how to structure pydoc strings (#9907, @mberk06)</li>
+<li>[Docs] Fix issues with the pytorch lightning autolog code example (#9964, @chenmoneygithub)</li>
+<li>[Docs] Update the example for <code>mlflow.data.from_numpy()</code> (#9885, @chenmoneygithub)</li>
+<li>[Docs] Add clear instructions for installing MLflow within R (#9835, @darshan8850)</li>
+<li>[Docs] Update model registry documentation to add content regarding support for model aliases (#9721, @jerrylian-db)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.8.0" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.7.1]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/09/17/2.7.1-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/09/17/2.7.1-release</guid>
+            <pubDate>Sun, 17 Sep 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[MLflow 2.7.1 is a patch release containing the following features, bug fixes and changes:]]></description>
+            <content:encoded><![CDATA[<p>MLflow 2.7.1 is a patch release containing the following features, bug fixes and changes:</p>
+<p>Features:</p>
+<ul>
+<li>[Gateway / Databricks] Add the <code>set_limits</code> and <code>get_limits</code> APIs for AI Gateway routes within Databricks (#9516, @zhe-db)</li>
+<li>[Artifacts / Databricks] Add support for parallelized download and upload of artifacts within Unity Catalog (#9498, @jerrylian-db)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Models / R] Fix a critical bug with the <code>R</code> client that prevents models from being loaded (#9624, @BenWilson2)</li>
+<li>[Artifacts / Databricks] Disable multi-part download functionality for UC Volumes local file destination when downloading models (#9631, @BenWilson2)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.7.1" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.7.0]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/09/12/2.7.0-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/09/12/2.7.0-release</guid>
+            <pubDate>Tue, 12 Sep 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[MLflow 2.7.0 includes several major features and improvements]]></description>
+            <content:encoded><![CDATA[<p>MLflow 2.7.0 includes several major features and improvements</p>
+<ul>
+<li>[UI / Gateway] We are excited to announce the Prompt Engineering UI. This new addition offers a suite of tools tailored for efficient prompt development, testing, and evaluation for LLM use cases. Integrated directly into the MLflow AI Gateway, it provides a seamless experience for designing, tracking, and deploying prompt templates. To read about this new feature, see the documentation at <a href="https://mlflow.org/docs/latest/llms/prompt-engineering.html" target="_blank" rel="noopener noreferrer">https://mlflow.org/docs/latest/llms/prompt-engineering.html</a> (#9503, @prithvikannan)</li>
+</ul>
+<p>Features:</p>
+<ul>
+<li>[Gateway] Introduce <code>MosaicML</code> as a supported provider for the MLflow <code>AI Gateway</code> (#9459, @arpitjasa-db)</li>
+<li>[Models] Add support for using a snapshot download location when loading a <code>transformers</code> model as <code>pyfunc</code> (#9362, @serena-ruan)</li>
+<li>[Server-infra] Introduce plugin support for MLflow <code>Tracking Server</code> authentication (#9191, @barrywhart)</li>
+<li>[Artifacts / Model Registry] Add support for storing artifacts using the <code>R2</code> backend (#9490, @shichengzhou-db)</li>
+<li>[Artifacts] Improve upload and download performance for Azure-based artifact stores (#9444, @jerrylian-db)</li>
+<li>[Sagemaker] Add support for deploying models to Sagemaker Serverless inference endpoints (#9085, @dogeplusplus)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Gateway] Fix a credential expiration bug by re-resolving <code>AI Gateway</code> credentials before each request (#9518, @dbczumar)</li>
+<li>[Gateway] Fix a bug where <code>search_routes</code> would raise an exception when no routes have been defined on the <code>AI Gateway</code> server (#9387, @QuentinAmbard)</li>
+<li>[Gateway] Fix compatibility issues with <code>pydantic</code> 2.x for <code>AI gateway</code> (#9339, @harupy)</li>
+<li>[Gateway] Fix an initialization issue in the <code>AI Gateway</code> that could render MLflow nonfunctional at import if dependencies were conflicting. (#9337, @BenWilson2)</li>
+<li>[Artifacts] Fix a correctness issue when downloading large artifacts to <code>fuse mount</code> paths on <code>Databricks</code> (#9545, @BenWilson2)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Docs] Add documentation for the <code>Giskard</code> community plugin for <code>mlflow.evaluate</code> (#9183, @rabah-khalek)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.7.0" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.6.0]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/08/15/2.6.0-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/08/15/2.6.0-release</guid>
+            <pubDate>Tue, 15 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[MLflow 2.6.0 includes several major features and improvements]]></description>
+            <content:encoded><![CDATA[<p>MLflow 2.6.0 includes several major features and improvements</p>
+<p>Features:</p>
+<ul>
+<li>[Models / Scoring] Add support for passing extra params during inference for PyFunc models (#9068, @serena-ruan)</li>
+<li>[Gateway] Add support for MLflow serving to MLflow AI Gateway (#9199, @BenWilson2)</li>
+<li>[Tracking] Support <code>save_kwargs</code> for <code>mlflow.log_figure</code> to specify extra options when saving a figure (#9179, @stroblme)</li>
+<li>[Artifacts] Display progress bars when uploading/download artifacts (#9195, @serena-ruan)</li>
+<li>[Models] Add support for logging LangChain's retriever models (#8808, @liangz1)</li>
+<li>[Tracking] Add support to log customized tags to runs created by autologging (#9114, @thinkall)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Models] Fix <code>text_pair</code> functionality for transformers <code>TextClassification</code> pipelines (#9215, @BenWilson2)</li>
+<li>[Models] Fix LangChain compatibility with SQLDatabase (#9192, @dbczumar)</li>
+<li>[Tracking] Remove patching <code>sklearn.metrics.get_scorer_names</code> in <code>mlflow.sklearn.autolog</code> to avoid duplicate logging (#9095, @WeichenXu123)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Docs / Examples] Add examples and documentation for MLflow AI Gateway support for MLflow model serving (#9281, @BenWilson2)</li>
+<li>[Docs / Examples] Add <code>sentence-transformers</code> doc &amp; example (#9047, @es94129)</li>
+</ul>
+<p>Deprecation:</p>
+<ul>
+<li>[Models] The <code>mlflow.mleap</code> module has been marked as deprecated and will be removed in a future release (#9311, @BenWilson2)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.6.0" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.5.0]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/07/17/2.5.0-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/07/17/2.5.0-release</guid>
+            <pubDate>Mon, 17 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[MLflow 2.5.0 includes several major features and improvements:]]></description>
+            <content:encoded><![CDATA[<p>MLflow 2.5.0 includes several major features and improvements:</p>
+<ul>
+<li>[MLflow AI Gateway] We are excited to announce the release of MLflow AI Gateway, a powerful tool designed to streamline the usage and management of various large language model (LLM) providers, such as OpenAI and Anthropic, within an organization. It offers a standardized interface that simplifies the interaction with these services and delivers centralized, secure management of credentials. To get started with MLflow AI Gateway, check out the docs at <a href="https://mlflow.org/docs/latest/gateway/index.html" target="_blank" rel="noopener noreferrer">https://mlflow.org/docs/latest/gateway/index.html</a>. (#8694, @harupy, @BenWilson2, @dbczumar)</li>
+<li>[Auth] We are excited to announce the release of authentication and authorization support for MLflow Tracking and the MLflow Model Registry, providing integrated access control capabilities to both services. To get started, check out the docs at <a href="https://mlflow.org/docs/latest/auth/index.html" target="_blank" rel="noopener noreferrer">https://mlflow.org/docs/latest/auth/index.html</a>. (#9000, #8975, #8626, #8837, #8841, @gabrielfu, @harupy)</li>
+</ul>
+<p>Features:</p>
+<ul>
+<li>[Models] Add Support to the LangChain flavor for chains that contain unserializable components (#8736, @liangz1)</li>
+<li>[Scoring] Infer spark udf return type from model output schema (#8934, @WeichenXu123)</li>
+<li>[Models] Add support for automated signature inference (#8860, #8782 #8795, #8725, @jerrylian-db)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Security] Improve robustness to LFI attacks on Windows by enhancing path validation (#8999, @serena-ruan)<!-- -->
+<ul>
+<li>If you are using <code>mlflow server</code> or <code>mlflow ui</code> on Windows, we recommend upgrading to MLflow 2.5.0 as soon as possible.</li>
+</ul>
+</li>
+<li>[Scoring] Support nullable array type values as spark_udf return values (#9014, @WeichenXu123)</li>
+<li>[Models] Revert cache deletion of system modules when adding custom model code to the system path (#8722, @trungn1)</li>
+<li>[Models] add micro version to mlflow version pinning (#8687, @C-K-Loan)</li>
+<li>[Artifacts] Prevent manually deleted artifacts from causing artifact garbage collection to fail (#8498, @PenHsuanWang)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Docs] Update .push_model_to_sagemaker docs (#8851, @pdifranc)</li>
+<li>[Docs] Fix invalid link for Azure ML documentation (#8800, @dunnkers)</li>
+<li>[Artifacts / Docs / Models / Projects] Adds information on the OCI MLflow plugins for seamless integration with Oralce Cloud Infrastructure services. (#8707, @mrDzurb)</li>
+</ul>
+<p>Deprecation:</p>
+<ul>
+<li>[Models] Deprecate the <code>gluon</code> model flavor. The <code>mlflow.gluon</code> module will be removed in a future release. (#8968, @harupy)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.5.0" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.4.0]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/06/06/2.4.0-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/06/06/2.4.0-release</guid>
+            <pubDate>Tue, 06 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[MLflow 2.4.0 includes several major features and improvements]]></description>
+            <content:encoded><![CDATA[<p>MLflow 2.4.0 includes several major features and improvements</p>
+<p>Features:</p>
+<ul>
+<li>[Tracking] Introduce dataset tracking APIs: <code>mlflow.data</code> and <code>mlflow.log_input()</code> (#8186, @prithvikannan)</li>
+<li>[Tracking] Add <code>mlflow.log_table()</code> and <code>mlflow.load_table()</code> APIs for logging evaluation tables (#8523, #8467, @sunishsheth2009)</li>
+<li>[Tracking] Introduce <code>mlflow.get_parent_run()</code> fluent API (#8493, @annzhang-db)</li>
+<li>[Tracking / Model Registry] Re-introduce faster artifact downloads on Databricks (#8352, @dbczumar; #8561, @harupy)</li>
+<li>[UI] Add dataset tracking information to MLflow Tracking UI (#8602, @prithvikannan, @hubertzub-db)</li>
+<li>[UI] Introduce Artifact View for comparing inputs, outputs, and metadata across models (#8602, @hubertzub-db)</li>
+<li>[Models] Extend <code>mlflow.evaluate()</code> to support LLM tasks (#8484, @harupy)</li>
+<li>[Models] Support logging subclasses of <code>Chain</code> and <code>LLMChain</code> in <code>mlflow.langchain</code> flavor (#8453, @liangz1)</li>
+<li>[Models] Add support for LangChain Agents to the <code>mlflow.langchain</code> flavor (#8297, @sunishsheth2009)</li>
+<li>[Models] Add a <code>mlflow.sentence_transformers</code> flavor for SentenceTransformers (#8479, @BenWilson2; #8547, @Loquats)</li>
+<li>[Models] Add support for multi-GPU inference and efficient weight loading for <code>mlflow.transformers</code> flavor (#8448, @ankit-db)</li>
+<li>[Models] Support the <code>max_shard_size</code> parameter in the <code>mlflow.transformers</code> flavor (#8567, @wenfeiy-db)</li>
+<li>[Models] Add support for audio transcription pipelines in the <code>mlflow.transformers</code> flavor (#8464, @BenWilson2)</li>
+<li>[Models] Add support for audio classification to <code>mlflow.transformers</code> flavor (#8492, @BenWilson2)</li>
+<li>[Models] Add support for URI inputs in audio models logged with the <code>mlflow.transformers</code> flavor (#8495, @BenWilson2)</li>
+<li>[Models] Add support for returning classifier scores in <code>mlflow.transformers</code> pyfunc outputs (#8512, @BenWilson2)</li>
+<li>[Models] Support optional inputs in model signatures (#8438, @apurva-koti)</li>
+<li>[Models] Introduce an <code>mlflow.models.set_signature()</code> API to set the signature of a logged model (#8476, @jerrylian-db)</li>
+<li>[Models] Persist ONNX Runtime InferenceSession options when logging a model with <code>mlflow.onnx.log_model()</code> (#8433, @leqiao-1)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Tracking] Terminate Spark callback server when Spark Autologging is disabled or Spark Session is shut down (#8508, @WeichenXu123)</li>
+<li>[Tracking] Fix compatibility of <code>mlflow server</code> with <code>Flask&lt;2.0</code> (#8463, @kevingreer)</li>
+<li>[Models] Convert <code>mlflow.transformers</code> pyfunc scalar string output to list of strings during batch inference (#8546, @BenWilson2)</li>
+<li>[Models] Fix a bug causing outdated pyenv versions to be installed by <code>mlflow models build-docker</code> (#8488, @Hellzed)</li>
+<li>[Model Registry] Remove aliases from storage when a Model Version is deleted (#8459, @arpitjasa-db)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Docs] Publish a new MLOps Quickstart for model selection and deployment (#8462, @lobrien)</li>
+<li>[Docs] Add MLflavors library to Community Model Flavors documentation (#8420, @benjaminbluhm)</li>
+<li>[Docs] Add documentation for Registered Model Aliases (#8445, @arpitjasa-db)</li>
+<li>[Docs] Fix errors in documented <code>mlflow models</code> CLI command examples (#8480, @vijethmoudgalya)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.4.0" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.3.2]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/05/12/2.3.2-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/05/12/2.3.2-release</guid>
+            <pubDate>Fri, 12 May 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[MLflow 2.3.2 is a patch release containing the following features, bug fixes and changes:]]></description>
+            <content:encoded><![CDATA[<p>MLflow 2.3.2 is a patch release containing the following features, bug fixes and changes:</p>
+<p>Features:</p>
+<ul>
+<li>[Models] Add GPU support for transformers models pyfunc inference and serving (#8375, @ankit-db)</li>
+<li>[Models] Disable autologging functionality for non-relevant models when training a transformers model (#8405, @BenWilson2)</li>
+<li>[Models] Add support for preserving and overriding torch_dtype values in transformers pipelines (#8421, @BenWilson2)</li>
+<li>[Models] Add support for Feature Extraction pipelines in the transformers flavor (#8423, @BenWilson2)</li>
+<li>[Tracking] Add basic HTTP auth support for users, registered models, and experiments permissions (#8286, @gabrielfu)</li>
+</ul>
+<p>Bug Fixes:</p>
+<ul>
+<li>[Models] Fix inferred schema issue with Text2TextGeneration pipelines in the transformers flavor (#8391, @BenWilson2)</li>
+<li>[Models] Change MLflow dependency pinning in logged models from a range value to an exact major and minor version (#8422, @harupy)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Examples] Add signature logging to all examples and documentation (#8410, #8401, #8400, #8387 @jerrylian-db)</li>
+<li>[Examples] Add sentence-transformers examples to the transformers examples suite (#8425, @BenWilson2)</li>
+<li>[Docs] Add a new MLflow Quickstart documentation page (#8171, @lobrien)</li>
+<li>[Docs] Add a new introduction to MLflow page (#8365, @lobrien)</li>
+<li>[Docs] Add a community model pluging example and documentation for trubrics (#8371, @jeffkayne)</li>
+<li>[Docs] Add gluon pyfunc example to Model flavor documentation (#8403, @ericvincent18)</li>
+<li>[Docs] Add statsmodels pyfunc example to Models flavor documentation (#8394, @ericvincent18)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.3.2" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.3.1]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/04/28/2.3.1-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/04/28/2.3.1-release</guid>
+            <pubDate>Fri, 28 Apr 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[MLflow 2.3.1 is a patch release containing bug fixes and a security patch for GHSA-83fm-w79m-64r5. If you are using mlflow server or mlflow ui, we recommend upgrading to MLflow 2.3.1 as soon as possible.]]></description>
+            <content:encoded><![CDATA[<p>MLflow 2.3.1 is a patch release containing bug fixes and a security patch for GHSA-83fm-w79m-64r5. If you are using mlflow server or mlflow ui, we recommend upgrading to MLflow 2.3.1 as soon as possible.</p>
+<p>Security patches:</p>
+<ul>
+<li>[Security] Fix critical LFI attack vulnerability by disabling the ability to provide relative paths in registered model sources (#8281, @BenWilson2)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Tracking] Fix an issue causing file and model uploads to hang on Databricks (#8348, @harupy)</li>
+<li>[Tracking / Model Registry] Fix an issue causing file and model downloads to hang on Databricks (#8350, @dbczumar)</li>
+<li>[Scoring] Fix regression in schema enforcement for model serving when using the inputs format for inference (#8326, @BenWilson2)</li>
+<li>[Model Registry] Fix regression in model naming parsing where special characters were not accepted in model names (#8322, @arpitjasa-db)</li>
+<li>[Recipes] Fix card rendering with the pandas profiler to handle columns containing all null values (#8263, @sunishsheth2009)</li>
+</ul>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.3.0]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/04/18/2.3.0-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/04/18/2.3.0-release</guid>
+            <pubDate>Tue, 18 Apr 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[We are happy to announce the availability of MLflow 2.3.0!]]></description>
+            <content:encoded><![CDATA[<p>We are happy to announce the availability of <a href="https://github.com/mlflow/mlflow/releases/tag/v2.3.0" target="_blank" rel="noopener noreferrer">MLflow 2.3.0</a>!</p>
+<p>MLflow 2.3.0 includes several major features and improvements</p>
+<p>Features:</p>
+<ul>
+<li>[Models] Introduce a new transformers named flavor (#8236, #8181, #8086, @BenWilson2)</li>
+<li>[Models] Introduce a new openai named flavor (#8191, #8155, @harupy)</li>
+<li>[Models] Introduce a new langchain named flavor (#8251, #8197, @liangz1, @sunishsheth2009)</li>
+<li>[Models] Add support for Pytorch and Lightning 2.0 (#8072, @shrinath-suresh)</li>
+<li>[Tracking] Add support for logging LLM input, output, and prompt artifacts (#8234, #8204, @sunishsheth2009)</li>
+<li>[Tracking] Add support for HTTP Basic Auth in the MLflow tracking server (#8130, @gabrielfu)</li>
+<li>[Tracking] Add search_model_versions to the fluent API (#8223, @mariusschlegel)</li>
+<li>[Artifacts] Add support for parallelized artifact downloads (#8116, @apurva-koti)</li>
+<li>[Artifacts] Add support for parallelized artifact uploads for AWS (#8003, @harupy)</li>
+<li>[Artifacts] Add content type headers to artifact upload requests for the HttpArtifactRepository (#8048, @WillEngler)</li>
+<li>[Model Registry] Add alias support for logged models within Model Registry (#8164, #8094, #8055 @arpitjasa-db)</li>
+<li>[UI] Add support for custom domain git providers (#7933, @gusghrlrl101)</li>
+<li>[Scoring] Add plugin support for customization of MLflow serving endpoints (#7757, @jmahlik)</li>
+<li>[Scoring] Add support to MLflow serving that allows configuration of multiple inference workers (#8035, @M4nouel)</li>
+<li>[Sagemaker] Add support for asynchronous inference configuration on Sagemaker (#8009, @thomasbell1985)</li>
+<li>[Build] Remove shap as a core dependency of MLflow (#8199, @jmahlik)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Models] Fix a bug with tensorflow autologging for models with multiple inputs (#8097, @jaume-ferrarons)</li>
+<li>[Recipes] Fix a bug with Pandas 2.0 updates for profiler rendering of datetime types (#7925, @sunishsheth2009)</li>
+<li>[Tracking] Prevent exceptions from being raised if a parameter is logged with an existing key whose value is identical to the logged parameter (#8038, @AdamStelmaszczyk)</li>
+<li>[Tracking] Fix an issue with deleting experiments in the FileStore backend (#8178, @mariusschlegel)</li>
+<li>[Tracking] Fix a UI bug where the "Source Run" field in the Model Version page points to an incorrect set of artifacts (#8156, @WeichenXu123)</li>
+<li>[Tracking] Fix a bug wherein renaming a run reverts its current lifecycle status to UNFINISHED (#8154, @WeichenXu123)</li>
+<li>[Tracking] Fix a bug where a file URI could be used as a model version source (#8126, @harupy)</li>
+<li>[Projects] Fix an issue with MLflow projects that have submodules contained within a project (#8050, @kota-iizuka)</li>
+<li>[Examples] Fix lightning hyperparameter tuning examples (#8039, @BenWilson2)</li>
+<li>[Server-infra] Fix bug with Cache-Control headers for static server files (#8016, @jmahlik)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Examples] Add a new and thorough example for the creation of custom model flavors (#7867, @benjaminbluhm)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.3.0" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.2.2]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/03/14/2.2.2-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/03/14/2.2.2-release</guid>
+            <pubDate>Tue, 14 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[We are happy to announce the availability of MLflow 2.2.2!]]></description>
+            <content:encoded><![CDATA[<p>We are happy to announce the availability of <a href="https://github.com/mlflow/mlflow/releases/tag/v2.2.2" target="_blank" rel="noopener noreferrer">MLflow 2.2.2</a>!</p>
+<p>MLflow 2.2.2 is a patch release containing the following bug fixes:</p>
+<ul>
+<li>[Model Registry] Allow <code>source</code> to be a local path within a run's artifact directory if a <code>run_id</code> is specified (#7993, @harupy)</li>
+<li>[Model Registry] Fix a bug where a windows UNC path is considered a local path (#7988, @WeichenXu123)</li>
+<li>[Model Registry] Disallow <code>name</code> to be a file path in <code>FileStore.get_registered_model</code> (#7965, @harupy)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.2.2" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.2.1]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/03/02/2.2.1-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/03/02/2.2.1-release</guid>
+            <pubDate>Thu, 02 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[We are happy to announce the availability of MLflow 2.2.1!]]></description>
+            <content:encoded><![CDATA[<p>We are happy to announce the availability of <a href="https://github.com/mlflow/mlflow/releases/tag/v2.2.1" target="_blank" rel="noopener noreferrer">MLflow 2.2.1</a>!</p>
+<p>MLflow 2.2.1 is a patch release containing the following bug fixes:</p>
+<ul>
+<li>[Model Registry] Fix a bug that caused too many results to be requested by default when calling <code>MlflowClient.search_model_versions()</code> (#7935, @dbczumar)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.2.1" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.2.0]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/03/01/2.2.0-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2023/03/01/2.2.0-release</guid>
+            <pubDate>Wed, 01 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[We are happy to announce the availability of MLflow 2.2.0!]]></description>
+            <content:encoded><![CDATA[<p>We are happy to announce the availability of <a href="https://github.com/mlflow/mlflow/releases/tag/v2.2.0" target="_blank" rel="noopener noreferrer">MLflow 2.2.0</a>!</p>
+<p>MLflow 2.2.0 includes several major features and improvements</p>
+<p>Features:</p>
+<ul>
+<li>[Recipes] Add support for score calibration to the classification recipe (#7744, @sunishsheth2009)</li>
+<li>[Recipes] Add automatic label encoding to the classification recipe (#7711, @sunishsheth2009)</li>
+<li>[Recipes] Support custom data splitting logic in the classification and regression recipes (#7815, #7588, @sunishsheth2009)</li>
+<li>[Recipes] Introduce customizable MLflow Run name prefixes to the classification and regression recipes (#7746, @kamalesh0406; #7763, @sunishsheth2009)</li>
+<li>[UI] Add a new Chart View to the MLflow Experiment Page for model performance insights (#7864, @hubertzub-db, @apurva-koti, @prithvikannan, @ridhimag11, @sunishseth2009, @dbczumar)</li>
+<li>[UI] Modernize and improve parallel coordinates chart for model tuning (#7864, @hubertzub-db, @apurva-koti, @prithvikannan, @ridhimag11, @sunishseth2009, @dbczumar)</li>
+<li>[UI] Add typeahead suggestions to the MLflow Experiment Page search bar (#7864, @hubertzub-db, @apurva-koti, @prithvikannan, @ridhimag11, @sunishseth2009, @dbczumar)</li>
+<li>[UI] Improve performance of Experiments Sidebar for large numbers of experiments (#7804, @jmahlik)</li>
+<li>[Tracking] Introduce autologging support for native PyTorch models (#7627, @temporaer)</li>
+<li>[Tracking] Allow specifying <code>model_format</code> when autologging XGBoost models (#7781, @guyrosin)</li>
+<li>[Tracking] Add <code>MLFLOW_ARTIFACT_UPLOAD_DOWNLOAD_TIMEOUT</code> environment variable to configure artifact operation timeouts (#7783, @wamartin-aml)</li>
+<li>[Artifacts] Include <code>Content-Type</code> response headers for artifacts downloaded from <code>mlflow server</code> (#7827, @bali0019)</li>
+<li>[Model Registry] Introduce the <code>searchModelVersions()</code> API to the Java client (#7880, @gabrielfu)</li>
+<li>[Model Registry] Introduce <code>max_results</code>, <code>order_by</code> and <code>page_token</code> arguments to <code>MlflowClient.search_model_versions()</code> (#7623, @serena-ruan)</li>
+<li>[Models] Support logging large ONNX models by using external data (#7808, @dogeplusplus)</li>
+<li>[Models] Add support for logging Diviner models fit in Spark (#7800, @BenWilson2)</li>
+<li>[Models] Introduce <code>MLFLOW_DEFAULT_PREDICTION_DEVICE</code> environment variable to set the device for pyfunc model inference (#7922, @ankit-db)</li>
+<li>[Scoring] Publish official Docker images for the MLflow Model scoring server at github.com/mlflow/mlflow/pkgs (#7759, @dbczumar)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Recipes] Fix dataset format validation in the ingest step for custom dataset sources (#7638, @sunishsheth2009)</li>
+<li>[Recipes] Fix bug in identification of worst performing examples during training (#7658, @sunishsheth2009)</li>
+<li>[Recipes] Ensure consistent rendering of the recipe graph when <code>inspect()</code> is called (#7852, @sunishsheth2009)</li>
+<li>[Recipes] Correctly respect <code>positive_class</code> configuration in the transform step (#7626, @sunishsheth2009)</li>
+<li>[Recipes] Make logged metric names consistent with <code>mlflow.evaluate()</code> (#7613, @sunishsheth2009)</li>
+<li>[Recipes] Add <code>run_id</code> and <code>artifact_path</code> keys to logged MLmodel files (#7651, @sunishsheth2009)</li>
+<li>[UI] Fix bugs in UI validation of experiment names, model names, and tag keys (#7818, @subramaniam02)</li>
+<li>[Tracking] Resolve artifact locations to absolute paths when creating experiments (#7670, @bali0019)</li>
+<li>[Tracking] Exclude Delta checkpoints from Spark datasource autologging (#7902, @harupy)</li>
+<li>[Tracking] Consistently return an empty list from GetMetricHistory when a metric does not exist (#7589, @bali0019; #7659, @harupy)</li>
+<li>[Artifacts] Fix support for artifact operations on Windows paths in UNC format (#7750, @bali0019)</li>
+<li>[Artifacts] Fix bug in HDFS artifact listing (#7581, @pwnywiz)</li>
+<li>[Model Registry] Disallow creation of model versions with local filesystem sources in <code>mlflow server</code> (#7908, @harupy)</li>
+<li>[Model Registry] Fix handling of deleted model versions in FileStore (#7716, @harupy)</li>
+<li>[Model Registry] Correctly initialize Model Registry SQL tables independently of MLflow Tracking (#7704, @harupy)</li>
+<li>[Models] Correctly move PyTorch model outputs from GPUs to CPUs during inference with pyfunc (#7885, @ankit-db)</li>
+<li>[Build] Fix compatiblility issues with Python installations compiled using <code>PYTHONOPTIMIZE=2</code> (#7791, @dbczumar)</li>
+<li>[Build] Fix compatibility issues with the upcoming pandas 2.0 release (#7899, @harupy; #7910, @dbczumar)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Docs] Add an example of saving and loading Spark MLlib models with MLflow (#7706, @dipanjank)</li>
+<li>[Docs] Add usage examples for <code>mlflow.lightgbm</code> APIs (#7565, @canerturkseven)</li>
+<li>[Docs] Add an example of custom model flavor creation with <code>sktime</code> (#7624, @benjaminbluhm)</li>
+<li>[Docs] Clarify <code>precision_recall_auc</code> metric calculation in <code>mlflow.evaluate()</code> (#7701, @BenWilson2)</li>
+<li>[Docs] Remove outdated example links (#7587, @asloan7)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.2.0" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.1.1]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2022/12/26/2.1.1-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2022/12/26/2.1.1-release</guid>
+            <pubDate>Mon, 26 Dec 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[We are happy to announce the availability of MLflow 2.1.1!]]></description>
+            <content:encoded><![CDATA[<p>We are happy to announce the availability of <a href="https://github.com/mlflow/mlflow/releases/tag/v2.1.1" target="_blank" rel="noopener noreferrer">MLflow 2.1.1</a>!</p>
+<p>MLflow 2.1.1 is a patch release containing the following bug fixes:</p>
+<ul>
+<li>[Scoring] Fix <code>mlflow.pyfunc.spark_udf()</code> type casting error on model with <code>ColSpec</code> input schema
+and make <code>PyFuncModel.predict</code> support dataframe with elements of <code>numpy.ndarray</code> type (#7592 @WeichenXu123)</li>
+<li>[Scoring] Make <code>mlflow.pyfunc.scoring_server.client.ScoringServerClient</code> support input dataframe with elements
+of <code>numpy.ndarray</code> type (#7594 @WeichenXu123)</li>
+<li>[Tracking] Ensure mlflow imports ML packages lazily (#7597, @harupy)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.1.1" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MLflow 2.1.0]]></title>
+            <link>https://your-docusaurus-site.example.com/mlflow-website/releases/2022/12/21/2.1.0-release</link>
+            <guid>https://your-docusaurus-site.example.com/mlflow-website/releases/2022/12/21/2.1.0-release</guid>
+            <pubDate>Wed, 21 Dec 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[We are happy to announce the availability of MLflow 2.1.0!]]></description>
+            <content:encoded><![CDATA[<p>We are happy to announce the availability of <a href="https://github.com/mlflow/mlflow/releases/tag/v2.1.0" target="_blank" rel="noopener noreferrer">MLflow 2.1.0</a>!</p>
+<p>MLflow 2.1.0 includes several major features and improvements</p>
+<p>Features:</p>
+<ul>
+<li>[Recipes] Introduce support for multi-class classification (#7458, @mshtelma)</li>
+<li>[Recipes] Extend the pyfunc representation of classification models to output scores in addition to labels (#7474, @sunishsheth2009)</li>
+<li>[UI] Add user ID and lifecycle stage quick search links to the Runs page (#7462, @jaeday)</li>
+<li>[Tracking] Paginate the GetMetricHistory API (#7523, #7415, @BenWilson2)</li>
+<li>[Tracking] Add Runs search aliases for Run name and start time that correspond to UI column names (#7492, @apurva-koti)</li>
+<li>[Tracking] Add a <code>/version</code> endpoint to <code>mlflow server</code> for querying the server's MLflow version (#7273, @joncarter1)</li>
+<li>[Model Registry] Add FileStore support for the Model Registry (#6605, @serena-ruan)</li>
+<li>[Model Registry] Introduce an <code>mlflow.search_registered_models()</code> fluent API (#7428, @TSienki)</li>
+<li>[Model Registry / Java] Add a <code>getRegisteredModel()</code> method to the Java client (#6602) (#7511, @drod331)</li>
+<li>[Model Registry / R] Add an <code>mlflow_set_model_version_tag()</code> method to the R client (#7401, @leeweijie)</li>
+<li>[Models] Introduce a <code>metadata</code> field to the MLmodel specification and <code>log_model()</code> methods (#7237, @jdonzallaz)</li>
+<li>[Models] Extend <code>Model.load()</code> to support loading MLmodel specifications from remote locations (#7517, @dbczumar)</li>
+<li>[Models] Pin the major version of MLflow in Models' <code>requirements.txt</code> and <code>conda.yaml</code> files (#7364, @BenWilson2)</li>
+<li>[Scoring] Extend <code>mlflow.pyfunc.spark_udf()</code> to support StructType results (#7527, @WeichenXu123)</li>
+<li>[Scoring] Extend TensorFlow and Keras Models to support multi-dimensional inputs with <code>mlflow.pyfunc.spark_udf()</code>(#7531, #7291, @WeichenXu123)</li>
+<li>[Scoring] Support specifying deployment environment variables and tags when deploying models to SageMaker (#7433, @jhallard)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Recipes] Fix a bug that prevented use of custom <code>early_stop</code> functions during model tuning (#7538, @sunishsheth2009)</li>
+<li>[Recipes] Fix a bug in the logic used to create a Spark session during data ingestion (#7307, @WeichenXu123)</li>
+<li>[Tracking] Make the metric names produced by <code>mlflow.autolog()</code> consistent with <code>mlflow.evaluate()</code> (#7418, @wenfeiy-db)</li>
+<li>[Tracking] Fix an autologging bug that caused nested, redundant information to be logged for XGBoost and LightGBM models (#7404, @WeichenXu123)</li>
+<li>[Tracking] Correctly classify SQLAlchemy OperationalErrors as retryable HTTP errors (#7240, @barrywhart)</li>
+<li>[Artifacts] Correctly handle special characters in credentials when using FTP artifact storage (#7479, @HCTsai)</li>
+<li>[Models] Address an issue that prevented MLeap models from being saved on Windows (#6966, @dbczumar)</li>
+<li>[Scoring] Fix a permissions issue encountered when using NFS during model scoring with <code>mlflow.pyfunc.spark_udf()</code> (#7427, @WeichenXu123)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Docs] Add more examples to the Runs search documentation page (#7487, @apurva-koti)</li>
+<li>[Docs] Add documentation for Model flavors developed by the community (#7425, @mmerce)</li>
+<li>[Docs] Add an example for logging and scoring ONNX Models (#7398, @Rusteam)</li>
+<li>[Docs] Fix a typo in the model scoring REST API example for inputs with the <code>dataframe_split</code> format (#7540, @zhouyangyu)</li>
+<li>[Docs] Fix a typo in the model scoring REST API example for inputs with the <code>dataframe_records</code> format (#7361, @dbczumar)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.1.0" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content:encoded>
+        </item>
+    </channel>
+</rss>

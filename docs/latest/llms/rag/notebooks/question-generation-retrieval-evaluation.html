@@ -2,6 +2,7 @@
   
 
 <!DOCTYPE html>
+<!-- source: docs/source/llms/rag/notebooks/question-generation-retrieval-evaluation.ipynb -->
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
@@ -9,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Question Generation For Retrieval Evaluation &mdash; MLflow 2.10.1.dev0 documentation</title>
+  <title>Question Generation For Retrieval Evaluation &mdash; MLflow 2.10.3.dev0 documentation</title>
   
    
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -47,7 +48,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="MLflow 2.10.1.dev0 documentation" href="../../../index.html"/>
+    <link rel="top" title="MLflow 2.10.3.dev0 documentation" href="../../../index.html"/>
         <link rel="up" title="RAG Tutorials" href="index.html"/>
         <link rel="next" title="Retriever Evaluation Tutorial" href="/retriever-evaluation-tutorial.html"/>
         <link rel="prev" title="LLM RAG Evaluation with MLflow Example Notebook" href="/mlflow-e2e-evaluation.html"/> 
@@ -76,7 +77,7 @@
     <a href="../../../index.html" class="wy-nav-top-logo"
       ><img src="../../../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.10.1.dev0</span>
+    <span class="version">2.10.3.dev0</span>
   </li>
 </ul>
   </nav>
@@ -509,10 +510,10 @@ RAG leverges the retriever to find context documents, and this novel approach ha
 <span class="sd">        The cache_loading_fn should be a function that takes arbitrary</span>
 <span class="sd">        serializable arguments and returns a serilaizable value.</span>
 <span class="sd">          value = cache_loading_fn(**kwargs)</span>
-<span class="sd">        For example, for openai.ChatCompletion.create(...), the</span>
+<span class="sd">        For example, for openai.chat.completions.create(...), the</span>
 <span class="sd">        cache_loading_fn should be:</span>
 <span class="sd">          def cache_loading_fn(**kwargs):</span>
-<span class="sd">            result = openai.ChatCompletion.create(**kwargs)</span>
+<span class="sd">            result = openai.chat.completions.create(**kwargs)</span>
 <span class="sd">            return result.to_dict_recursive()</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_or_create_cache_dict</span><span class="p">(</span><span class="n">persist_path</span><span class="p">)</span>
@@ -556,7 +557,7 @@ RAG leverges the retriever to find context documents, and this novel approach ha
 
 
 <span class="k">def</span> <span class="nf">chat_completion_create_fn</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">ChatCompletion</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">to_dict_recursive</span><span class="p">()</span>
 
 
@@ -567,8 +568,7 @@ RAG leverges the retriever to find context documents, and this novel approach ha
 
 <span class="k">def</span> <span class="nf">embeddings_embed_documents_fn</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">chunk</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;chunk&quot;</span><span class="p">)</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">embeddings</span><span class="o">.</span><span class="n">embed_documents</span><span class="p">([</span><span class="n">chunk</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">result</span>
+    <span class="k">return</span> <span class="n">embeddings</span><span class="o">.</span><span class="n">embed_documents</span><span class="p">([</span><span class="n">chunk</span><span class="p">])</span>
 
 
 <span class="k">def</span> <span class="nf">cached_langchain_openai_embeddings</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1473,7 +1473,7 @@ cossim:
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../../../',
-      VERSION:'2.10.1.dev0',
+      VERSION:'2.10.3.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

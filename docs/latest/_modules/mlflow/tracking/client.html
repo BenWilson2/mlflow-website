@@ -1860,11 +1860,11 @@
 <span class="sd">                &quot;outputs&quot;: [&quot;MLflow is ...&quot;, &quot;Databricks is ...&quot;],</span>
 <span class="sd">                &quot;toxicity&quot;: [0.0, 0.0],</span>
 <span class="sd">            }</span>
-<span class="sd">            client = MlflowClient()</span>
-<span class="sd">            run = client.create_run(experiment_id=&quot;0&quot;)</span>
-<span class="sd">            client.log_table(</span>
-<span class="sd">                run.info.run_id, data=table_dict, artifact_file=&quot;qabot_eval_results.json&quot;</span>
-<span class="sd">            )</span>
+<span class="sd">            with mlflow.start_run() as run:</span>
+<span class="sd">                client = MlflowClient()</span>
+<span class="sd">                client.log_table(</span>
+<span class="sd">                    run.info.run_id, data=table_dict, artifact_file=&quot;qabot_eval_results.json&quot;</span>
+<span class="sd">                )</span>
 
 <span class="sd">        .. code-block:: python</span>
 <span class="sd">            :test:</span>
@@ -1880,9 +1880,27 @@
 <span class="sd">                &quot;toxicity&quot;: [0.0, 0.0],</span>
 <span class="sd">            }</span>
 <span class="sd">            df = pd.DataFrame.from_dict(table_dict)</span>
-<span class="sd">            client = MlflowClient()</span>
-<span class="sd">            run = client.create_run(experiment_id=&quot;0&quot;)</span>
-<span class="sd">            client.log_table(run.info.run_id, data=df, artifact_file=&quot;qabot_eval_results.json&quot;)</span>
+<span class="sd">            with mlflow.start_run() as run:</span>
+<span class="sd">                client = MlflowClient()</span>
+<span class="sd">                client.log_table(run.info.run_id, data=df, artifact_file=&quot;qabot_eval_results.json&quot;)</span>
+
+<span class="sd">        .. code-block:: python</span>
+<span class="sd">            :test:</span>
+<span class="sd">            :caption: Image Column Example</span>
+
+<span class="sd">            import mlflow</span>
+<span class="sd">            import pandas as pd</span>
+<span class="sd">            from mlflow import MlflowClient</span>
+
+<span class="sd">            image = mlflow.Image([[1, 2, 3]])</span>
+<span class="sd">            table_dict = {</span>
+<span class="sd">                &quot;inputs&quot;: [&quot;Show me a dog&quot;, &quot;Show me a cat&quot;],</span>
+<span class="sd">                &quot;outputs&quot;: [image, image],</span>
+<span class="sd">            }</span>
+<span class="sd">            df = pd.DataFrame.from_dict(table_dict)</span>
+<span class="sd">            with mlflow.start_run() as run:</span>
+<span class="sd">                client = MlflowClient()</span>
+<span class="sd">                client.log_table(run.info.run_id, data=df, artifact_file=&quot;image_gen.json&quot;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
@@ -1899,6 +1917,54 @@
             <span class="c1"># for data like {&quot;inputs&quot;: &quot;What is MLflow?&quot;}</span>
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
                 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">data</span><span class="p">])</span>
+
+        <span class="c1"># Check if the column is a `PIL.Image.Image` or `mlflow.Image` object</span>
+        <span class="c1"># and save filepath</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="k">def</span> <span class="nf">process_image</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+                <span class="c1"># remove extension from artifact_file</span>
+                <span class="n">table_name</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">artifact_file</span><span class="p">)</span>
+                <span class="c1"># save image to path</span>
+                <span class="n">filepath</span> <span class="o">=</span> <span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;table_images&quot;</span><span class="p">,</span> <span class="n">table_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span>
+                <span class="n">image_filepath</span> <span class="o">=</span> <span class="n">filepath</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span>
+                <span class="n">compressed_image_filepath</span> <span class="o">=</span> <span class="n">filepath</span> <span class="o">+</span> <span class="s2">&quot;.webp&quot;</span>
+                <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_artifact_helper</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="n">image_filepath</span><span class="p">)</span> <span class="k">as</span> <span class="n">artifact_path</span><span class="p">:</span>
+                    <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">artifact_path</span><span class="p">)</span>
+
+                <span class="c1"># save compressed image to path</span>
+                <span class="n">compressed_image</span> <span class="o">=</span> <span class="n">compress_image_size</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+                <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_artifact_helper</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="n">compressed_image_filepath</span><span class="p">)</span> <span class="k">as</span> <span class="n">artifact_path</span><span class="p">:</span>
+                    <span class="n">compressed_image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">artifact_path</span><span class="p">)</span>
+
+                <span class="c1"># return a dictionary object indicating its an image path</span>
+                <span class="k">return</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;image&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;filepath&quot;</span><span class="p">:</span> <span class="n">image_filepath</span><span class="p">,</span>
+                    <span class="s2">&quot;compressed_filepath&quot;</span><span class="p">:</span> <span class="n">compressed_image_filepath</span><span class="p">,</span>
+                <span class="p">}</span>
+
+            <span class="k">def</span> <span class="nf">check_is_image_object</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+                <span class="k">return</span> <span class="p">(</span>
+                    <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;save&quot;</span><span class="p">)</span>
+                    <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;save&quot;</span><span class="p">))</span>
+                    <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;resize&quot;</span><span class="p">)</span>
+                    <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;resize&quot;</span><span class="p">))</span>
+                    <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">)</span>
+                <span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                <span class="n">isImage</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">check_is_image_object</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+                <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">isImage</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">isImage</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Column `</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">` contains a mix of images and non-images. &quot;</span>
+                        <span class="s2">&quot;Please ensure that all elements in the column are of the same type.&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">elif</span> <span class="nb">all</span><span class="p">(</span><span class="n">isImage</span><span class="p">):</span>
+                    <span class="c1"># Save files to artifact storage</span>
+                    <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">process_image</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
         <span class="n">norm_path</span> <span class="o">=</span> <span class="n">posixpath</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">artifact_file</span><span class="p">)</span>
         <span class="n">artifact_dir</span> <span class="o">=</span> <span class="n">posixpath</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">norm_path</span><span class="p">)</span>
         <span class="n">artifact_dir</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">artifact_dir</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="k">else</span> <span class="n">artifact_dir</span>

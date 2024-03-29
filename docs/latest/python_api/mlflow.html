@@ -268,7 +268,8 @@ implement mutual exclusion manually.</p>
 <dl class="py class">
 <dt id="mlflow.Image">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mlflow.</span></code><code class="sig-name descname"><span class="pre">Image</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">PIL.Image.Image</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlflow/tracking/multimedia.html#Image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.Image" title="Permalink to this definition"> </a></dt>
-<dd><p>Image media object for handling images in MLflow.
+<dd><p><cite>mlflow.Image</cite> is an image media object that provides a lightweight option
+for handling images in MLflow.
 The image can be a numpy array, a PIL image, or a file path to an image. The image is
 stored as a PIL image and can be logged to MLflow using <cite>mlflow.log_image</cite> or
 <cite>mlflow.log_table</cite>.</p>
@@ -294,8 +295,22 @@ stored as a PIL image and can be logged to MLflow using <cite>mlflow.log_image</
 </div>
 </div>
 <dl class="py method">
+<dt id="mlflow.Image.resize">
+<code class="sig-name descname"><span class="pre">resize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlflow/tracking/multimedia.html#Image.resize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.Image.resize" title="Permalink to this definition"> </a></dt>
+<dd><p>Resize the image to the specified size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> – Size to resize the image to.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A copy of the resized image object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="mlflow.Image.save">
-<code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="reference internal" href="../_modules/mlflow/tracking/multimedia.html#Image.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.Image.save" title="Permalink to this definition"> </a></dt>
+<code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlflow/tracking/multimedia.html#Image.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.Image.save" title="Permalink to this definition"> </a></dt>
 <dd><p>Save the image to a file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -306,7 +321,7 @@ stored as a PIL image and can be logged to MLflow using <cite>mlflow.log_image</
 
 <dl class="py method">
 <dt id="mlflow.Image.to_array">
-<code class="sig-name descname"><span class="pre">to_array</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="reference internal" href="../_modules/mlflow/tracking/multimedia.html#Image.to_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.Image.to_array" title="Permalink to this definition"> </a></dt>
+<code class="sig-name descname"><span class="pre">to_array</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlflow/tracking/multimedia.html#Image.to_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.Image.to_array" title="Permalink to this definition"> </a></dt>
 <dd><p>Convert the image to a numpy array.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -317,7 +332,7 @@ stored as a PIL image and can be logged to MLflow using <cite>mlflow.log_image</
 
 <dl class="py method">
 <dt id="mlflow.Image.to_list">
-<code class="sig-name descname"><span class="pre">to_list</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="reference internal" href="../_modules/mlflow/tracking/multimedia.html#Image.to_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.Image.to_list" title="Permalink to this definition"> </a></dt>
+<code class="sig-name descname"><span class="pre">to_list</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlflow/tracking/multimedia.html#Image.to_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.Image.to_list" title="Permalink to this definition"> </a></dt>
 <dd><p>Convert the image to a list of pixel values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -328,7 +343,7 @@ stored as a PIL image and can be logged to MLflow using <cite>mlflow.log_image</
 
 <dl class="py method">
 <dt id="mlflow.Image.to_pil">
-<code class="sig-name descname"><span class="pre">to_pil</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">PIL.Image.Image</span><a class="reference internal" href="../_modules/mlflow/tracking/multimedia.html#Image.to_pil"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.Image.to_pil" title="Permalink to this definition"> </a></dt>
+<code class="sig-name descname"><span class="pre">to_pil</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlflow/tracking/multimedia.html#Image.to_pil"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.Image.to_pil" title="Permalink to this definition"> </a></dt>
 <dd><p>Convert the image to a PIL image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>

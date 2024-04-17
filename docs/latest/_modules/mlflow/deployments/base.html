@@ -288,7 +288,8 @@
 <span class="sd">        deployment completes (i.e. until it&#39;s possible to perform inference with the deployment).</span>
 <span class="sd">        In the case of conflicts (e.g. if it&#39;s not possible to create the specified deployment</span>
 <span class="sd">        without due to conflict with an existing deployment), raises a</span>
-<span class="sd">        :py:class:`mlflow.exceptions.MlflowException`. See target-specific plugin documentation</span>
+<span class="sd">        :py:class:`mlflow.exceptions.MlflowException` or an `HTTPError` for remote</span>
+<span class="sd">        deployments. See target-specific plugin documentation</span>
 <span class="sd">        for additional detail on support for asynchronous deployment and other configuration.</span>
 
 <span class="sd">        Args:</span>
@@ -379,9 +380,9 @@
 <div class="viewcode-block" id="BaseDeploymentClient.get_deployment"><a class="viewcode-back" href="../../../python_api/mlflow.deployments.html#mlflow.deployments.BaseDeploymentClient.get_deployment">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span> <span class="nf">get_deployment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a dictionary describing the specified deployment, throwing a</span>
-<span class="sd">        :py:class:`mlflow.exceptions.MlflowException` if no deployment exists with the provided</span>
-<span class="sd">        ID.</span>
+<span class="sd">        Returns a dictionary describing the specified deployment, throwing either a</span>
+<span class="sd">        :py:class:`mlflow.exceptions.MlflowException` or an `HTTPError` for remote</span>
+<span class="sd">        deployments if no deployment exists with the provided ID.</span>
 <span class="sd">        The dict is guaranteed to contain an &#39;name&#39; key containing the deployment name.</span>
 <span class="sd">        The other fields of the returned dictionary and their types may vary across</span>
 <span class="sd">        deployment targets.</span>
@@ -417,6 +418,20 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 
+<div class="viewcode-block" id="BaseDeploymentClient.predict_stream"><a class="viewcode-back" href="../../../python_api/mlflow.deployments.html#mlflow.deployments.BaseDeploymentClient.predict_stream">[docs]</a>    <span class="k">def</span> <span class="nf">predict_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deployment_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Submit a query to a configured provider endpoint, and get streaming response</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            deployment_name: Name of deployment to predict against.</span>
+<span class="sd">            inputs: The inputs to the query, as a dictionary.</span>
+<span class="sd">            endpoint: The name of the endpoint to query.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            An iterator of dictionary containing the response from the endpoint.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="BaseDeploymentClient.explain"><a class="viewcode-back" href="../../../python_api/mlflow.deployments.html#mlflow.deployments.BaseDeploymentClient.explain">[docs]</a>    <span class="k">def</span> <span class="nf">explain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deployment_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate explanations of model predictions on the specified input pandas Dataframe</span>
@@ -442,7 +457,8 @@
 <span class="sd">        creation completes (i.e. until it&#39;s possible to create a deployment within the endpoint).</span>
 <span class="sd">        In the case of conflicts (e.g. if it&#39;s not possible to create the specified endpoint</span>
 <span class="sd">        due to conflict with an existing endpoint), raises a</span>
-<span class="sd">        :py:class:`mlflow.exceptions.MlflowException`. See target-specific plugin documentation</span>
+<span class="sd">        :py:class:`mlflow.exceptions.MlflowException` or an `HTTPError` for remote</span>
+<span class="sd">        deployments. See target-specific plugin documentation</span>
 <span class="sd">        for additional detail on support for asynchronous creation and other configuration.</span>
 
 <span class="sd">        Args:</span>
@@ -520,7 +536,8 @@
 <div class="viewcode-block" id="BaseDeploymentClient.get_endpoint"><a class="viewcode-back" href="../../../python_api/mlflow.deployments.html#mlflow.deployments.BaseDeploymentClient.get_endpoint">[docs]</a>    <span class="k">def</span> <span class="nf">get_endpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a dictionary describing the specified endpoint, throwing a</span>
-<span class="sd">        py:class:`mlflow.exception.MlflowException` if no endpoint exists with the provided</span>
+<span class="sd">        py:class:`mlflow.exception.MlflowException` or an `HTTPError` for remote</span>
+<span class="sd">        deployments if no endpoint exists with the provided</span>
 <span class="sd">        name.</span>
 <span class="sd">        The dict is guaranteed to contain an &#39;name&#39; key containing the endpoint name.</span>
 <span class="sd">        The other fields of the returned dictionary and their types may vary across targets.</span>

@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlflow.models &mdash; MLflow 2.11.4.dev0 documentation</title>
+  <title>mlflow.models &mdash; MLflow 2.12.2.dev0 documentation</title>
   
    
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="MLflow 2.11.4.dev0 documentation" href="../index.html"/>
+    <link rel="top" title="MLflow 2.12.2.dev0 documentation" href="../index.html"/>
         <link rel="up" title="Python API" href="index.html"/>
         <link rel="next" title="mlflow.onnx" href="/mlflow.onnx.html"/>
         <link rel="prev" title="mlflow.mleap" href="/mlflow.mleap.html"/> 
@@ -75,7 +75,7 @@
     <a href="../index.html" class="wy-nav-top-logo"
       ><img src="../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.11.4.dev0</span>
+    <span class="version">2.12.2.dev0</span>
   </li>
 </ul>
   </nav>
@@ -568,7 +568,7 @@ baseline model.</p>
 
 <dl class="py class">
 <dt id="mlflow.models.Model">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mlflow.models.</span></code><code class="sig-name descname"><span class="pre">Model</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">artifact_path=None</span></em>, <em class="sig-param"><span class="pre">run_id=None</span></em>, <em class="sig-param"><span class="pre">utc_time_created=None</span></em>, <em class="sig-param"><span class="pre">flavors=None</span></em>, <em class="sig-param"><span class="pre">signature=None</span></em>, <em class="sig-param"><span class="pre">saved_input_example_info:</span> <span class="pre">Optional[Dict[str</span></em>, <em class="sig-param"><span class="pre">Any]]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">model_uuid:</span> <span class="pre">Optional[Union[str</span></em>, <em class="sig-param"><span class="pre">Callable]]</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">Model.&lt;lambda&gt;&gt;</span></em>, <em class="sig-param"><span class="pre">mlflow_version:</span> <span class="pre">Optional[str]</span> <span class="pre">=</span> <span class="pre">'2.11.4.dev0'</span></em>, <em class="sig-param"><span class="pre">metadata:</span> <span class="pre">Optional[Dict[str</span></em>, <em class="sig-param"><span class="pre">Any]]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">model_size_bytes:</span> <span class="pre">Optional[int]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlflow/models/model.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.models.Model" title="Permalink to this definition"> </a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mlflow.models.</span></code><code class="sig-name descname"><span class="pre">Model</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">artifact_path=None</span></em>, <em class="sig-param"><span class="pre">run_id=None</span></em>, <em class="sig-param"><span class="pre">utc_time_created=None</span></em>, <em class="sig-param"><span class="pre">flavors=None</span></em>, <em class="sig-param"><span class="pre">signature=None</span></em>, <em class="sig-param"><span class="pre">saved_input_example_info:</span> <span class="pre">Optional[Dict[str</span></em>, <em class="sig-param"><span class="pre">Any]]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">model_uuid:</span> <span class="pre">Optional[Union[str</span></em>, <em class="sig-param"><span class="pre">Callable]]</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">Model.&lt;lambda&gt;&gt;</span></em>, <em class="sig-param"><span class="pre">mlflow_version:</span> <span class="pre">Optional[str]</span> <span class="pre">=</span> <span class="pre">'2.12.2.dev0'</span></em>, <em class="sig-param"><span class="pre">metadata:</span> <span class="pre">Optional[Dict[str</span></em>, <em class="sig-param"><span class="pre">Any]]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">model_size_bytes:</span> <span class="pre">Optional[int]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlflow/models/model.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.models.Model" title="Permalink to this definition"> </a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>An MLflow Model that can support multiple model flavors. Provides APIs for implementing
 new Model flavors.</p>
@@ -691,13 +691,7 @@ one with the given name does not exist.</p></li>
 being created and is in <code class="docutils literal notranslate"><span class="pre">READY</span></code> status. By default, the
 function waits for five minutes. Specify 0 or None to skip
 waiting.</p></li>
-<li><p><strong>metadata</strong> – <p>Custom metadata dictionary passed to the model and stored in the MLmodel file.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Experimental: This parameter may change or be removed in a
-future release without warning.</p>
-</div>
-</p></li>
+<li><p><strong>metadata</strong> – {{ metadata }}</p></li>
 <li><p><strong>kwargs</strong> – Extra args passed to the model flavor.</p></li>
 </ul>
 </dd>
@@ -1269,14 +1263,13 @@ that contains evaluation labels. Required for classifier and regressor models,
 but optional for question-answering, text-summarization, and text models. If
 <code class="docutils literal notranslate"><span class="pre">data</span></code> is a <a class="reference internal" href="mlflow.data.html#mlflow.data.dataset.Dataset" title="mlflow.data.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlflow.data.dataset.Dataset</span></code></a> that defines targets,
 then <code class="docutils literal notranslate"><span class="pre">targets</span></code> is optional.</p></li>
-<li><p><strong>predictions</strong> – <p>Optional. The name of the column that contains model outputs. There are two
-cases where this argument is required:</p>
+<li><p><strong>predictions</strong> – <p>Optional. The name of the column that contains model outputs.</p>
 <ul>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">model</span></code> is specified and outputs multiple columns. The
-<code class="docutils literal notranslate"><span class="pre">predictions</span></code> should be the name of the column that is used for
+<li><p>When <code class="docutils literal notranslate"><span class="pre">model</span></code> is specified and outputs multiple columns, <code class="docutils literal notranslate"><span class="pre">predictions</span></code> can be used
+to specify the name of the column that will be used to store model outputs for
 evaluation.</p></li>
-<li><p>When <code class="docutils literal notranslate"><span class="pre">model</span></code> is not specified and <code class="docutils literal notranslate"><span class="pre">data</span></code> is a pandas dataframe. The
-<code class="docutils literal notranslate"><span class="pre">predictions</span></code> should be the name of the column in <code class="docutils literal notranslate"><span class="pre">data</span></code> that
+<li><p>When <code class="docutils literal notranslate"><span class="pre">model</span></code> is not specified and <code class="docutils literal notranslate"><span class="pre">data</span></code> is a pandas dataframe,
+<code class="docutils literal notranslate"><span class="pre">predictions</span></code> can be used to specify the name of the column in <code class="docutils literal notranslate"><span class="pre">data</span></code> that
 contains model outputs.</p></li>
 </ul>
 <div class="literal-block-wrapper docutils container" id="id20">
@@ -1643,11 +1636,6 @@ that can be set on the model during inference by passing <cite>params</cite> to 
 <span class="c1"># Passing params to `predict` function directly</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">pyfunc_loaded</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Experimental: This parameter may change or be removed in a future
-release without warning.</p>
 </div>
 </p></li>
 </ul>
@@ -2139,7 +2127,7 @@ model input and output.</p>
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../',
-      VERSION:'2.11.4.dev0',
+      VERSION:'2.12.2.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

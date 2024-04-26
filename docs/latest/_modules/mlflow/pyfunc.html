@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlflow.pyfunc &mdash; MLflow 2.11.4.dev0 documentation</title>
+  <title>mlflow.pyfunc &mdash; MLflow 2.12.2.dev0 documentation</title>
   
    
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="MLflow 2.11.4.dev0 documentation" href="../../index.html"/>
+    <link rel="top" title="MLflow 2.12.2.dev0 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -74,7 +74,7 @@
     <a href="../../index.html" class="wy-nav-top-logo"
       ><img src="../../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.11.4.dev0</span>
+    <span class="version">2.12.2.dev0</span>
   </li>
 </ul>
   </nav>
@@ -890,9 +890,6 @@
 <span class="sd">                of the data rows.</span>
 <span class="sd">            params: Additional parameters to pass to the model for inference.</span>
 
-<span class="sd">                .. Note:: Experimental: This parameter may change or be removed in a future</span>
-<span class="sd">                    release without warning.</span>
-
 <span class="sd">        Returns:</span>
 <span class="sd">            Model predictions as one of pandas.DataFrame, pandas.Series, numpy.ndarray or list.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1118,9 +1115,6 @@
 <span class="sd">        Args:</span>
 <span class="sd">            data: Model input data.</span>
 <span class="sd">            params: Additional parameters to pass to the model for inference.</span>
-
-<span class="sd">                .. Note:: Experimental: This parameter may change or be removed in a future</span>
-<span class="sd">                    release without warning.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Model predictions.</span>
@@ -1776,9 +1770,6 @@
 
 <span class="sd">        params: Additional parameters to pass to the model for inference.</span>
 
-<span class="sd">            .. Note:: Experimental: This parameter may change or be removed in a future</span>
-<span class="sd">                                    release without warning.</span>
-
 <span class="sd">        extra_env: Extra environment variables to pass to the UDF executors.</span>
 
 <span class="sd">    Returns:</span>
@@ -1811,9 +1802,12 @@
 
     <span class="n">_EnvManager</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">env_manager</span><span class="p">)</span>
 
-    <span class="c1"># Check whether spark is in local or local-cluster mode</span>
-    <span class="c1"># this case all executors and driver share the same filesystem</span>
-    <span class="n">is_spark_in_local_mode</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spark.master&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;local&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">is_spark_connect</span><span class="p">:</span>
+        <span class="n">is_spark_in_local_mode</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Check whether spark is in local or local-cluster mode</span>
+        <span class="c1"># this case all executors and driver share the same filesystem</span>
+        <span class="n">is_spark_in_local_mode</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spark.master&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;local&quot;</span><span class="p">)</span>
 
     <span class="n">nfs_root_dir</span> <span class="o">=</span> <span class="n">get_nfs_cache_root_dir</span><span class="p">()</span>
     <span class="n">should_use_nfs</span> <span class="o">=</span> <span class="n">nfs_root_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
@@ -2378,11 +2372,7 @@
 <span class="sd">        input_example: {{ input_example }}</span>
 <span class="sd">        pip_requirements: {{ pip_requirements }}</span>
 <span class="sd">        extra_pip_requirements: {{ extra_pip_requirements }}</span>
-<span class="sd">        metadata: Custom metadata dictionary passed to the model and stored in the MLmodel file.</span>
-
-<span class="sd">            .. Note:: Experimental: This parameter may change or be removed in a future</span>
-<span class="sd">                                    release without warning.</span>
-
+<span class="sd">        metadata: {{ metadata }}</span>
 <span class="sd">        model_config: The model configuration to apply to the model. This configuration</span>
 <span class="sd">            is available during model loading.</span>
 
@@ -2712,10 +2702,7 @@
 <span class="sd">            waits for five minutes. Specify 0 or None to skip waiting.</span>
 <span class="sd">        pip_requirements: {{ pip_requirements }}</span>
 <span class="sd">        extra_pip_requirements: {{ extra_pip_requirements }}</span>
-<span class="sd">        metadata: Custom metadata dictionary passed to the model and stored in the MLmodel file.</span>
-
-<span class="sd">            .. Note:: Experimental: This parameter may change or be removed in a future</span>
-<span class="sd">                                    release without warning.</span>
+<span class="sd">        metadata: {{ metadata }}</span>
 <span class="sd">        model_config: The model configuration to apply to the model. This configuration</span>
 <span class="sd">            is available during model loading.</span>
 
@@ -2867,7 +2854,7 @@
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../../',
-      VERSION:'2.11.4.dev0',
+      VERSION:'2.12.2.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; MLflow 2.11.4.dev0 documentation</title>
+  <title>Index &mdash; MLflow 2.12.2.dev0 documentation</title>
   
    
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="#"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="MLflow 2.11.4.dev0 documentation" href="index.html"/> 
+    <link rel="top" title="MLflow 2.12.2.dev0 documentation" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -73,7 +73,7 @@
     <a href="index.html" class="wy-nav-top-logo"
       ><img src="_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.11.4.dev0</span>
+    <span class="version">2.12.2.dev0</span>
   </li>
 </ul>
   </nav>
@@ -1970,6 +1970,8 @@
       <li><a href="python_api/mlflow.metrics.html#mlflow.metrics.flesch_kincaid_grade_level">flesch_kincaid_grade_level() (in module mlflow.metrics)</a>
 </li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.DataType.float">float (mlflow.types.DataType attribute)</a>
+</li>
+      <li><a href="python_api/mlflow.html#mlflow.flush_artifact_async_logging">flush_artifact_async_logging() (in module mlflow)</a>
 </li>
       <li><a href="python_api/mlflow.html#mlflow.flush_async_logging">flush_async_logging() (in module mlflow)</a>
 </li>
@@ -4143,6 +4145,8 @@
 </li>
       <li><a href="python_api/mlflow.environment_variables.html#mlflow.environment_variables.MLFLOW_ARTIFACT_UPLOAD_DOWNLOAD_TIMEOUT">MLFLOW_ARTIFACT_UPLOAD_DOWNLOAD_TIMEOUT (in module mlflow.environment_variables)</a>
 </li>
+      <li><a href="python_api/mlflow.environment_variables.html#mlflow.environment_variables.MLFLOW_ASYNC_LOGGING_THREADPOOL_SIZE">MLFLOW_ASYNC_LOGGING_THREADPOOL_SIZE (in module mlflow.environment_variables)</a>
+</li>
       <li><a href="python_api/mlflow.environment_variables.html#mlflow.environment_variables.MLFLOW_AUTH_CONFIG_PATH">MLFLOW_AUTH_CONFIG_PATH (in module mlflow.environment_variables)</a>
 </li>
       <li><a href="python_api/mlflow.environment_variables.html#mlflow.environment_variables.MLFLOW_CONDA_CREATE_ENV_CMD">MLFLOW_CONDA_CREATE_ENV_CMD (in module mlflow.environment_variables)</a>
@@ -4372,6 +4376,8 @@
 </li>
         <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.RouteModelInfo.model_config">(mlflow.gateway.config.RouteModelInfo attribute)</a>
 </li>
+        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.TogetherAIConfig.model_config">(mlflow.gateway.config.TogetherAIConfig attribute)</a>
+</li>
       </ul></li>
       <li><a href="python_api/mlflow.pyfunc.html#mlflow.pyfunc.PyFuncModel.model_config">model_config() (mlflow.pyfunc.PyFuncModel property)</a>
 
@@ -4423,6 +4429,8 @@
         <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.RouteConfig.model_fields">(mlflow.gateway.config.RouteConfig attribute)</a>
 </li>
         <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.RouteModelInfo.model_fields">(mlflow.gateway.config.RouteModelInfo attribute)</a>
+</li>
+        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.TogetherAIConfig.model_fields">(mlflow.gateway.config.TogetherAIConfig attribute)</a>
 </li>
       </ul></li>
       <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.MlflowModelServingConfig.model_server_url">model_server_url (mlflow.gateway.config.MlflowModelServingConfig attribute)</a>
@@ -4786,7 +4794,11 @@
 </li>
       </ul></li>
       <li><a href="python_api/mlflow.data.html#mlflow.data.pandas_dataset.PandasDataset.predictions">predictions() (mlflow.data.pandas_dataset.PandasDataset property)</a>
+
+      <ul>
+        <li><a href="python_api/mlflow.data.html#mlflow.data.spark_dataset.SparkDataset.predictions">(mlflow.data.spark_dataset.SparkDataset property)</a>
 </li>
+      </ul></li>
       <li><a href="python_api/mlflow.data.html#mlflow.models.evaluation.base.EvaluationDataset.predictions_data">predictions_data() (mlflow.models.evaluation.base.EvaluationDataset property)</a>
 </li>
       <li><a href="python_api/mlflow.data.html#mlflow.models.evaluation.base.EvaluationDataset.predictions_name">predictions_name() (mlflow.models.evaluation.base.EvaluationDataset property)</a>
@@ -5452,6 +5464,12 @@
       </ul></li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.Model.to_yaml">to_yaml() (mlflow.models.Model method)</a>
 </li>
+      <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.Provider.TOGETHERAI">TOGETHERAI (mlflow.gateway.config.Provider attribute)</a>
+</li>
+      <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.TogetherAIConfig.togetherai_api_key">togetherai_api_key (mlflow.gateway.config.TogetherAIConfig attribute)</a>
+</li>
+      <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.TogetherAIConfig">TogetherAIConfig (class in mlflow.gateway.config)</a>
+</li>
       <li><a href="python_api/mlflow.metrics.html#mlflow.metrics.token_count">token_count() (in module mlflow.metrics)</a>
 </li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.llm.TokenUsageStats">TokenUsageStats (class in mlflow.types.llm)</a>
@@ -5596,6 +5614,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="python_api/mlflow.models.html#mlflow.models.validate_schema">validate_schema() (in module mlflow.models)</a>
 </li>
+      <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.TogetherAIConfig.validate_togetherai_api_key">validate_togetherai_api_key() (mlflow.gateway.config.TogetherAIConfig class method)</a>
+</li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.ParamSpec.validate_type_and_shape">validate_type_and_shape() (mlflow.types.ParamSpec class method)</a>
 </li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.ExperimentTag.value">value() (mlflow.entities.ExperimentTag property)</a>
@@ -5673,7 +5693,7 @@
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'./',
-      VERSION:'2.11.4.dev0',
+      VERSION:'2.12.2.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlflow.tracking.fluent &mdash; MLflow 2.12.2.dev0 documentation</title>
+  <title>mlflow.tracking.fluent &mdash; MLflow 2.13.3.dev0 documentation</title>
   
    
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="MLflow 2.12.2.dev0 documentation" href="../../../index.html"/>
+    <link rel="top" title="MLflow 2.13.3.dev0 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -74,7 +74,7 @@
     <a href="../../../index.html" class="wy-nav-top-logo"
       ><img src="../../../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.12.2.dev0</span>
+    <span class="version">2.13.3.dev0</span>
   </li>
 </ul>
   </nav>
@@ -1068,7 +1068,7 @@
 
 
 <div class="viewcode-block" id="log_params"><a class="viewcode-back" href="../../../python_api/mlflow.html#mlflow.log_params">[docs]</a><span class="k">def</span> <span class="nf">log_params</span><span class="p">(</span>
-    <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">synchronous</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">synchronous</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">run_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RunOperations</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Log a batch of params for the current run. If no run is active, this method will create a</span>
@@ -1081,6 +1081,8 @@
 <span class="sd">            successfully. If False, logs the parameters asynchronously and</span>
 <span class="sd">            returns a future representing the logging operation. If None, read from environment</span>
 <span class="sd">            variable `MLFLOW_ENABLE_ASYNC_LOGGING`, which defaults to False if not set.</span>
+<span class="sd">        run_id: Run ID. If specified, log params to the specified run. If not specified, log</span>
+<span class="sd">            params to the currently active run.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        When `synchronous=True`, returns None. When `synchronous=False`, returns an</span>
@@ -1103,7 +1105,7 @@
 <span class="sd">        with mlflow.start_run():</span>
 <span class="sd">            mlflow.log_params(params, synchronous=False)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">run_id</span> <span class="o">=</span> <span class="n">_get_or_start_run</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">run_id</span>
+    <span class="n">run_id</span> <span class="o">=</span> <span class="n">run_id</span> <span class="ow">or</span> <span class="n">_get_or_start_run</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">run_id</span>
     <span class="n">params_arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">Param</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
     <span class="n">synchronous</span> <span class="o">=</span> <span class="n">synchronous</span> <span class="k">if</span> <span class="n">synchronous</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="ow">not</span> <span class="n">MLFLOW_ENABLE_ASYNC_LOGGING</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">MlflowClient</span><span class="p">()</span><span class="o">.</span><span class="n">log_batch</span><span class="p">(</span>
@@ -2442,6 +2444,7 @@
         <span class="c1"># TODO: Broaden this beyond pytorch_lightning as we add autologging support for more</span>
         <span class="c1"># Pytorch frameworks under mlflow.pytorch.autolog</span>
         <span class="s2">&quot;pytorch_lightning&quot;</span><span class="p">:</span> <span class="s2">&quot;mlflow.pytorch&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lightning&quot;</span><span class="p">:</span> <span class="s2">&quot;mlflow.pytorch&quot;</span><span class="p">,</span>
         <span class="s2">&quot;setfit&quot;</span><span class="p">:</span> <span class="s2">&quot;mlflow.transformers&quot;</span><span class="p">,</span>
         <span class="s2">&quot;transformers&quot;</span><span class="p">:</span> <span class="s2">&quot;mlflow.transformers&quot;</span><span class="p">,</span>
         <span class="c1"># do not enable langchain autologging by default</span>
@@ -2545,7 +2548,7 @@
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../../../',
-      VERSION:'2.12.2.dev0',
+      VERSION:'2.13.3.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

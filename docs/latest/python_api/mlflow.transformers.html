@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlflow.transformers &mdash; MLflow 2.12.2.dev0 documentation</title>
+  <title>mlflow.transformers &mdash; MLflow 2.13.3.dev0 documentation</title>
   
    
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -48,10 +48,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="MLflow 2.12.2.dev0 documentation" href="../index.html"/>
+    <link rel="top" title="MLflow 2.13.3.dev0 documentation" href="../index.html"/>
         <link rel="up" title="Python API" href="index.html"/>
         <link rel="next" title="mlflow.types" href="/mlflow.types.html"/>
-        <link rel="prev" title="mlflow.tensorflow" href="/mlflow.tensorflow.html"/> 
+        <link rel="prev" title="mlflow.tracing" href="/mlflow.tracing.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -75,7 +75,7 @@
     <a href="../index.html" class="wy-nav-top-logo"
       ><img src="../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.12.2.dev0</span>
+    <span class="version">2.13.3.dev0</span>
   </li>
 </ul>
   </nav>
@@ -133,6 +133,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../search-experiments.html">Search Experiments</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Python API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="mlflow.html">mlflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.html#mlflow-tracing-apis">MLflow Tracing APIs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.artifacts.html">mlflow.artifacts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.catboost.html">mlflow.catboost</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.client.html">mlflow.client</a></li>
@@ -173,6 +174,7 @@
 <li class="toctree-l2"><a class="reference internal" href="mlflow.statsmodels.html">mlflow.statsmodels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.system_metrics.html">mlflow.system_metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.tensorflow.html">mlflow.tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.tracing.html">mlflow.tracing</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">mlflow.transformers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.types.html">mlflow.types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.utils.html">mlflow.utils</a></li>
@@ -249,7 +251,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Autologging is known to be compatible with the following package versions: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">transformers</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">4.39.3</span></code>. Autologging may not succeed when used with package versions outside of this range.</p>
+<p>Autologging is known to be compatible with the following package versions: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">transformers</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">4.41.0</span></code>. Autologging may not succeed when used with package versions outside of this range.</p>
 </div>
 <p>This autologging integration is solely used for disabling spurious autologging of irrelevant
 sub-models that are created during the training and evaluation of transformers-based models.
@@ -334,7 +336,7 @@ produce a pip environment that contain these requirements at a minimum.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The ‘transformers’ MLflow Models integration is known to be compatible with the following package version ranges: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> -  <code class="docutils literal notranslate"><span class="pre">4.39.3</span></code>. MLflow Models integrations with transformers may not succeed when used with package versions outside of this range.</p>
+<p>The ‘transformers’ MLflow Models integration is known to be compatible with the following package version ranges: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> -  <code class="docutils literal notranslate"><span class="pre">4.41.0</span></code>. MLflow Models integrations with transformers may not succeed when used with package versions outside of this range.</p>
 </div>
 <p>Load a <code class="docutils literal notranslate"><span class="pre">transformers</span></code> object from a local file or a run.</p>
 <dl class="field-list simple">
@@ -396,7 +398,7 @@ For information on parameters and their usage, see
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The ‘transformers’ MLflow Models integration is known to be compatible with the following package version ranges: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> -  <code class="docutils literal notranslate"><span class="pre">4.39.3</span></code>. MLflow Models integrations with transformers may not succeed when used with package versions outside of this range.</p>
+<p>The ‘transformers’ MLflow Models integration is known to be compatible with the following package version ranges: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> -  <code class="docutils literal notranslate"><span class="pre">4.41.0</span></code>. MLflow Models integrations with transformers may not succeed when used with package versions outside of this range.</p>
 </div>
 <p>Log a <code class="docutils literal notranslate"><span class="pre">transformers</span></code> object as an MLflow artifact for the current run. Note that
 logging transformers models with custom code (i.e. models that require
@@ -539,6 +541,8 @@ containing file dependencies). These files are <em>prepended</em> to the system 
 is loaded. Files declared as dependencies for a given model should have relative
 imports declared from a common root path if multiple files are defined with import dependencies
 between them to avoid import errors when loading the model.</p>
+<p>You can leave <code class="docutils literal notranslate"><span class="pre">code_paths</span></code> argument unset but set <code class="docutils literal notranslate"><span class="pre">infer_code_paths</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code> to let MLflow
+infer the model code paths. See <code class="docutils literal notranslate"><span class="pre">infer_code_paths</span></code> argument doc for details.</p>
 <p>For a detailed explanation of <code class="docutils literal notranslate"><span class="pre">code_paths</span></code> functionality, recommended usage patterns and
 limitations, see the
 <a class="reference external" href="https://mlflow.org/docs/latest/model/dependencies.html?highlight=code_paths#saving-extra-code-with-an-mlflow-model">code_paths usage guide</a>.</p>
@@ -751,7 +755,7 @@ It must be logged/saved with save_pretrained=False.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The ‘transformers’ MLflow Models integration is known to be compatible with the following package version ranges: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> -  <code class="docutils literal notranslate"><span class="pre">4.39.3</span></code>. MLflow Models integrations with transformers may not succeed when used with package versions outside of this range.</p>
+<p>The ‘transformers’ MLflow Models integration is known to be compatible with the following package version ranges: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> -  <code class="docutils literal notranslate"><span class="pre">4.41.0</span></code>. MLflow Models integrations with transformers may not succeed when used with package versions outside of this range.</p>
 </div>
 <p>Save a trained transformers model to a path on the local file system. Note that
 saving transformers models with custom code (i.e. models that require
@@ -888,6 +892,8 @@ containing file dependencies). These files are <em>prepended</em> to the system 
 is loaded. Files declared as dependencies for a given model should have relative
 imports declared from a common root path if multiple files are defined with import dependencies
 between them to avoid import errors when loading the model.</p>
+<p>You can leave <code class="docutils literal notranslate"><span class="pre">code_paths</span></code> argument unset but set <code class="docutils literal notranslate"><span class="pre">infer_code_paths</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code> to let MLflow
+infer the model code paths. See <code class="docutils literal notranslate"><span class="pre">infer_code_paths</span></code> argument doc for details.</p>
 <p>For a detailed explanation of <code class="docutils literal notranslate"><span class="pre">code_paths</span></code> functionality, recommended usage patterns and
 limitations, see the
 <a class="reference external" href="https://mlflow.org/docs/latest/model/dependencies.html?highlight=code_paths#saving-extra-code-with-an-mlflow-model">code_paths usage guide</a>.</p>
@@ -1049,7 +1055,7 @@ its commit hash are logged instead.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mlflow.tensorflow.html" class="btn btn-neutral" title="mlflow.tensorflow" accesskey="p"><span class="db-icon db-icon-chevron-left"></span> Previous</a>
+        <a href="mlflow.tracing.html" class="btn btn-neutral" title="mlflow.tracing" accesskey="p"><span class="db-icon db-icon-chevron-left"></span> Previous</a>
       
       
         <a href="mlflow.types.html" class="btn btn-neutral" title="mlflow.types" accesskey="n">Next <span class="db-icon db-icon-chevron-right"></span></a>
@@ -1080,7 +1086,7 @@ its commit hash are logged instead.</p>
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../',
-      VERSION:'2.12.2.dev0',
+      VERSION:'2.13.3.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

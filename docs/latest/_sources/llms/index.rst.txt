@@ -33,8 +33,10 @@ of your GenAI models and retain your traced data within the tracking server for 
 
     tracing/index
     tracing/overview
+    tracing/tracing-schema
 
-To learn more about what tracing is, see our `Tracing Concepts Overview <tracing/overview.html>`_ guide. 
+To learn more about what tracing is, see our `Tracing Concepts Overview <tracing/overview.html>`_ guide. For an in-depth exploration into the structure of 
+MLflow traces and their schema, see the `Tracing Schema <tracing/tracing-schema.html>`_ guide.
 
 `MLflow Deployments Server for LLMs <deployments/index.html>`_
 --------------------------------------------------------------
@@ -239,6 +241,15 @@ Harnessing the power of LLMs becomes effortless with flavors designed specifical
   - All essential tools and functionalities consolidated under MLflow.
   - Focus on deriving value from LLMs without getting bogged down by interfacing and optimization intricacies.
 
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    transformers/index
+    openai/index
+    sentence-transformers/index
+    langchain/index
+
 Explore the Native LLM Flavors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -295,14 +306,6 @@ Select the integration below to read the documentation on how to leverage MLflow
         </article>
     </section>
 
-.. toctree::
-    :maxdepth: 1
-    :hidden:
-
-    transformers/index
-    openai/index
-    sentence-transformers/index
-    langchain/index
 
 `LLM Tracking in MLflow <llm-tracking/index.html>`_
 ---------------------------------------------------

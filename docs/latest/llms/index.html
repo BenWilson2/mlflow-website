@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>LLMs &mdash; MLflow 2.13.3.dev0 documentation</title>
+  <title>LLMs &mdash; MLflow 2.14.2.dev0 documentation</title>
   
    
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -48,7 +48,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="MLflow 2.13.3.dev0 documentation" href="../index.html"/>
+    <link rel="top" title="MLflow 2.14.2.dev0 documentation" href="../index.html"/>
         <link rel="next" title="Tracing in MLflow" href="/tracing/index.html"/>
         <link rel="prev" title="New Features" href="/../new-features/index.html"/> 
 
@@ -74,7 +74,7 @@
     <a href="../index.html" class="wy-nav-top-logo"
       ><img src="../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.13.3.dev0</span>
+    <span class="version">2.14.2.dev0</span>
   </li>
 </ul>
   </nav>
@@ -118,6 +118,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id1">MLflow Tracing</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tracing/index.html">Tracing in MLflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tracing/overview.html">Tracing Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tracing/tracing-schema.html">MLflow Tracing Schema</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">MLflow Deployments Server for LLMs</a><ul>
@@ -137,13 +138,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#native-mlflow-flavors-for-llms">Native MLflow Flavors for LLMs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#explore-the-native-llm-flavors">Explore the Native LLM Flavors</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="transformers/index.html">MLflow Transformers Flavor</a></li>
-<li class="toctree-l4"><a class="reference internal" href="openai/index.html">MLflow OpenAI Flavor</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sentence-transformers/index.html">MLflow Sentence-Transformers Flavor</a></li>
-<li class="toctree-l4"><a class="reference internal" href="langchain/index.html">MLflow LangChain Flavor</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="transformers/index.html">MLflow Transformers Flavor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="openai/index.html">MLflow OpenAI Flavor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sentence-transformers/index.html">MLflow Sentence-Transformers Flavor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="langchain/index.html">MLflow LangChain Flavor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#explore-the-native-llm-flavors">Explore the Native LLM Flavors</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">LLM Tracking in MLflow</a><ul>
@@ -257,7 +256,8 @@ of your GenAI models and retain your traced data within the tracking server for 
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-<p>To learn more about what tracing is, see our <a class="reference external" href="tracing/overview.html">Tracing Concepts Overview</a> guide.</p>
+<p>To learn more about what tracing is, see our <a class="reference external" href="tracing/overview.html">Tracing Concepts Overview</a> guide. For an in-depth exploration into the structure of
+MLflow traces and their schema, see the <a class="reference external" href="tracing/tracing-schema.html">Tracing Schema</a> guide.</p>
 </div>
 <div class="section" id="id2">
 <h2><a class="reference external" href="deployments/index.html">MLflow Deployments Server for LLMs</a><a class="headerlink" href="#id2" title="Permalink to this headline"> </a></h2>
@@ -436,6 +436,8 @@ Features and interfaces may evolve as feedback is gathered and the tool is refin
 </ul>
 </li>
 </ul>
+<div class="toctree-wrapper compound">
+</div>
 <div class="section" id="explore-the-native-llm-flavors">
 <h3>Explore the Native LLM Flavors<a class="headerlink" href="#explore-the-native-llm-flavors" title="Permalink to this headline"> </a></h3>
 <p>Select the integration below to read the documentation on how to leverage MLflow’s native integration with these popular libraries:</p>
@@ -486,9 +488,7 @@ Features and interfaces may evolve as feedback is gathered and the tool is refin
             </a>
         </div>
     </article>
-</section><div class="toctree-wrapper compound">
-</div>
-</div>
+</section></div>
 </div>
 <div class="section" id="id5">
 <h2><a class="reference external" href="llm-tracking/index.html">LLM Tracking in MLflow</a><a class="headerlink" href="#id5" title="Permalink to this headline"> </a></h2>
@@ -604,7 +604,7 @@ premier solution for managing and analyzing interactions with Large Language Mod
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../',
-      VERSION:'2.13.3.dev0',
+      VERSION:'2.14.2.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

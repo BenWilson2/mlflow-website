@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>MLflow Deployments Server (Experimental) &mdash; MLflow 2.13.3.dev0 documentation</title>
+  <title>MLflow Deployments Server (Experimental) &mdash; MLflow 2.14.2.dev0 documentation</title>
   
    
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -48,10 +48,10 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="MLflow 2.13.3.dev0 documentation" href="../../index.html"/>
+    <link rel="top" title="MLflow 2.14.2.dev0 documentation" href="../../index.html"/>
         <link rel="up" title="LLMs" href="../index.html"/>
         <link rel="next" title="Getting Started with MLflow Deployments for LLMs" href="/guides/index.html"/>
-        <link rel="prev" title="Tracing Concepts" href="/../tracing/overview.html"/> 
+        <link rel="prev" title="MLflow Tracing Schema" href="/../tracing/tracing-schema.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -75,7 +75,7 @@
     <a href="../../index.html" class="wy-nav-top-logo"
       ><img src="../../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.13.3.dev0</span>
+    <span class="version">2.14.2.dev0</span>
   </li>
 </ul>
   </nav>
@@ -126,6 +126,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#configuring-the-deployments-server">Configuring the Deployments Server</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#querying-the-deployments-server">Querying the Deployments Server</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mlflow-deployments-server-api-documentation">MLflow Deployments Server API Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unity-catalog-integration">Unity Catalog Integration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#deployments-server-security-considerations">Deployments Server Security Considerations</a></li>
 </ul>
 </li>
@@ -221,6 +222,10 @@ utilize the <strong>MLflow deployments API</strong>. This major update involves 
 standardization for Large Language Models, both custom and SaaS-based. Users currently utilizing
 MLflow AI Gateway should refer to the new documentation for migration guidelines and familiarize
 themselves with the updated API structure. See <a class="reference internal" href="../gateway/migration.html#gateway-migration"><span class="std std-ref">MLflow AI Gateway Migration Guide</span></a> for migration.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>MLflow Deployments Server does not support Windows.</p>
 </div>
 <p>The MLflow Deployments Server is a powerful tool designed to streamline the usage and management of
 various large language model (LLM) providers, such as OpenAI and Anthropic, within an organization.
@@ -1634,8 +1639,8 @@ The data structure you send in the query depends on the endpoint.</p>
 <h4>LangChain Integration<a class="headerlink" href="#langchain-integration" title="Permalink to this headline"> </a></h4>
 <p><a class="reference external" href="https://github.com/langchain-ai/langchain">LangChain</a> supports <a class="reference external" href="https://python.langchain.com/docs/ecosystem/integrations/providers/mlflow">an integration for MLflow Deployments</a>.
 This integration enable users to use prompt engineering, retrieval augmented generation, and other techniques with LLMs in the deployments server.</p>
-<div class="literal-block-wrapper docutils container" id="id13">
-<div class="code-block-caption"><span class="caption-text">Example</span><a class="headerlink" href="#id13" title="Permalink to this code"> </a></div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">Example</span><a class="headerlink" href="#id14" title="Permalink to this code"> </a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mlflow</span>
 <span class="kn">from</span> <span class="nn">langchain</span> <span class="kn">import</span> <span class="n">LLMChain</span><span class="p">,</span> <span class="n">PromptTemplate</span>
 <span class="kn">from</span> <span class="nn">langchain.llms</span> <span class="kn">import</span> <span class="n">Mlflow</span>
@@ -1782,6 +1787,12 @@ This provides information about the name and type, as well as the model details 
 <h2>MLflow Deployments Server API Documentation<a class="headerlink" href="#mlflow-deployments-server-api-documentation" title="Permalink to this headline"> </a></h2>
 <p><a class="reference external" href="./api.html">API documentation</a></p>
 </div>
+<div class="section" id="unity-catalog-integration">
+<h2>Unity Catalog Integration<a class="headerlink" href="#unity-catalog-integration" title="Permalink to this headline"> </a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<p>See <a class="reference external" href="./uc_integration.html">Unity Catalog Integration</a> for how to integrate the MLflow Deployments Server with Unity Catalog.</p>
+</div>
 <div class="section" id="deployments-server-security-considerations">
 <span id="deployments-security"></span><h2>Deployments Server Security Considerations<a class="headerlink" href="#deployments-server-security-considerations" title="Permalink to this headline"> </a></h2>
 <p>Remember to ensure secure access to the system that the MLflow Deployments Server is running in to protect access to these keys.</p>
@@ -1816,7 +1827,7 @@ This provides information about the name and type, as well as the model details 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tracing/overview.html" class="btn btn-neutral" title="Tracing Concepts" accesskey="p"><span class="db-icon db-icon-chevron-left"></span> Previous</a>
+        <a href="../tracing/tracing-schema.html" class="btn btn-neutral" title="MLflow Tracing Schema" accesskey="p"><span class="db-icon db-icon-chevron-left"></span> Previous</a>
       
       
         <a href="guides/index.html" class="btn btn-neutral" title="Getting Started with MLflow Deployments for LLMs" accesskey="n">Next <span class="db-icon db-icon-chevron-right"></span></a>
@@ -1847,7 +1858,7 @@ This provides information about the name and type, as well as the model details 
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../../',
-      VERSION:'2.13.3.dev0',
+      VERSION:'2.14.2.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

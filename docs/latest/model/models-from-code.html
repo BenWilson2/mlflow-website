@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="MLflow 2.15.2.dev0 documentation" href="../index.html"/>
+    <link rel="top" title="MLflow 2.16.1.dev0 documentation" href="../index.html"/>
         <link rel="up" title="MLflow Models" href="../models.html"/>
         <link rel="next" title="MLflow Model Registry" href="/../model-registry.html"/>
         <link rel="prev" title="MLflow Signature Playground Notebook" href="/notebooks/signature_examples.html"/> 
@@ -63,6 +63,7 @@
 <script type="text/javascript" src="../_static/languagesections.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+<script type="text/javascript" src="../_static/runllm.js"></script>
 
 <body class="wy-body-for-nav" role="document">
   
@@ -75,7 +76,7 @@
     <a href="../index.html" class="wy-nav-top-logo"
       ><img src="../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.15.2.dev0</span>
+    <span class="version">2.16.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -112,10 +113,11 @@
 
       
         <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">What is MLflow?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">MLflow Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started with MLflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../new-features/index.html">New Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../llms/index.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../llms/tracing/index.html">MLflow Tracing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model-evaluation/index.html">Model Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deep-learning/index.html">Deep Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../traditional-ml/index.html">Traditional ML</a></li>
@@ -222,7 +224,7 @@ you are required to use the legacy serialization methods outlined in the <a clas
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Models from code is only available for <a class="reference external" href="../llms/langchain/index.html">LangChain</a> and custom <code class="docutils literal notranslate"><span class="pre">pyfunc</span></code> (PythonModel instances) models. If you are
+<p>Models from code is only available for <a class="reference external" href="../llms/langchain/index.html">LangChain</a>, <cite>LlamaIndex &lt;../llm/llama-index/index.html&gt;</cite>, and custom <code class="docutils literal notranslate"><span class="pre">pyfunc</span></code> (PythonModel instances) models. If you are
 using other libraries directly, using the provided saving and logging functionality within specific model flavors is recommended.</p>
 </div>
 <p>The models from code feature is a comprehensive overhaul of the process of defining, storing, and loading both custom models and specific flavor
@@ -272,6 +274,10 @@ via a script that may not be immediately apparent.</p>
 <p class="admonition-title">Tip</p>
 <p>If you define import statements that are never used within your script, these will still be included in the requirements listing. It is recommended to use a linter
 that is capable of determining unused import statements while writing your implementation so that you are not including irrelevant package dependencies.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When logging models from code, make sure that your code does not contain any sensitive information, such as API keys, passwords, or other confidential data. The code will be stored in plain text in the MLflow model artifact, and anyone with access to the artifact will be able to view the code.</p>
 </div>
 </div>
 <div class="section" id="using-models-from-code-in-a-jupyter-notebook">
@@ -722,7 +728,7 @@ appropriate authentication configured so that your code can run.</p>
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../',
-      VERSION:'2.15.2.dev0',
+      VERSION:'2.16.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

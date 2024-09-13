@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="MLflow 2.15.2.dev0 documentation" href="../index.html"/>
+    <link rel="top" title="MLflow 2.16.1.dev0 documentation" href="../index.html"/>
         <link rel="up" title="Python API" href="index.html"/>
         <link rel="next" title="mlflow.artifacts" href="/mlflow.artifacts.html"/>
         <link rel="prev" title="Python API" href="/index.html"/> 
@@ -62,6 +62,7 @@
 <script type="text/javascript" src="../_static/languagesections.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+<script type="text/javascript" src="../_static/runllm.js"></script>
 
 <body class="wy-body-for-nav" role="document">
   
@@ -74,7 +75,7 @@
     <a href="../index.html" class="wy-nav-top-logo"
       ><img src="../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.15.2.dev0</span>
+    <span class="version">2.16.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -111,10 +112,11 @@
 
       
         <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">What is MLflow?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">MLflow Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started with MLflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../new-features/index.html">New Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../llms/index.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../llms/tracing/index.html">MLflow Tracing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model-evaluation/index.html">Model Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deep-learning/index.html">Deep Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../traditional-ml/index.html">Traditional ML</a></li>
@@ -134,6 +136,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">mlflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mlflow-tracing-apis">MLflow Tracing APIs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.artifacts.html">mlflow.artifacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.autogen.html">mlflow.autogen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.catboost.html">mlflow.catboost</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.client.html">mlflow.client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.config.html">mlflow.config</a></li>
@@ -415,6 +418,65 @@ to access such attributes, use the <a class="reference internal" href="mlflow.cl
 </pre></div>
 </div>
 </div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="mlflow.add_trace">
+<code class="sig-prename descclassname"><span class="pre">mlflow.</span></code><code class="sig-name descname"><span class="pre">add_trace</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trace</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="mlflow.entities.html#mlflow.entities.Trace" title="mlflow.entities.Trace"><span class="pre">Trace</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="mlflow.entities.html#mlflow.entities.LiveSpan" title="mlflow.entities.LiveSpan"><span class="pre">LiveSpan</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlflow/tracing/fluent.html#add_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.add_trace" title="Permalink to this definition"> </a></dt>
+<dd><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Experimental: This function may change or be removed in a future release without warning.</p>
+</div>
+<p>Add a completed trace object into another trace.</p>
+<p>This is particularly useful when you call a remote service instrumented by
+MLflow Tracing. By using this function, you can merge the trace from the remote
+service into the current active local trace, so that you can see the full
+trace including what happens inside the remote service call.</p>
+<p>The following example demonstrates how to use this function to merge a trace from a remote
+service to the current active trace in the function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@mlflow</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="c1"># Call a remote service that returns a trace in the response</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://your-service-endpoint&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+
+    <span class="c1"># Extract the trace from the response</span>
+    <span class="n">trace_json</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;trace&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Use the remote trace as a part of the current active trace.</span>
+    <span class="c1"># It will be merged under the span &quot;predict&quot; and exported together when it is ended.</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">trace_json</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you have a specific target span to merge the trace under, you can pass the target span</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="c1"># Create a local span</span>
+    <span class="n">span</span> <span class="o">=</span> <span class="n">MlflowClient</span><span class="p">()</span><span class="o">.</span><span class="n">start_span</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">)</span>
+
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://your-service-endpoint&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+    <span class="n">trace_json</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;trace&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Merge the remote trace under the span created above</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">trace_json</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">span</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trace</strong> – <p>A <a class="reference internal" href="mlflow.entities.html#mlflow.entities.Trace" title="mlflow.entities.Trace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trace</span></code></a> object or a dictionary representation
+of the trace. The trace <strong>must</strong> be already completed i.e. no further updates should
+be made to it. Otherwise, this function will raise an exception.</p>
+</p></li>
+<li><p><strong>target</strong> – <p>The target span to merge the given trace.</p>
+<ul>
+<li><p>If provided, the trace will be merged under the target span.</p></li>
+<li><p>If not provided, the trace will be merged under the current active span.</p></li>
+<li><p>If not provided and there is no active span, a new span named “Remote Trace &lt;…&gt;”
+will be created and the trace will be merged under it.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -3007,8 +3069,8 @@ that’s different from the tracking server.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>uri</strong> – An empty string, or a local file path, prefixed with <code class="docutils literal notranslate"><span class="pre">file:/</span></code>. Data is stored
 locally at the provided file (or <code class="docutils literal notranslate"><span class="pre">./mlruns</span></code> if empty). An HTTP URI like
-<code class="docutils literal notranslate"><span class="pre">https://my-tracking-server:5000</span></code>. A Databricks workspace, provided as the string
-“databricks” or, to use a Databricks CLI
+<code class="docutils literal notranslate"><span class="pre">https://my-tracking-server:5000</span></code> or <code class="docutils literal notranslate"><span class="pre">http://my-oss-uc-server:8080</span></code>. A Databricks
+workspace, provided as the string “databricks” or, to use a Databricks CLI
 <a class="reference external" href="https://github.com/databricks/databricks-cli#installation">profile</a>,
 “databricks://&lt;profileName&gt;”.</p>
 </dd>
@@ -3753,7 +3815,7 @@ and effectively disables all tracing operations.</p>
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../',
-      VERSION:'2.15.2.dev0',
+      VERSION:'2.16.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

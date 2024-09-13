@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="MLflow 2.15.2.dev0 documentation" href="../index.html"/>
+    <link rel="top" title="MLflow 2.16.1.dev0 documentation" href="../index.html"/>
         <link rel="up" title="Python API" href="index.html"/>
         <link rel="next" title="mlflow.types" href="/mlflow.types.html"/>
         <link rel="prev" title="mlflow.tracing" href="/mlflow.tracing.html"/> 
@@ -62,6 +62,7 @@
 <script type="text/javascript" src="../_static/languagesections.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+<script type="text/javascript" src="../_static/runllm.js"></script>
 
 <body class="wy-body-for-nav" role="document">
   
@@ -74,7 +75,7 @@
     <a href="../index.html" class="wy-nav-top-logo"
       ><img src="../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.15.2.dev0</span>
+    <span class="version">2.16.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -111,10 +112,11 @@
 
       
         <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">What is MLflow?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">MLflow Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started with MLflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../new-features/index.html">New Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../llms/index.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../llms/tracing/index.html">MLflow Tracing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model-evaluation/index.html">Model Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deep-learning/index.html">Deep Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../traditional-ml/index.html">Traditional ML</a></li>
@@ -134,6 +136,7 @@
 <li class="toctree-l2"><a class="reference internal" href="mlflow.html">mlflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.html#mlflow-tracing-apis">MLflow Tracing APIs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.artifacts.html">mlflow.artifacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.autogen.html">mlflow.autogen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.catboost.html">mlflow.catboost</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.client.html">mlflow.client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.config.html">mlflow.config</a></li>
@@ -406,13 +409,41 @@ logging transformers models with custom code (i.e. models that require
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>transformers_model</strong> – <p>A trained transformers <cite>Pipeline</cite> or a dictionary that maps required components of a
-pipeline to the named keys of [“model”, “image_processor”, “tokenizer”,
-“feature_extractor”]. The <cite>model</cite> key in the dictionary must map to a value that
-inherits from <cite>PreTrainedModel</cite>, <cite>TFPreTrainedModel</cite>, or <cite>FlaxPreTrainedModel</cite>.
-All other component entries in the dictionary must support the defined task type that is
-associated with the base model type configuration.</p>
-<p>An example of supplying component-level parts of a transformers model is shown below:</p>
+<li><p><strong>transformers_model</strong> – <p>The transformers model to save. This can be one of the following format:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>A transformers <cite>Pipeline</cite> instance.</p></li>
+<li><dl class="simple">
+<dt>A dictionary that maps required components of a pipeline to the named keys</dt><dd><p>of [“model”, “image_processor”, “tokenizer”, “feature_extractor”].
+The <cite>model</cite> key in the dictionary must map to a value that inherits from
+<cite>PreTrainedModel</cite>, <cite>TFPreTrainedModel</cite>, or <cite>FlaxPreTrainedModel</cite>.
+All other component entries in the dictionary must support the defined task
+type that is associated with the base model type configuration.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>A string that represents a path to a local/DBFS directory containing a model</dt><dd><p>checkpoint. The directory must contain a <cite>config.json</cite> file that is required
+for loading the transformers model. This is particularly useful when logging
+a model that cannot be loaded into memory for serialization.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+<p>An example of specifying a <cite>Pipeline</cite> from a default pipeline instantiation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span>
+
+<span class="n">qa_pipe</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="s2">&quot;question-answering&quot;</span><span class="p">,</span> <span class="s2">&quot;csarron/mobilebert-uncased-squad-v2&quot;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">():</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">transformers</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span>
+        <span class="n">transformers_model</span><span class="o">=</span><span class="n">qa_pipe</span><span class="p">,</span>
+        <span class="n">artifact_path</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p>An example of specifying component-level parts of a transformers model is shown below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">MobileBertForQuestionAnswering</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
 
 <span class="n">architecture</span> <span class="o">=</span> <span class="s2">&quot;csarron/mobilebert-uncased-squad-v2&quot;</span>
@@ -426,19 +457,15 @@ associated with the base model type configuration.</p>
     <span class="p">}</span>
     <span class="n">mlflow</span><span class="o">.</span><span class="n">transformers</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span>
         <span class="n">transformers_model</span><span class="o">=</span><span class="n">components</span><span class="p">,</span>
-        <span class="n">artifact_path</span><span class="o">=</span><span class="s2">&quot;my_model&quot;</span><span class="p">,</span>
+        <span class="n">artifact_path</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 </pre></div>
 </div>
-<p>An example of submitting a <cite>Pipeline</cite> from a default pipeline instantiation:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span>
-
-<span class="n">qa_pipe</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="s2">&quot;question-answering&quot;</span><span class="p">,</span> <span class="s2">&quot;csarron/mobilebert-uncased-squad-v2&quot;</span><span class="p">)</span>
-
-<span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">():</span>
+<p>An example of specifying a local checkpoint path is shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">():</span>
     <span class="n">mlflow</span><span class="o">.</span><span class="n">transformers</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span>
-        <span class="n">transformers_model</span><span class="o">=</span><span class="n">qa_pipe</span><span class="p">,</span>
-        <span class="n">artifact_path</span><span class="o">=</span><span class="s2">&quot;my_pipeline&quot;</span><span class="p">,</span>
+        <span class="n">transformers_model</span><span class="o">=</span><span class="s2">&quot;path/to/local/checkpoint&quot;</span><span class="p">,</span>
+        <span class="n">artifact_path</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 </pre></div>
 </div>
@@ -541,8 +568,6 @@ containing file dependencies). These files are <em>prepended</em> to the system 
 is loaded. Files declared as dependencies for a given model should have relative
 imports declared from a common root path if multiple files are defined with import dependencies
 between them to avoid import errors when loading the model.</p>
-<p>You can leave <code class="docutils literal notranslate"><span class="pre">code_paths</span></code> argument unset but set <code class="docutils literal notranslate"><span class="pre">infer_code_paths</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code> to let MLflow
-infer the model code paths. See <code class="docutils literal notranslate"><span class="pre">infer_code_paths</span></code> argument doc for details.</p>
 <p>For a detailed explanation of <code class="docutils literal notranslate"><span class="pre">code_paths</span></code> functionality, recommended usage patterns and
 limitations, see the
 <a class="reference external" href="https://mlflow.org/docs/latest/model/dependencies.html?highlight=code_paths#saving-extra-code-with-an-mlflow-model">code_paths usage guide</a>.</p>
@@ -671,14 +696,14 @@ instead only saving the reference to the HuggingFace Hub model repository and it
 This is useful when you load the pretrained model from HuggingFace Hub and want to log or save
 it to MLflow without modifying the model weights. In such case, specifying this flag to
 <code class="docutils literal notranslate"><span class="pre">False</span></code> will save the storage space and reduce time to save the model. Please refer to the
-<a class="reference internal" href="../llms/transformers/guide/index.html#transformers-save-pretrained-guide"><span class="std std-ref">Storage-Efficient Model Logging</span></a> for more detailed usage.</p>
+<a class="reference internal" href="../llms/transformers/large-models.html#transformers-save-pretrained-guide"><span class="std std-ref">Storage-Efficient Model Logging</span></a> for more detailed usage.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>If the model is saved with <code class="docutils literal notranslate"><span class="pre">save_pretrained</span></code> set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, the model cannot be
 registered to the MLflow Model Registry. In order to convert the model to the one that
 can be registered, you can use <a class="reference internal" href="#mlflow.transformers.persist_pretrained_model" title="mlflow.transformers.persist_pretrained_model"><code class="xref py py-func docutils literal notranslate"><span class="pre">mlflow.transformers.persist_pretrained_model()</span></code></a>
 to download the model weights from the HuggingFace Hub and save it in the existing model
-artifacts. Please refer to <a class="reference internal" href="../llms/transformers/guide/index.html#persist-pretrained-guide"><span class="std std-ref">Transformers flavor documentation</span></a>
+artifacts. Please refer to <a class="reference internal" href="../llms/transformers/large-models.html#persist-pretrained-guide"><span class="std std-ref">Transformers flavor documentation</span></a>
 for more detailed usage.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mlflow.transformers</span>
 
@@ -761,13 +786,41 @@ saving transformers models with custom code (i.e. models that require
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>transformers_model</strong> – <p>A trained transformers <cite>Pipeline</cite> or a dictionary that maps required components of a
-pipeline to the named keys of [“model”, “image_processor”, “tokenizer”,
-“feature_extractor”]. The <cite>model</cite> key in the dictionary must map to a value that
-inherits from <cite>PreTrainedModel</cite>, <cite>TFPreTrainedModel</cite>, or <cite>FlaxPreTrainedModel</cite>.
-All other component entries in the dictionary must support the defined task type that is
-associated with the base model type configuration.</p>
-<p>An example of supplying component-level parts of a transformers model is shown below:</p>
+<li><p><strong>transformers_model</strong> – <p>The transformers model to save. This can be one of the following format:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>A transformers <cite>Pipeline</cite> instance.</p></li>
+<li><dl class="simple">
+<dt>A dictionary that maps required components of a pipeline to the named keys</dt><dd><p>of [“model”, “image_processor”, “tokenizer”, “feature_extractor”].
+The <cite>model</cite> key in the dictionary must map to a value that inherits from
+<cite>PreTrainedModel</cite>, <cite>TFPreTrainedModel</cite>, or <cite>FlaxPreTrainedModel</cite>.
+All other component entries in the dictionary must support the defined task
+type that is associated with the base model type configuration.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>A string that represents a path to a local/DBFS directory containing a model</dt><dd><p>checkpoint. The directory must contain a <cite>config.json</cite> file that is required
+for loading the transformers model. This is particularly useful when logging
+a model that cannot be loaded into memory for serialization.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+<p>An example of specifying a <cite>Pipeline</cite> from a default pipeline instantiation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span>
+
+<span class="n">qa_pipe</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="s2">&quot;question-answering&quot;</span><span class="p">,</span> <span class="s2">&quot;csarron/mobilebert-uncased-squad-v2&quot;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">():</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">transformers</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span>
+        <span class="n">transformers_model</span><span class="o">=</span><span class="n">qa_pipe</span><span class="p">,</span>
+        <span class="n">path</span><span class="o">=</span><span class="s2">&quot;path/to/save/model&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p>An example of specifying component-level parts of a transformers model is shown below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">MobileBertForQuestionAnswering</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
 
 <span class="n">architecture</span> <span class="o">=</span> <span class="s2">&quot;csarron/mobilebert-uncased-squad-v2&quot;</span>
@@ -785,14 +838,10 @@ associated with the base model type configuration.</p>
     <span class="p">)</span>
 </pre></div>
 </div>
-<p>An example of submitting a <cite>Pipeline</cite> from a default pipeline instantiation:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span>
-
-<span class="n">qa_pipe</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="s2">&quot;question-answering&quot;</span><span class="p">,</span> <span class="s2">&quot;csarron/mobilebert-uncased-squad-v2&quot;</span><span class="p">)</span>
-
-<span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">():</span>
+<p>An example of specifying a local checkpoint path is shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">():</span>
     <span class="n">mlflow</span><span class="o">.</span><span class="n">transformers</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span>
-        <span class="n">transformers_model</span><span class="o">=</span><span class="n">qa_pipe</span><span class="p">,</span>
+        <span class="n">transformers_model</span><span class="o">=</span><span class="s2">&quot;path/to/local/checkpoint&quot;</span><span class="p">,</span>
         <span class="n">path</span><span class="o">=</span><span class="s2">&quot;path/to/save/model&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 </pre></div>
@@ -890,8 +939,6 @@ containing file dependencies). These files are <em>prepended</em> to the system 
 is loaded. Files declared as dependencies for a given model should have relative
 imports declared from a common root path if multiple files are defined with import dependencies
 between them to avoid import errors when loading the model.</p>
-<p>You can leave <code class="docutils literal notranslate"><span class="pre">code_paths</span></code> argument unset but set <code class="docutils literal notranslate"><span class="pre">infer_code_paths</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code> to let MLflow
-infer the model code paths. See <code class="docutils literal notranslate"><span class="pre">infer_code_paths</span></code> argument doc for details.</p>
 <p>For a detailed explanation of <code class="docutils literal notranslate"><span class="pre">code_paths</span></code> functionality, recommended usage patterns and
 limitations, see the
 <a class="reference external" href="https://mlflow.org/docs/latest/model/dependencies.html?highlight=code_paths#saving-extra-code-with-an-mlflow-model">code_paths usage guide</a>.</p>
@@ -1011,14 +1058,14 @@ instead only saving the reference to the HuggingFace Hub model repository and it
 This is useful when you load the pretrained model from HuggingFace Hub and want to log or save
 it to MLflow without modifying the model weights. In such case, specifying this flag to
 <code class="docutils literal notranslate"><span class="pre">False</span></code> will save the storage space and reduce time to save the model. Please refer to the
-<a class="reference internal" href="../llms/transformers/guide/index.html#transformers-save-pretrained-guide"><span class="std std-ref">Storage-Efficient Model Logging</span></a> for more detailed usage.</p>
+<a class="reference internal" href="../llms/transformers/large-models.html#transformers-save-pretrained-guide"><span class="std std-ref">Storage-Efficient Model Logging</span></a> for more detailed usage.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>If the model is saved with <code class="docutils literal notranslate"><span class="pre">save_pretrained</span></code> set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, the model cannot be
 registered to the MLflow Model Registry. In order to convert the model to the one that
 can be registered, you can use <a class="reference internal" href="#mlflow.transformers.persist_pretrained_model" title="mlflow.transformers.persist_pretrained_model"><code class="xref py py-func docutils literal notranslate"><span class="pre">mlflow.transformers.persist_pretrained_model()</span></code></a>
 to download the model weights from the HuggingFace Hub and save it in the existing model
-artifacts. Please refer to <a class="reference internal" href="../llms/transformers/guide/index.html#persist-pretrained-guide"><span class="std std-ref">Transformers flavor documentation</span></a>
+artifacts. Please refer to <a class="reference internal" href="../llms/transformers/large-models.html#persist-pretrained-guide"><span class="std std-ref">Transformers flavor documentation</span></a>
 for more detailed usage.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mlflow.transformers</span>
 
@@ -1082,7 +1129,7 @@ its commit hash are logged instead.</p>
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../',
-      VERSION:'2.15.2.dev0',
+      VERSION:'2.16.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

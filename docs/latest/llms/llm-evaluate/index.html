@@ -6,10 +6,11 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
+  <meta content="LLM evaluation involves assessing how well a model performs on a task. MLflow provides a simple API to evaluate your LLMs with popular metrics." name="description" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>MLflow LLM Evaluate</title>
+  <title>MLflow LLM Evaluation</title>
   
    
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -47,7 +48,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="MLflow 2.15.2.dev0 documentation" href="../../index.html"/>
+    <link rel="top" title="MLflow 2.16.1.dev0 documentation" href="../../index.html"/>
         <link rel="up" title="LLMs" href="../index.html"/>
         <link rel="next" title="Prompt Engineering UI (Experimental)" href="/../prompt-engineering/index.html"/>
         <link rel="prev" title="Unity Catalog Integration" href="/../deployments/uc_integration.html"/> 
@@ -62,6 +63,7 @@
 <script type="text/javascript" src="../../_static/languagesections.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+<script type="text/javascript" src="../../_static/runllm.js"></script>
 
 <body class="wy-body-for-nav" role="document">
   
@@ -74,7 +76,7 @@
     <a href="../../index.html" class="wy-nav-top-logo"
       ><img src="../../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.15.2.dev0</span>
+    <span class="version">2.16.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -111,14 +113,14 @@
 
       
         <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../introduction/index.html">What is MLflow?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/index.html">MLflow Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../getting-started/index.html">Getting Started with MLflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../new-features/index.html">New Features</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">LLMs</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index.html#id1">MLflow Tracing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#id2">MLflow Deployments Server for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#id2">MLflow AI Gateway for LLMs</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#id3">LLM Evaluation</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">MLflow LLM Evaluate</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MLflow LLM Evaluation</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#full-notebook-guides-and-examples">Full Notebook Guides and Examples</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#quickstart">Quickstart</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#llm-evaluation-metrics">LLM Evaluation Metrics</a></li>
@@ -136,6 +138,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../index.html#tutorials-and-use-case-guides-for-llms-in-mlflow">Tutorials and Use Case Guides for LLMs in MLflow</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../tracing/index.html">MLflow Tracing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../model-evaluation/index.html">Model Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../deep-learning/index.html">Deep Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../traditional-ml/index.html">Traditional ML</a></li>
@@ -196,7 +199,7 @@
         <li><a href="../index.html">LLMs</a> <span class="db-icon db-icon-chevron-right"></span></li>
     
     
-      <li>MLflow LLM Evaluate</li>
+      <li>MLflow LLM Evaluation</li>
     
     
     <!-- <li class="wy-breadcrumbs-aside">
@@ -208,8 +211,8 @@
             <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
               <div itemprop="articleBody">
                 
-  <div class="section" id="mlflow-llm-evaluate">
-<span id="llm-eval"></span><h1>MLflow LLM Evaluate<a class="headerlink" href="#mlflow-llm-evaluate" title="Permalink to this headline"> </a></h1>
+  <div class="section" id="mlflow-llm-evaluation">
+<span id="llm-eval"></span><h1>MLflow LLM Evaluation<a class="headerlink" href="#mlflow-llm-evaluation" title="Permalink to this headline"> </a></h1>
 <p>With the emerging of ChatGPT, LLMs have shown its power of text generation in various fields, such as
 question answering, translating and text summarization. Evaluating LLMs’ performance is slightly different
 from traditional ML models, as very often there is no single ground truth to compare against.
@@ -431,7 +434,7 @@ metrics:</p>
 <div class="section" id="selecting-the-llm-as-judge-model">
 <h3>Selecting the LLM-as-judge Model<a class="headerlink" href="#selecting-the-llm-as-judge-model" title="Permalink to this headline"> </a></h3>
 <p>By default, llm-as-judge metrics use <code class="docutils literal notranslate"><span class="pre">openai:/gpt-4</span></code> as the judge. You can change the default judge model by passing an override to the <code class="docutils literal notranslate"><span class="pre">model</span></code> argument within the metric definition, as shown below. In addition to OpenAI models, you can also use any endpoint via MLflow Deployments. Use <a class="reference internal" href="../../python_api/mlflow.deployments.html#mlflow.deployments.set_deployments_target" title="mlflow.deployments.set_deployments_target"><code class="xref py py-func docutils literal notranslate"><span class="pre">mlflow.deployments.set_deployments_target()</span></code></a> to set the target deployment client.</p>
-<p>To use an endpoint hosted by a local MLflow Deployments Server, you can use the following code.</p>
+<p>To use an endpoint hosted by a local MLflow AI Gateway, you can use the following code.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlflow.deployments</span> <span class="kn">import</span> <span class="n">set_deployments_target</span>
 
 <span class="n">set_deployments_target</span><span class="p">(</span><span class="s2">&quot;http://localhost:5000&quot;</span><span class="p">)</span>
@@ -599,7 +602,7 @@ general we call that MLflow model. The</p></li>
 <li><p>Returns one of <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> or list.</p></li>
 </ul>
 </li>
-<li><p>An MLflow Deployments endpoint URI pointing to a local <a class="reference external" href="../deployments/index.html">MLflow Deployments Server</a>, <a class="reference external" href="https://docs.databricks.com/en/machine-learning/model-serving/score-foundation-models.html">Databricks Foundation Models API</a>, and <a class="reference external" href="https://docs.databricks.com/en/generative-ai/external-models/index.html">External Models in Databricks Model Serving</a>.</p></li>
+<li><p>An MLflow Deployments endpoint URI pointing to a local <a class="reference external" href="../deployments/index.html">MLflow AI Gateway</a>, <a class="reference external" href="https://docs.databricks.com/en/machine-learning/model-serving/score-foundation-models.html">Databricks Foundation Models API</a>, and <a class="reference external" href="https://docs.databricks.com/en/generative-ai/external-models/index.html">External Models in Databricks Model Serving</a>.</p></li>
 <li><p>Set <code class="docutils literal notranslate"><span class="pre">model=None</span></code>, and put model outputs in <code class="docutils literal notranslate"><span class="pre">data</span></code>. Only applicable when the data is a Pandas dataframe.</p></li>
 </ol>
 <div class="section" id="evaluating-with-an-mlflow-model">
@@ -685,11 +688,11 @@ up OpenAI authentication to run the code below.</p>
 <div class="section" id="evaluating-with-an-mlflow-deployments-endpoint">
 <span id="llm-eval-model-endpoint"></span><h3>Evaluating with an MLflow Deployments Endpoint<a class="headerlink" href="#evaluating-with-an-mlflow-deployments-endpoint" title="Permalink to this headline"> </a></h3>
 <p>For MLflow &gt;= 2.11.0, <a class="reference internal" href="../../python_api/mlflow.html#mlflow.evaluate" title="mlflow.evaluate"><code class="xref py py-func docutils literal notranslate"><span class="pre">mlflow.evaluate()</span></code></a> supports evaluating a model endpoint by directly passing the MLflow Deployments endpoint URI to the <code class="docutils literal notranslate"><span class="pre">model</span></code> argument.
-This is particularly useful when you want to evaluate a deployed model hosted by a local <a class="reference external" href="../deployments/index.html">MLflow Deployments Server</a>,  <a class="reference external" href="https://docs.databricks.com/en/machine-learning/model-serving/score-foundation-models.html">Databricks Foundation Models API</a>, and <a class="reference external" href="https://docs.databricks.com/en/generative-ai/external-models/index.html">External Models in Databricks Model Serving</a>, without implementing custom prediction logic to wrap it as an MLflow model or a python function.</p>
+This is particularly useful when you want to evaluate a deployed model hosted by a local <a class="reference external" href="../deployments/index.html">MLflow AI Gateway</a>,  <a class="reference external" href="https://docs.databricks.com/en/machine-learning/model-serving/score-foundation-models.html">Databricks Foundation Models API</a>, and <a class="reference external" href="https://docs.databricks.com/en/generative-ai/external-models/index.html">External Models in Databricks Model Serving</a>, without implementing custom prediction logic to wrap it as an MLflow model or a python function.</p>
 <p>Please don’t forget to set the target deployment client by using <a class="reference internal" href="../../python_api/mlflow.deployments.html#mlflow.deployments.set_deployments_target" title="mlflow.deployments.set_deployments_target"><code class="xref py py-func docutils literal notranslate"><span class="pre">mlflow.deployments.set_deployments_target()</span></code></a> before calling <a class="reference internal" href="../../python_api/mlflow.html#mlflow.evaluate" title="mlflow.evaluate"><code class="xref py py-func docutils literal notranslate"><span class="pre">mlflow.evaluate()</span></code></a> with the endpoint URI, as shown in the example below. Otherwise, you will see an error message like <code class="docutils literal notranslate"><span class="pre">MlflowException:</span> <span class="pre">No</span> <span class="pre">deployments</span> <span class="pre">target</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">set...</span></code>.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>When you want to use an endpoint <strong>not</strong> hosted by an MLflow Deployments Server or Databricks, you can create a custom Python function following the <a class="reference internal" href="#llm-eval-custom-function"><span class="std std-ref">Evaluating with a Custom Function</span></a> guide and use it as the <code class="docutils literal notranslate"><span class="pre">model</span></code> argument.</p>
+<p>When you want to use an endpoint <strong>not</strong> hosted by an MLflow AI Gateway or Databricks, you can create a custom Python function following the <a class="reference internal" href="#llm-eval-custom-function"><span class="std std-ref">Evaluating with a Custom Function</span></a> guide and use it as the <code class="docutils literal notranslate"><span class="pre">model</span></code> argument.</p>
 </div>
 <div class="section" id="supported-input-data-formats">
 <h4>Supported Input Data Formats<a class="headerlink" href="#supported-input-data-formats" title="Permalink to this headline"> </a></h4>
@@ -780,12 +783,12 @@ This is particularly useful when you want to evaluate a deployed model hosted by
 </div>
 <div class="section" id="examples">
 <h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"> </a></h4>
-<p><strong>Chat Endpoint hosted by a local</strong> <a class="reference external" href="../deployments/index.html">MLflow Deployments Server</a></p>
+<p><strong>Chat Endpoint hosted by a local</strong> <a class="reference external" href="../deployments/index.html">MLflow AI Gateway</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mlflow</span>
 <span class="kn">from</span> <span class="nn">mlflow.deployments</span> <span class="kn">import</span> <span class="n">set_deployments_target</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="c1"># Point the client to the local MLflow Deployments Server</span>
+<span class="c1"># Point the client to the local MLflow AI Gateway</span>
 <span class="n">set_deployments_target</span><span class="p">(</span><span class="s2">&quot;http://localhost:5000&quot;</span><span class="p">)</span>
 
 <span class="n">eval_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -990,7 +993,7 @@ MLflow UI. To view the evaluation results on MLflow UI, please follow the steps 
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../../',
-      VERSION:'2.15.2.dev0',
+      VERSION:'2.16.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

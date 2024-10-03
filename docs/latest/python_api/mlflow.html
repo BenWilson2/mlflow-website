@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="MLflow 2.16.1.dev0 documentation" href="../index.html"/>
+    <link rel="top" title="MLflow 2.17.1.dev0 documentation" href="../index.html"/>
         <link rel="up" title="Python API" href="index.html"/>
         <link rel="next" title="mlflow.artifacts" href="/mlflow.artifacts.html"/>
         <link rel="prev" title="Python API" href="/index.html"/> 
@@ -75,7 +75,7 @@
     <a href="../index.html" class="wy-nav-top-logo"
       ><img src="../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.16.1.dev0</span>
+    <span class="version">2.17.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -143,6 +143,7 @@
 <li class="toctree-l2"><a class="reference internal" href="mlflow.data.html">mlflow.data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.deployments.html">mlflow.deployments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.diviner.html">mlflow.diviner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.dspy.html">mlflow.dspy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.entities.html">mlflow.entities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.environment_variables.html">mlflow.environment_variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.fastai.html">mlflow.fastai</a></li>
@@ -1085,14 +1086,13 @@ explicitly set to <code class="docutils literal notranslate"><span class="pre">T
 return predictions. It should follow the signature of the
 <a class="reference internal" href="mlflow.pyfunc.html#mlflow.pyfunc.PyFuncModel.predict" title="mlflow.pyfunc.PyFuncModel.predict"><code class="xref py py-func docutils literal notranslate"><span class="pre">predict</span></code></a> method. Here’s an example
 of a valid function:</p>
-<p>..code-block:: python</p>
-<blockquote>
-<div><p>model = mlflow.pyfunc.load_model(model_uri)</p>
-<dl class="simple">
-<dt>def fn(model_input):</dt><dd><p>return model.predict(model_input)</p>
-</dd>
-</dl>
-</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">pyfunc</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">model_uri</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">fn</span><span class="p">(</span><span class="n">model_input</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">model_input</span><span class="p">)</span>
+</pre></div>
+</div>
 </li>
 </ul>
 <p>If omitted, it indicates a static dataset will be used for evaluation instead of a
@@ -1798,6 +1798,8 @@ active, this method will create a new active run.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>local_path</strong> – Path to the file to write.</p></li>
 <li><p><strong>artifact_path</strong> – If provided, the directory in <code class="docutils literal notranslate"><span class="pre">artifact_uri</span></code> to write to.</p></li>
+<li><p><strong>run_id</strong> – If specified, log the artifact to the specified run. If not specified, log the
+artifact to the currently active run.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1832,6 +1834,8 @@ this method will create a new active run.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>local_dir</strong> – Path to the directory of files to write.</p></li>
 <li><p><strong>artifact_path</strong> – If provided, the directory in <code class="docutils literal notranslate"><span class="pre">artifact_uri</span></code> to write to.</p></li>
+<li><p><strong>run_id</strong> – If specified, log the artifacts to the specified run. If not specified, log the
+artifacts to the currently active run.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1873,6 +1877,8 @@ JSON format is used.</p>
 <li><p><strong>dictionary</strong> – Dictionary to log.</p></li>
 <li><p><strong>artifact_file</strong> – The run-relative artifact file path in posixpath format to which
 the dictionary is saved (e.g. “dir/data.json”).</p></li>
+<li><p><strong>run_id</strong> – If specified, log the dictionary to the specified run. If not specified, log the
+dictionary to the currently active run.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2143,6 +2149,8 @@ may support larger values.</p></li>
 successfully. If False, logs the metric asynchronously and
 returns a future representing the logging operation. If None, read from environment
 variable <cite>MLFLOW_ENABLE_ASYNC_LOGGING</cite>, which defaults to False if not set.</p></li>
+<li><p><strong>run_id</strong> – If specified, log the metric to the specified run. If not specified, log the metric
+to the currently active run.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -2185,6 +2193,8 @@ Metrics. If unspecified, each metric is logged at step zero.</p></li>
 successfully. If False, logs the metrics asynchronously and
 returns a future representing the logging operation. If None, read from environment
 variable <cite>MLFLOW_ENABLE_ASYNC_LOGGING</cite>, which defaults to False if not set.</p></li>
+<li><p><strong>run_id</strong> – Run ID. If specified, log metrics to the specified run. If not specified, log
+metrics to the currently active run.</p></li>
 <li><p><strong>timestamp</strong> – Time when these metrics were calculated. Defaults to the current system time.</p></li>
 </ul>
 </dd>
@@ -2307,6 +2317,8 @@ in the run, the data would be appended to the existing artifact_file.</p>
 <li><p><strong>data</strong> – Dictionary or pandas.DataFrame to log.</p></li>
 <li><p><strong>artifact_file</strong> – The run-relative artifact file path in posixpath format to which
 the table is saved (e.g. “dir/file.json”).</p></li>
+<li><p><strong>run_id</strong> – If specified, log the table to the specified run. If not specified, log the
+table to the currently active run.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2354,6 +2366,8 @@ the table is saved (e.g. “dir/file.json”).</p></li>
 <li><p><strong>text</strong> – String containing text to log.</p></li>
 <li><p><strong>artifact_file</strong> – The run-relative artifact file path in posixpath format to which
 the text is saved (e.g. “dir/file.txt”).</p></li>
+<li><p><strong>run_id</strong> – If specified, log the artifact to the specified run. If not specified, log the
+artifact to the currently active run.</p></li>
 </ul>
 </dd>
 </dl>
@@ -2387,7 +2401,7 @@ existing Databricks profile is found, and the credentials will be saved to <cite
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>backend</strong> – string, the backend of the tracking server. Currently only “databricks” is
 supported.</p></li>
-<li><p><strong>interacive</strong> – bool, controls request for user input on missing credentials. If true, user
+<li><p><strong>interactive</strong> – bool, controls request for user input on missing credentials. If true, user
 input will be requested if no credentials are found, otherwise an exception will be
 raised if no credentials are found.</p></li>
 </ul>
@@ -3551,7 +3565,7 @@ it returns None.</p>
 
 <dl class="py function">
 <dt id="mlflow.search_traces">
-<code class="sig-prename descclassname"><span class="pre">mlflow.</span></code><code class="sig-name descname"><span class="pre">search_traces</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">experiment_ids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_results</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order_by</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract_fields</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.DataFrame</span><a class="reference internal" href="../_modules/mlflow/tracing/fluent.html#search_traces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.search_traces" title="Permalink to this definition"> </a></dt>
+<code class="sig-prename descclassname"><span class="pre">mlflow.</span></code><code class="sig-name descname"><span class="pre">search_traces</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">experiment_ids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_results</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order_by</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract_fields</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.DataFrame</span><a class="reference internal" href="../_modules/mlflow/tracing/fluent.html#search_traces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.search_traces" title="Permalink to this definition"> </a></dt>
 <dd><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Experimental: This function may change or be removed in a future release without warning.</p>
@@ -3593,6 +3607,9 @@ span name or field name contains a dot it must be enclosed in backticks. For exa
 </pre></div>
 </div>
 </p></li>
+<li><p><strong>run_id</strong> – A run id to scope the search. When a trace is created under an active run,
+it will be associated with the run and you can filter on the run id to retrieve the
+trace. See the example below for how to filter traces by run id.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3624,6 +3641,23 @@ span name or field name contains a dot it must be enclosed in backticks. For exa
 <span class="n">mlflow</span><span class="o">.</span><span class="n">search_traces</span><span class="p">(</span>
     <span class="n">extract_fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;non_dict_span.inputs&quot;</span><span class="p">,</span> <span class="s2">&quot;non_dict_span.outputs&quot;</span><span class="p">],</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id95">
+<div class="code-block-caption"><span class="caption-text">Search traces by run ID</span><a class="headerlink" href="#id95" title="Permalink to this code"> </a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mlflow</span>
+
+
+<span class="nd">@mlflow</span><span class="o">.</span><span class="n">trace</span>
+<span class="k">def</span> <span class="nf">traced_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+
+<span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">()</span> <span class="k">as</span> <span class="n">run</span><span class="p">:</span>
+    <span class="n">traced_func</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">mlflow</span><span class="o">.</span><span class="n">search_traces</span><span class="p">(</span><span class="n">run_id</span><span class="o">=</span><span class="n">run</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">run_id</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3815,7 +3849,7 @@ and effectively disables all tracing operations.</p>
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../',
-      VERSION:'2.16.1.dev0',
+      VERSION:'2.17.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

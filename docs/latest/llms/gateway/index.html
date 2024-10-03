@@ -47,10 +47,10 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="MLflow 2.16.1.dev0 documentation" href="../../index.html"/>
+    <link rel="top" title="MLflow 2.17.1.dev0 documentation" href="../../index.html"/>
         <link rel="up" title="LLMs" href="../index.html"/>
         <link rel="next" title="Getting Started with the MLflow AI Gateway" href="/guides/index.html"/>
-        <link rel="prev" title="Evaluate a Hugging Face LLM with mlflow.evaluate()" href="/../llm-evaluate/notebooks/huggingface-evaluation.html"/> 
+        <link rel="prev" title="MLflow’s LLM Tracking Capabilities" href="/../llm-tracking/index.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -75,7 +75,7 @@
     <a href="../../index.html" class="wy-nav-top-logo"
       ><img src="../../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.16.1.dev0</span>
+    <span class="version">2.17.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -116,27 +116,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../../getting-started/index.html">Getting Started with MLflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../new-features/index.html">New Features</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">LLMs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#tutorials-and-use-case-guides-for-genai-applications-in-mlflow">Tutorials and Use Case Guides for GenAI applications in MLflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#id1">MLflow Tracing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#id2">MLflow AI Gateway for LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#id3">LLM Evaluation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#id4">Prompt Engineering UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#native-mlflow-flavors-for-llms">Native MLflow Flavors for LLMs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#id5">LLM Tracking in MLflow</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html#tutorials-and-use-case-guides-for-llms-in-mlflow">Tutorials and Use Case Guides for LLMs in MLflow</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../rag/index.html">Retrieval Augmented Generation (RAG)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../custom-pyfunc-for-llms/index.html">Deploying Advanced LLMs with Custom PyFuncs in MLflow</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../llm-evaluate/notebooks/index.html">LLM Evaluation Examples</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">MLflow AI Gateway (Experimental)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="guides/index.html">Getting Started with the MLflow AI Gateway</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration.html">MLflow AI Gateway Migration Guide</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tutorials-and-guides">Tutorials and Guides</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#quickstart">Quickstart</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#concepts">Concepts</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#configuring-the-ai-gateway">Configuring the AI Gateway</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#querying-the-ai-gateway">Querying the AI Gateway</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mlflow-ai-gateway-api-documentation">MLflow AI Gateway API Documentation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ai-gateway-security-considerations">AI Gateway Security Considerations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id14">LangChain Integration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#id5">LLM Tracking in MLflow</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../llm-tracking/index.html">MLflow’s LLM Tracking Capabilities</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#benefits-of-the-mlflow-llm-tracking-system">Benefits of the MLflow LLM Tracking System</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">MLflow AI Gateway (Experimental)</a></li>
 </ul>
 </li>
 </ul>
@@ -218,11 +207,6 @@
                 
   <div class="section" id="mlflow-ai-gateway-experimental">
 <span id="gateway"></span><h1>MLflow AI Gateway (Experimental)<a class="headerlink" href="#mlflow-ai-gateway-experimental" title="Permalink to this headline"> </a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>MLflow AI gateway is deprecated and has been replaced by <cite>the deployments API &lt;deployments&gt;</cite>
-for generative AI. See <a class="reference internal" href="migration.html#gateway-migration"><span class="std std-ref">MLflow AI Gateway Migration Guide</span></a> for migration.</p>
-</div>
 <p>The MLflow AI Gateway service is a powerful tool designed to streamline the usage and management of
 various large language model (LLM) providers, such as OpenAI and Anthropic, within an organization.
 It offers a high-level interface that simplifies the interaction with these services by providing
@@ -1783,7 +1767,7 @@ This provides information about the name and type, as well as the model details 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../llm-evaluate/notebooks/huggingface-evaluation.html" class="btn btn-neutral" title="Evaluate a Hugging Face LLM with mlflow.evaluate()" accesskey="p"><span class="db-icon db-icon-chevron-left"></span> Previous</a>
+        <a href="../llm-tracking/index.html" class="btn btn-neutral" title="MLflow’s LLM Tracking Capabilities" accesskey="p"><span class="db-icon db-icon-chevron-left"></span> Previous</a>
       
       
         <a href="guides/index.html" class="btn btn-neutral" title="Getting Started with the MLflow AI Gateway" accesskey="n">Next <span class="db-icon db-icon-chevron-right"></span></a>
@@ -1814,7 +1798,7 @@ This provides information about the name and type, as well as the model details 
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../../',
-      VERSION:'2.16.1.dev0',
+      VERSION:'2.17.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

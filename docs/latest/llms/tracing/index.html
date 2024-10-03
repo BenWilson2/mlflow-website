@@ -48,10 +48,10 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="MLflow 2.16.1.dev0 documentation" href="../../index.html"/>
+    <link rel="top" title="MLflow 2.17.1.dev0 documentation" href="../../index.html"/>
         <link rel="up" title="LLMs" href="../index.html"/>
         <link rel="next" title="Tracing Concepts" href="/overview.html"/>
-        <link rel="prev" title="LLMs" href="/../index.html"/> 
+        <link rel="prev" title="Tutorial: Custom GenAI Models using ChatModel" href="/../chat-model-guide/index.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -77,7 +77,7 @@
     <a href="../../index.html" class="wy-nav-top-logo"
       ><img src="../../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.16.1.dev0</span>
+    <span class="version">2.17.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -118,6 +118,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../getting-started/index.html">Getting Started with MLflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../new-features/index.html">New Features</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">LLMs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#tutorials-and-use-case-guides-for-genai-applications-in-mlflow">Tutorials and Use Case Guides for GenAI applications in MLflow</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#id1">MLflow Tracing</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Introduction to MLflow Tracing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#automatic-tracing">Automatic Tracing</a></li>
@@ -139,7 +140,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../index.html#id4">Prompt Engineering UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#native-mlflow-flavors-for-llms">Native MLflow Flavors for LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#id5">LLM Tracking in MLflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#tutorials-and-use-case-guides-for-llms-in-mlflow">Tutorials and Use Case Guides for LLMs in MLflow</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">MLflow Tracing</a><ul>
@@ -1016,7 +1016,7 @@ that are invoked.</p>
 <span class="n">mlflow</span><span class="o">.</span><span class="n">set_experiment</span><span class="p">(</span><span class="s2">&quot;Run Associated Tracing&quot;</span><span class="p">)</span>
 
 <span class="c1"># Start a new MLflow Run</span>
-<span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">():</span>
+<span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">()</span> <span class="k">as</span> <span class="n">run</span><span class="p">:</span>
     <span class="c1"># Initiate a trace by starting a Span context from within the Run context</span>
     <span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_span</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Run Span&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">parent_span</span><span class="p">:</span>
         <span class="n">parent_span</span><span class="o">.</span><span class="n">set_inputs</span><span class="p">({</span><span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="s2">&quot;a&quot;</span><span class="p">})</span>
@@ -1033,6 +1033,17 @@ that are invoked.</p>
 well as providing a link to navigate to the run within the MLflow UI. See the below video for an example of this in action.</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../../_images/run-trace.gif"><img alt="Tracing within a Run Context" src="../../_images/run-trace.gif" style="width: 100%;" /></a>
+</div>
+<p>You can also programmatically retrieve the traces associated to a particular Run by using the <a class="reference internal" href="../../python_api/mlflow.client.html#mlflow.client.MlflowClient.search_traces" title="mlflow.client.MlflowClient.search_traces"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mlflow.client.MlflowClient.search_traces()</span></code></a> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlflow</span> <span class="kn">import</span> <span class="n">MlflowClient</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">MlflowClient</span><span class="p">()</span>
+
+<span class="c1"># Retrieve traces associated with a specific Run</span>
+<span class="n">traces</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">search_traces</span><span class="p">(</span><span class="n">run_id</span><span class="o">=</span><span class="n">run</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">run_id</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">traces</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="q-can-i-use-the-fluent-api-and-the-client-api-together">
@@ -1230,7 +1241,7 @@ be as follows:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../index.html" class="btn btn-neutral" title="LLMs" accesskey="p"><span class="db-icon db-icon-chevron-left"></span> Previous</a>
+        <a href="../chat-model-guide/index.html" class="btn btn-neutral" title="Tutorial: Custom GenAI Models using ChatModel" accesskey="p"><span class="db-icon db-icon-chevron-left"></span> Previous</a>
       
       
         <a href="overview.html" class="btn btn-neutral" title="Tracing Concepts" accesskey="n">Next <span class="db-icon db-icon-chevron-right"></span></a>
@@ -1261,7 +1272,7 @@ be as follows:</p>
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../../',
-      VERSION:'2.16.1.dev0',
+      VERSION:'2.17.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

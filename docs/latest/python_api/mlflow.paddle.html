@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="MLflow 2.16.1.dev0 documentation" href="../index.html"/>
+    <link rel="top" title="MLflow 2.17.1.dev0 documentation" href="../index.html"/>
         <link rel="up" title="Python API" href="index.html"/>
         <link rel="next" title="mlflow.pmdarima" href="/mlflow.pmdarima.html"/>
         <link rel="prev" title="mlflow.onnx" href="/mlflow.onnx.html"/> 
@@ -75,7 +75,7 @@
     <a href="../index.html" class="wy-nav-top-logo"
       ><img src="../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.16.1.dev0</span>
+    <span class="version">2.17.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -143,6 +143,7 @@
 <li class="toctree-l2"><a class="reference internal" href="mlflow.data.html">mlflow.data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.deployments.html">mlflow.deployments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.diviner.html">mlflow.diviner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.dspy.html">mlflow.dspy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.entities.html">mlflow.entities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.environment_variables.html">mlflow.environment_variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.fastai.html">mlflow.fastai</a></li>
@@ -259,7 +260,7 @@ since <cite>predict()</cite> is required for pyfunc model inference.</p>
 <code class="sig-prename descclassname"><span class="pre">mlflow.paddle.</span></code><code class="sig-name descname"><span class="pre">autolog</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_every_n_epoch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclusive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">silent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registered_model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlflow/paddle.html#autolog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.paddle.autolog" title="Permalink to this definition"> </a></dt>
 <dd><div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Autologging is known to be compatible with the following package versions: <code class="docutils literal notranslate"><span class="pre">2.4.1</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">paddlepaddle</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">2.6.1</span></code>. Autologging may not succeed when used with package versions outside of this range.</p>
+<p>Autologging is known to be compatible with the following package versions: <code class="docutils literal notranslate"><span class="pre">2.4.1</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">paddlepaddle</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">2.6.2</span></code>. Autologging may not succeed when used with package versions outside of this range.</p>
 </div>
 <p>Enables (or disables) and configures autologging from PaddlePaddle to MLflow.</p>
 <p>Autologging is performed when the <cite>fit</cite> method of <a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/en/api/paddle/Model_en.html">paddle.Model</a> is called.</p>
@@ -543,12 +544,10 @@ metadata of the logged model.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mlflow.paddle</span>
 
 
-<span class="k">def</span> <span class="nf">load_data</span><span class="p">():</span>
-    <span class="o">...</span>
+<span class="k">def</span> <span class="nf">load_data</span><span class="p">():</span> <span class="o">...</span>
 
 
-<span class="k">class</span> <span class="nc">Regressor</span><span class="p">:</span>
-    <span class="o">...</span>
+<span class="k">class</span> <span class="nc">Regressor</span><span class="p">:</span> <span class="o">...</span>
 
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">Regressor</span><span class="p">()</span>
@@ -796,7 +795,7 @@ section of the model’s conda environment (<code class="docutils literal notran
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../',
-      VERSION:'2.16.1.dev0',
+      VERSION:'2.17.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

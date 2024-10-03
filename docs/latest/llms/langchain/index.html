@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="MLflow 2.16.1.dev0 documentation" href="../../index.html"/>
+    <link rel="top" title="MLflow 2.17.1.dev0 documentation" href="../../index.html"/>
         <link rel="up" title="LLMs" href="../index.html"/>
         <link rel="next" title="MLflow Langchain Autologging" href="/autologging.html"/>
         <link rel="prev" title="Sentence Transformers within MLflow" href="/../sentence-transformers/guide/index.html"/> 
@@ -76,7 +76,7 @@
     <a href="../../index.html" class="wy-nav-top-logo"
       ><img src="../../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.16.1.dev0</span>
+    <span class="version">2.17.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -117,6 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../getting-started/index.html">Getting Started with MLflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../new-features/index.html">New Features</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">LLMs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#tutorials-and-use-case-guides-for-genai-applications-in-mlflow">Tutorials and Use Case Guides for GenAI applications in MLflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#id1">MLflow Tracing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#id2">MLflow AI Gateway for LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#id3">LLM Evaluation</a></li>
@@ -140,7 +141,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#id5">LLM Tracking in MLflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#tutorials-and-use-case-guides-for-llms-in-mlflow">Tutorials and Use Case Guides for LLMs in MLflow</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tracing/index.html">MLflow Tracing</a></li>
@@ -259,12 +259,12 @@ benefits that are associated with using LangChain within the broader MLflow ecos
 <div class="section" id="supported-elements-in-mlflow-langchain-integration">
 <h2>Supported Elements in MLflow LangChain Integration<a class="headerlink" href="#supported-elements-in-mlflow-langchain-integration" title="Permalink to this headline"> </a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://python.langchain.com/docs/modules/chains/foundational/llm_chain">LLMChain</a></p></li>
 <li><p><a class="reference external" href="https://python.langchain.com/docs/modules/agents/">Agents</a></p></li>
-<li><p><a class="reference external" href="https://js.langchain.com/docs/modules/chains/popular/vector_db_qa">RetrievalQA</a></p></li>
 <li><p><a class="reference external" href="https://python.langchain.com/docs/modules/data_connection/retrievers/">Retrievers</a></p></li>
 <li><p><a class="reference external" href="https://python.langchain.com/v0.1/docs/expression_language/interface/">Runnables</a></p></li>
 <li><p><a class="reference external" href="https://langchain-ai.github.io/langgraph/reference/graphs/">LangGraph Complied Graph</a> (only supported via <a class="reference external" href="#logging-models-from-code">Model-from-Code</a>)</p></li>
+<li><p><a class="reference external" href="https://python.langchain.com/docs/modules/chains/foundational/llm_chain">LLMChain</a> (deprecated, only support for <code class="docutils literal notranslate"><span class="pre">langchain&lt;0.3.0</span></code>)</p></li>
+<li><p><a class="reference external" href="https://js.langchain.com/docs/modules/chains/popular/vector_db_qa">RetrievalQA</a> (deprecated, only support for <code class="docutils literal notranslate"><span class="pre">langchain&lt;0.3.0</span></code>)</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -657,7 +657,7 @@ made available for use for invocation.</p>
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../../',
-      VERSION:'2.16.1.dev0',
+      VERSION:'2.17.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

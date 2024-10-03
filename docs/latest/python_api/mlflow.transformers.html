@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="MLflow 2.16.1.dev0 documentation" href="../index.html"/>
+    <link rel="top" title="MLflow 2.17.1.dev0 documentation" href="../index.html"/>
         <link rel="up" title="Python API" href="index.html"/>
         <link rel="next" title="mlflow.types" href="/mlflow.types.html"/>
         <link rel="prev" title="mlflow.tracing" href="/mlflow.tracing.html"/> 
@@ -75,7 +75,7 @@
     <a href="../index.html" class="wy-nav-top-logo"
       ><img src="../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.16.1.dev0</span>
+    <span class="version">2.17.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -143,6 +143,7 @@
 <li class="toctree-l2"><a class="reference internal" href="mlflow.data.html">mlflow.data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.deployments.html">mlflow.deployments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.diviner.html">mlflow.diviner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.dspy.html">mlflow.dspy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.entities.html">mlflow.entities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.environment_variables.html">mlflow.environment_variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.fastai.html">mlflow.fastai</a></li>
@@ -254,7 +255,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Autologging is known to be compatible with the following package versions: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">transformers</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">4.44.2</span></code>. Autologging may not succeed when used with package versions outside of this range.</p>
+<p>Autologging is known to be compatible with the following package versions: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">transformers</span></code> &lt;= <code class="docutils literal notranslate"><span class="pre">4.45.0</span></code>. Autologging may not succeed when used with package versions outside of this range.</p>
 </div>
 <p>This autologging integration is solely used for disabling spurious autologging of irrelevant
 sub-models that are created during the training and evaluation of transformers-based models.
@@ -339,7 +340,7 @@ produce a pip environment that contain these requirements at a minimum.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The ‘transformers’ MLflow Models integration is known to be compatible with the following package version ranges: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> -  <code class="docutils literal notranslate"><span class="pre">4.44.2</span></code>. MLflow Models integrations with transformers may not succeed when used with package versions outside of this range.</p>
+<p>The ‘transformers’ MLflow Models integration is known to be compatible with the following package version ranges: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> -  <code class="docutils literal notranslate"><span class="pre">4.45.0</span></code>. MLflow Models integrations with transformers may not succeed when used with package versions outside of this range.</p>
 </div>
 <p>Load a <code class="docutils literal notranslate"><span class="pre">transformers</span></code> object from a local file or a run.</p>
 <dl class="field-list simple">
@@ -401,7 +402,7 @@ For information on parameters and their usage, see
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The ‘transformers’ MLflow Models integration is known to be compatible with the following package version ranges: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> -  <code class="docutils literal notranslate"><span class="pre">4.44.2</span></code>. MLflow Models integrations with transformers may not succeed when used with package versions outside of this range.</p>
+<p>The ‘transformers’ MLflow Models integration is known to be compatible with the following package version ranges: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> -  <code class="docutils literal notranslate"><span class="pre">4.45.0</span></code>. MLflow Models integrations with transformers may not succeed when used with package versions outside of this range.</p>
 </div>
 <p>Log a <code class="docutils literal notranslate"><span class="pre">transformers</span></code> object as an MLflow artifact for the current run. Note that
 logging transformers models with custom code (i.e. models that require
@@ -579,7 +580,8 @@ registered model if one with the given name does not exist.</p></li>
 <li><p><strong>signature</strong> – <p>A Model Signature object that describes the input and output Schema of the
 model. The model signature can be inferred using <cite>infer_signature</cite> function
 of <cite>mlflow.models.signature</cite>.</p>
-<p>Example:</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Example</span><a class="headerlink" href="#id9" title="Permalink to this code"> </a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlflow.models</span> <span class="kn">import</span> <span class="n">infer_signature</span>
 <span class="kn">from</span> <span class="nn">mlflow.transformers</span> <span class="kn">import</span> <span class="n">generate_signature_output</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span>
@@ -604,6 +606,7 @@ of <cite>mlflow.models.signature</cite>.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">loaded</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 <span class="c1"># MLflow ist großartig!</span>
 </pre></div>
+</div>
 </div>
 <p>If an input_example is provided and the signature is not, a signature will
 be inferred automatically and applied to the MLmodel file iff the
@@ -778,7 +781,7 @@ It must be logged/saved with save_pretrained=False.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The ‘transformers’ MLflow Models integration is known to be compatible with the following package version ranges: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> -  <code class="docutils literal notranslate"><span class="pre">4.44.2</span></code>. MLflow Models integrations with transformers may not succeed when used with package versions outside of this range.</p>
+<p>The ‘transformers’ MLflow Models integration is known to be compatible with the following package version ranges: <code class="docutils literal notranslate"><span class="pre">4.25.1</span></code> -  <code class="docutils literal notranslate"><span class="pre">4.45.0</span></code>. MLflow Models integrations with transformers may not succeed when used with package versions outside of this range.</p>
 </div>
 <p>Save a trained transformers model to a path on the local file system. Note that
 saving transformers models with custom code (i.e. models that require
@@ -866,6 +869,10 @@ If this argument is provided as a inference task type or not specified, the
 pipeline utilities within the transformers library will be used to infer the
 correct task type. If the value specified is not a supported type,
 an Exception will be thrown.</p></li>
+<li><p><strong>torch_dtype</strong> – The Pytorch dtype applied to the model when loading back. This is useful
+when you want to save the model with a specific dtype that is different from the
+dtype of the model when it was trained. If not specified, the current dtype of the
+model instance will be used.</p></li>
 <li><p><strong>model_card</strong> – <p>An Optional <cite>ModelCard</cite> instance from <cite>huggingface-hub</cite>. If provided, the
 contents of the model card will be saved along with the provided
 <cite>transformers_model</cite>. If not provided, an attempt will be made to fetch
@@ -948,7 +955,8 @@ added to.</p></li>
 <li><p><strong>signature</strong> – <p>A Model Signature object that describes the input and output Schema of the
 model. The model signature can be inferred using <cite>infer_signature</cite> function
 of <cite>mlflow.models.signature</cite>.</p>
-<p>Example:</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">Example</span><a class="headerlink" href="#id10" title="Permalink to this code"> </a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlflow.models</span> <span class="kn">import</span> <span class="n">infer_signature</span>
 <span class="kn">from</span> <span class="nn">mlflow.transformers</span> <span class="kn">import</span> <span class="n">generate_signature_output</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span>
@@ -970,6 +978,7 @@ of <cite>mlflow.models.signature</cite>.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">loaded</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 <span class="c1"># MLflow ist großartig!</span>
 </pre></div>
+</div>
 </div>
 <p>If an input_example is provided and the signature is not, a signature will
 be inferred automatically and applied to the MLmodel file iff the
@@ -1129,7 +1138,7 @@ its commit hash are logged instead.</p>
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../',
-      VERSION:'2.16.1.dev0',
+      VERSION:'2.17.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

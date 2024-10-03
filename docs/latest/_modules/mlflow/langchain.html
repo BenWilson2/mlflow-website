@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="MLflow 2.16.1.dev0 documentation" href="../../index.html"/>
+    <link rel="top" title="MLflow 2.17.1.dev0 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -74,7 +74,7 @@
     <a href="../../index.html" class="wy-nav-top-logo"
       ><img src="../../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.16.1.dev0</span>
+    <span class="version">2.17.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -205,6 +205,7 @@
 
 <span class="kn">import</span> <span class="nn">contextlib</span>
 <span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
 <span class="kn">import</span> <span class="nn">inspect</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">logging</span>
@@ -1008,7 +1009,7 @@
         <span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">_load_pyfunc</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_load_pyfunc</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>  <span class="c1"># noqa: D417</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Load PyFunc implementation for LangChain. Called by ``pyfunc.load_model``.</span>
 
 <span class="sd">    Args:</span>
@@ -1106,25 +1107,31 @@
             <span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">_inspect_module_and_patch_cls</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">inspected_modules</span><span class="p">,</span> <span class="n">patched_classes</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_inspect_module_and_patch_cls</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span> <span class="n">inspected_modules</span><span class="p">,</span> <span class="n">patched_classes</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Internal method to inspect the module and patch classes that are</span>
 <span class="sd">    subclasses of Runnable for autologging.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">langchain.schema.runnable</span> <span class="kn">import</span> <span class="n">Runnable</span>
 
-    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="vm">__name__</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">inspected_modules</span><span class="p">:</span>
-        <span class="n">inspected_modules</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">ismodule</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;langchain&quot;</span><span class="p">)):</span>
-                <span class="n">_inspect_module_and_patch_cls</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">inspected_modules</span><span class="p">,</span> <span class="n">patched_classes</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="p">(</span>
-                <span class="n">inspect</span><span class="o">.</span><span class="n">isclass</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-                <span class="ow">and</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__name__</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">patched_classes</span>
-                <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">Runnable</span><span class="p">)</span>
-            <span class="p">):</span>
-                <span class="n">_patch_runnable_cls</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-                <span class="n">patched_classes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">module_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">inspected_modules</span><span class="p">:</span>
+        <span class="n">inspected_modules</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">module_name</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">ismodule</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span>
+                    <span class="n">obj</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;langchain&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;langgraph&quot;</span><span class="p">)</span>
+                <span class="p">):</span>
+                    <span class="n">_inspect_module_and_patch_cls</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">inspected_modules</span><span class="p">,</span> <span class="n">patched_classes</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="p">(</span>
+                    <span class="n">inspect</span><span class="o">.</span><span class="n">isclass</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                    <span class="ow">and</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__name__</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">patched_classes</span>
+                    <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">Runnable</span><span class="p">)</span>
+                <span class="p">):</span>
+                    <span class="n">_patch_runnable_cls</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                    <span class="n">patched_classes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
 
 
 <div class="viewcode-block" id="autolog"><a class="viewcode-back" href="../../python_api/mlflow.langchain.html#mlflow.langchain.autolog">[docs]</a><span class="nd">@experimental</span>
@@ -1198,13 +1205,6 @@
 <span class="sd">            collected during inference. Default to ``True``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">with</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">suppress</span><span class="p">(</span><span class="ne">ImportError</span><span class="p">):</span>
-        <span class="kn">import</span> <span class="nn">langchain</span>
-        <span class="kn">import</span> <span class="nn">langchain_community</span>
-        <span class="kn">from</span> <span class="nn">langchain.agents.agent</span> <span class="kn">import</span> <span class="n">AgentExecutor</span>
-        <span class="kn">from</span> <span class="nn">langchain.chains.base</span> <span class="kn">import</span> <span class="n">Chain</span>
-        <span class="kn">from</span> <span class="nn">langchain.schema</span> <span class="kn">import</span> <span class="n">BaseRetriever</span>
-        <span class="kn">from</span> <span class="nn">langchain.schema.runnable</span> <span class="kn">import</span> <span class="n">Runnable</span>
-
         <span class="kn">from</span> <span class="nn">mlflow.langchain._langchain_autolog</span> <span class="kn">import</span> <span class="n">patched_inference</span>
 
         <span class="c1"># avoid duplicate patching</span>
@@ -1212,10 +1212,26 @@
         <span class="c1"># avoid infinite recursion</span>
         <span class="n">inspected_modules</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
-        <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="p">[</span><span class="n">langchain</span><span class="p">,</span> <span class="n">langchain_community</span><span class="p">]:</span>
-            <span class="n">_inspect_module_and_patch_cls</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">inspected_modules</span><span class="p">,</span> <span class="n">patched_classes</span><span class="p">)</span>
+        <span class="c1"># Get all installed LangChain packages</span>
+        <span class="k">for</span> <span class="n">pkg</span> <span class="ow">in</span> <span class="n">importlib</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">distributions</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">pkg</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;langchain&quot;</span><span class="p">):</span>
+                <span class="n">module_name</span> <span class="o">=</span> <span class="n">pkg</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+                <span class="n">_inspect_module_and_patch_cls</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span> <span class="n">inspected_modules</span><span class="p">,</span> <span class="n">patched_classes</span><span class="p">)</span>
+
+            <span class="c1"># If LangGraph is installed, patch the classes. LangGraph does not define members</span>
+            <span class="c1"># under the top level module, so we need to hardcode the submodules to patch.</span>
+            <span class="k">if</span> <span class="n">pkg</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;langgraph&quot;</span><span class="p">:</span>
+                <span class="n">langgraph_submodules</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="s2">&quot;langgraph.graph&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;langgraph.prebuilt&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;langgraph.pregel&quot;</span><span class="p">,</span>
+                <span class="p">]</span>
+                <span class="k">for</span> <span class="n">submodule</span> <span class="ow">in</span> <span class="n">langgraph_submodules</span><span class="p">:</span>
+                    <span class="n">_inspect_module_and_patch_cls</span><span class="p">(</span><span class="n">submodule</span><span class="p">,</span> <span class="n">inspected_modules</span><span class="p">,</span> <span class="n">patched_classes</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">extra_model_classes</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">langchain_core.runnables</span> <span class="kn">import</span> <span class="n">Runnable</span>
+
             <span class="n">unsupported_classes</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="n">extra_model_classes</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span> <span class="ow">in</span> <span class="n">patched_classes</span><span class="p">:</span>
@@ -1231,20 +1247,31 @@
                     <span class="s2">&quot;Only subclasses of Runnable are supported.&quot;</span>
                 <span class="p">)</span>
 
-        <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="p">[</span><span class="n">AgentExecutor</span><span class="p">,</span> <span class="n">Chain</span><span class="p">]:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">langchain.agents.agent</span> <span class="kn">import</span> <span class="n">AgentExecutor</span>
+            <span class="kn">from</span> <span class="nn">langchain.chains.base</span> <span class="kn">import</span> <span class="n">Chain</span>
+
+            <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="p">[</span><span class="n">AgentExecutor</span><span class="p">,</span> <span class="n">Chain</span><span class="p">]:</span>
+                <span class="n">safe_patch</span><span class="p">(</span>
+                    <span class="n">FLAVOR_NAME</span><span class="p">,</span>
+                    <span class="bp">cls</span><span class="p">,</span>
+                    <span class="s2">&quot;__call__&quot;</span><span class="p">,</span>
+                    <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">patched_inference</span><span class="p">,</span> <span class="s2">&quot;__call__&quot;</span><span class="p">),</span>
+                <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">langchain_core.retrievers</span> <span class="kn">import</span> <span class="n">BaseRetriever</span>
+
             <span class="n">safe_patch</span><span class="p">(</span>
                 <span class="n">FLAVOR_NAME</span><span class="p">,</span>
-                <span class="bp">cls</span><span class="p">,</span>
-                <span class="s2">&quot;__call__&quot;</span><span class="p">,</span>
-                <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">patched_inference</span><span class="p">,</span> <span class="s2">&quot;__call__&quot;</span><span class="p">),</span>
+                <span class="n">BaseRetriever</span><span class="p">,</span>
+                <span class="s2">&quot;get_relevant_documents&quot;</span><span class="p">,</span>
+                <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">patched_inference</span><span class="p">,</span> <span class="s2">&quot;get_relevant_documents&quot;</span><span class="p">),</span>
             <span class="p">)</span>
-
-        <span class="n">safe_patch</span><span class="p">(</span>
-            <span class="n">FLAVOR_NAME</span><span class="p">,</span>
-            <span class="n">BaseRetriever</span><span class="p">,</span>
-            <span class="s2">&quot;get_relevant_documents&quot;</span><span class="p">,</span>
-            <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">patched_inference</span><span class="p">,</span> <span class="s2">&quot;get_relevant_documents&quot;</span><span class="p">),</span>
-        <span class="p">)</span></div>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="k">pass</span></div>
 </pre></div>
 
               </div>
@@ -1275,7 +1302,7 @@
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../../',
-      VERSION:'2.16.1.dev0',
+      VERSION:'2.17.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

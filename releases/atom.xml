@@ -2,22 +2,243 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://your-docusaurus-site.example.com/mlflow-website/releases</id>
     <title>MLflow Blog</title>
-    <updated>2024-09-26T00:00:00.000Z</updated>
+    <updated>2024-12-11T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://your-docusaurus-site.example.com/mlflow-website/releases"/>
     <subtitle>MLflow Blog</subtitle>
     <icon>https://your-docusaurus-site.example.com/mlflow-website/img/mlflow-favicon.ico</icon>
     <entry>
+        <title type="html"><![CDATA[MLflow 2.19.0]]></title>
+        <id>https://your-docusaurus-site.example.com/mlflow-website/releases/2.19.0</id>
+        <link href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.19.0"/>
+        <updated>2024-12-11T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2.19.0 (2024-12-11)]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="2190-2024-12-11">2.19.0 (2024-12-11)<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.19.0#2190-2024-12-11" class="hash-link" aria-label="Direct link to 2.19.0 (2024-12-11)" title="Direct link to 2.19.0 (2024-12-11)">​</a></h2>
+<p>We are excited to announce the release of MLflow 2.19.0! This release includes a number of significant features, enhancements, and bug fixes.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="major-new-features">Major New Features<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.19.0#major-new-features" class="hash-link" aria-label="Direct link to Major New Features" title="Direct link to Major New Features">​</a></h3>
+<ul>
+<li>
+<p><strong>ChatModel enhancements</strong> - <a href="https://mlflow.org/docs/latest/llms/chat-model-guide/index.html" target="_blank" rel="noopener noreferrer">ChatModel</a> now adopts <code>ChatCompletionRequest</code> and <code>ChatCompletionResponse</code> as its new schema. The <code>predict_stream</code> interface uses <code>ChatCompletionChunk</code> to deliver true streaming responses. Additionally, the <code>custom_inputs</code> and <code>custom_outputs</code> fields in ChatModel now utilize <code>AnyType</code>, enabling support for a wider variety of data types. <strong>Note:</strong> In a future version of MLflow, <code>ChatParams</code> (and by extension, <code>ChatCompletionRequest</code>) will have the default values for <code>n</code>, <code>temperature</code>, and <code>stream</code> removed. (<a href="https://github.com/mlflow/mlflow/pull/13782" target="_blank" rel="noopener noreferrer">#13782</a>, <a href="https://github.com/mlflow/mlflow/pull/13857" target="_blank" rel="noopener noreferrer">#13857</a>, <a href="https://github.com/stevenchen-db" target="_blank" rel="noopener noreferrer">@stevenchen-db</a>)</p>
+</li>
+<li>
+<p><strong>Tracing improvements</strong> - <a href="https://mlflow.org/docs/latest/llms/tracing/index.html" target="_blank" rel="noopener noreferrer">MLflow Tracing</a> now supports both automatic and manual tracing for DSPy, LlamaIndex and Langchain flavors. Tracing feature is also auto-enabled for mlflow evaluation for all supported flavors. (<a href="https://github.com/mlflow/mlflow/pull/13790" target="_blank" rel="noopener noreferrer">#13790</a>, <a href="https://github.com/mlflow/mlflow/pull/13793" target="_blank" rel="noopener noreferrer">#13793</a>, <a href="https://github.com/mlflow/mlflow/pull/13795" target="_blank" rel="noopener noreferrer">#13795</a>, <a href="https://github.com/mlflow/mlflow/pull/13897" target="_blank" rel="noopener noreferrer">#13897</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</p>
+</li>
+<li>
+<p><strong>New Tracing Integrations</strong> - <a href="https://mlflow.org/docs/latest/llms/tracing/index.html" target="_blank" rel="noopener noreferrer">MLflow Tracing</a> now supports <strong>CrewAI</strong> and <strong>Anthropic</strong>, enabling a one-line, fully automated tracing experience. (<a href="https://github.com/mlflow/mlflow/pull/13903" target="_blank" rel="noopener noreferrer">#13903</a>, <a href="https://github.com/TomeHirata" target="_blank" rel="noopener noreferrer">@TomeHirata</a>, <a href="https://github.com/mlflow/mlflow/pull/13851" target="_blank" rel="noopener noreferrer">#13851</a>, <a href="https://github.com/gabrielfu" target="_blank" rel="noopener noreferrer">@gabrielfu</a>)</p>
+</li>
+<li>
+<p><strong>Any Type in model signature</strong> - MLflow now supports <a href="https://mlflow.org/docs/latest/model/signatures.html#supported-data-types" target="_blank" rel="noopener noreferrer">AnyType</a> in model signature. It can be used to host any data types that were not supported before. (<a href="https://github.com/mlflow/mlflow/pull/13766" target="_blank" rel="noopener noreferrer">#13766</a>, <a href="https://github.com/serena-ruan" target="_blank" rel="noopener noreferrer">@serena-ruan</a>)</p>
+</li>
+</ul>
+<p>Other Features:</p>
+<ul>
+<li>[Tracking] Add <code>update_current_trace</code> API for adding tags to an active trace. (<a href="https://github.com/mlflow/mlflow/pull/13828" target="_blank" rel="noopener noreferrer">#13828</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+<li>[Deployments] Update databricks deployments to support AI gateway &amp; additional update endpoints (<a href="https://github.com/mlflow/mlflow/pull/13513" target="_blank" rel="noopener noreferrer">#13513</a>, <a href="https://github.com/djliden" target="_blank" rel="noopener noreferrer">@djliden</a>)</li>
+<li>[Models] Support uv in mlflow.models.predict (<a href="https://github.com/mlflow/mlflow/pull/13824" target="_blank" rel="noopener noreferrer">#13824</a>, <a href="https://github.com/serena-ruan" target="_blank" rel="noopener noreferrer">@serena-ruan</a>)</li>
+<li>[Models] Add type hints support including pydantic models (<a href="https://github.com/mlflow/mlflow/pull/13924" target="_blank" rel="noopener noreferrer">#13924</a>, <a href="https://github.com/serena-ruan" target="_blank" rel="noopener noreferrer">@serena-ruan</a>)</li>
+<li>[Tracking] Add the <code>trace.search_spans()</code> method for searching spans within traces (<a href="https://github.com/mlflow/mlflow/pull/13984" target="_blank" rel="noopener noreferrer">#13984</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Tracking] Allow passing in spark connect dataframes in mlflow evaluate API (<a href="https://github.com/mlflow/mlflow/pull/13889" target="_blank" rel="noopener noreferrer">#13889</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
+<li>[Tracking] Fix <code>mlflow.end_run</code> inside a MLflow run context manager (<a href="https://github.com/mlflow/mlflow/pull/13888" target="_blank" rel="noopener noreferrer">#13888</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
+<li>[Scoring] Fix spark_udf conditional check on remote spark-connect client or Databricks Serverless (<a href="https://github.com/mlflow/mlflow/pull/13827" target="_blank" rel="noopener noreferrer">#13827</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
+<li>[Models] Allow changing max_workers for built-in LLM-as-a-Judge metrics (<a href="https://github.com/mlflow/mlflow/pull/13858" target="_blank" rel="noopener noreferrer">#13858</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+<li>[Models] Support saving all langchain runnables using code-based logging (<a href="https://github.com/mlflow/mlflow/pull/13821" target="_blank" rel="noopener noreferrer">#13821</a>, <a href="https://github.com/serena-ruan" target="_blank" rel="noopener noreferrer">@serena-ruan</a>)</li>
+<li>[Model Registry] return empty array when DatabricksSDKModelsArtifactRepository.list_artifacts is called on a file (<a href="https://github.com/mlflow/mlflow/pull/14027" target="_blank" rel="noopener noreferrer">#14027</a>, <a href="https://github.com/shichengzhou-db" target="_blank" rel="noopener noreferrer">@shichengzhou-db</a>)</li>
+<li>[Tracking] Stringify param values in client.log_batch() (<a href="https://github.com/mlflow/mlflow/pull/14015" target="_blank" rel="noopener noreferrer">#14015</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+<li>[Tracking] Remove deprecated squared parameter (<a href="https://github.com/mlflow/mlflow/pull/14028" target="_blank" rel="noopener noreferrer">#14028</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+<li>[Tracking] Fix request/response field in the search_traces output (<a href="https://github.com/mlflow/mlflow/pull/13985" target="_blank" rel="noopener noreferrer">#13985</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Docs] Add Ollama and Instructor examples in tracing doc (<a href="https://github.com/mlflow/mlflow/pull/13937" target="_blank" rel="noopener noreferrer">#13937</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.19.0" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content>
+        <author>
+            <name>MLflow maintainers</name>
+            <uri>https://github.com/mlflow/mlflow.git</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MLflow 2.18.0]]></title>
+        <id>https://your-docusaurus-site.example.com/mlflow-website/releases/2.18.0</id>
+        <link href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.18.0"/>
+        <updated>2024-11-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We are excited to announce the release of MLflow 2.18.0! This release includes a number of significant features, enhancements, and bug fixes.]]></summary>
+        <content type="html"><![CDATA[<p>We are excited to announce the release of MLflow 2.18.0! This release includes a number of significant features, enhancements, and bug fixes.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="python-version-update">Python Version Update<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.18.0#python-version-update" class="hash-link" aria-label="Direct link to Python Version Update" title="Direct link to Python Version Update">​</a></h3>
+<p>Python 3.8 is now at an end-of-life point. With official support being dropped for this legacy version, <strong>MLflow now requires Python 3.9</strong>
+as a minimum supported version.</p>
+<blockquote>
+<p>Note: If you are currently using MLflow's <code>ChatModel</code> interface for authoring custom GenAI applications, please ensure that you
+have read the future breaking changes section below.</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="major-new-features">Major New Features<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.18.0#major-new-features" class="hash-link" aria-label="Direct link to Major New Features" title="Direct link to Major New Features">​</a></h3>
+<ul>
+<li>
+<p><strong>🦺 Fluent API Thread/Process Safety</strong> - MLflow's fluent APIs for tracking and the model registry have been overhauled to add support for both thread and multi-process safety. You are now no longer forced to use the Client APIs for managing experiments, runs, and logging from within multiprocessing and threaded applications. (<a href="https://github.com/mlflow/mlflow/pull/13456" target="_blank" rel="noopener noreferrer">#13456</a>, <a href="https://github.com/mlflow/mlflow/pull/13419" target="_blank" rel="noopener noreferrer">#13419</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</p>
+</li>
+<li>
+<p><strong>🧩 DSPy flavor</strong> - MLflow now supports logging, loading, and tracing of <code>DSPy</code> models, broadening the support for advanced GenAI authoring within MLflow. Check out the <a href="https://mlflow.org/docs/latest/llms/dspy/index.html" target="_blank" rel="noopener noreferrer">MLflow DSPy Flavor</a> documentation to get started! (<a href="https://github.com/mlflow/mlflow/pull/13131" target="_blank" rel="noopener noreferrer">#13131</a>, <a href="https://github.com/mlflow/mlflow/pull/13279" target="_blank" rel="noopener noreferrer">#13279</a>, <a href="https://github.com/mlflow/mlflow/pull/13369" target="_blank" rel="noopener noreferrer">#13369</a>, <a href="https://github.com/mlflow/mlflow/pull/13345" target="_blank" rel="noopener noreferrer">#13345</a>, <a href="https://github.com/chenmoneygithub" target="_blank" rel="noopener noreferrer">@chenmoneygithub</a>, <a href="https://github.com/mlflow/mlflow/pull/13543" target="_blank" rel="noopener noreferrer">#13543</a>, <a href="https://github.com/mlflow/mlflow/pull/13800" target="_blank" rel="noopener noreferrer">#13800</a>, <a href="https://github.com/mlflow/mlflow/pull/13807" target="_blank" rel="noopener noreferrer">#13807</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>, <a href="https://github.com/mlflow/mlflow/pull/13289" target="_blank" rel="noopener noreferrer">#13289</a>, <a href="https://github.com/michael-berk" target="_blank" rel="noopener noreferrer">@michael-berk</a>)</p>
+</li>
+<li>
+<p><strong>🖥️ Enhanced Trace UI</strong> - <a href="https://mlflow.org/docs/latest/llms/tracing/index.html" target="_blank" rel="noopener noreferrer">MLflow Tracing</a>'s UI has undergone
+a significant overhaul to bring usability and quality of life updates to the experience of auditing and investigating the contents of GenAI traces, from enhanced span content rendering using markdown to a standardized span component structure. (<a href="https://github.com/mlflow/mlflow/pull/13685" target="_blank" rel="noopener noreferrer">#13685</a>, <a href="https://github.com/mlflow/mlflow/pull/13357" target="_blank" rel="noopener noreferrer">#13357</a>, <a href="https://github.com/mlflow/mlflow/pull/13242" target="_blank" rel="noopener noreferrer">#13242</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</p>
+</li>
+<li>
+<p><strong>🚄 New Tracing Integrations</strong> - <a href="https://mlflow.org/docs/latest/llms/tracing/index.html" target="_blank" rel="noopener noreferrer">MLflow Tracing</a> now supports <strong>DSPy</strong>, <strong>LiteLLM</strong>, and <strong>Google Gemini</strong>, enabling a one-line, fully automated tracing experience. These integrations unlock enhanced observability across a broader range of industry tools. Stay tuned for upcoming integrations and updates! (<a href="https://github.com/mlflow/mlflow/pull/13801" target="_blank" rel="noopener noreferrer">#13801</a>, <a href="https://github.com/TomeHirata" target="_blank" rel="noopener noreferrer">@TomeHirata</a>, <a href="https://github.com/mlflow/mlflow/pull/13585" target="_blank" rel="noopener noreferrer">#13585</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</p>
+</li>
+<li>
+<p><strong>📊 Expanded LLM-as-a-Judge Support</strong> - MLflow now enhances its evaluation capabilities with support for additional providers, including <code>Anthropic</code>, <code>Bedrock</code>, <code>Mistral</code>, and <code>TogetherAI</code>, alongside existing providers like <code>OpenAI</code>. Users can now also configure proxy endpoints or self-hosted LLMs that follow the provider API specs by using the new <code>proxy_url</code> and <code>extra_headers</code> options. Visit the <a href="https://mlflow.org/docs/latest/llms/llm-evaluate/index.html#llm-as-a-judge-metrics" target="_blank" rel="noopener noreferrer">LLM-as-a-Judge</a> documentation for more details! (<a href="https://github.com/mlflow/mlflow/pull/13715" target="_blank" rel="noopener noreferrer">#13715</a>, <a href="https://github.com/mlflow/mlflow/pull/13717" target="_blank" rel="noopener noreferrer">#13717</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</p>
+</li>
+<li>
+<p><strong>⏰ Environment Variable Detection</strong> - As a helpful reminder for when you are deploying models, MLflow now detects and reminds users of environment variables set during model logging, ensuring they are configured for deployment. In addition to this, the <code>mlflow.models.predict</code> utility has also been updated to include these variables in serving simulations, improving pre-deployment validation. (<a href="https://github.com/mlflow/mlflow/pull/13584" target="_blank" rel="noopener noreferrer">#13584</a>, <a href="https://github.com/serena-ruan" target="_blank" rel="noopener noreferrer">@serena-ruan</a>)</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="breaking-changes-to-chatmodel-interface">Breaking Changes to ChatModel Interface<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.18.0#breaking-changes-to-chatmodel-interface" class="hash-link" aria-label="Direct link to Breaking Changes to ChatModel Interface" title="Direct link to Breaking Changes to ChatModel Interface">​</a></h3>
+<ul>
+<li>
+<p><strong>ChatModel Interface Updates</strong> - As part of a broader unification effort within MLflow and services that rely on or deeply integrate
+with MLflow's GenAI features, we are working on a phased approach to making a consistent and standard interface for custom GenAI
+application development and usage. In the first phase (planned for release in the next few releases of MLflow), we are marking
+several interfaces as deprecated, as they will be changing. These changes will be:</p>
+<ul>
+<li><strong>Renaming of Interfaces</strong>:<!-- -->
+<ul>
+<li><code>ChatRequest</code> → <code>ChatCompletionRequest</code> to provide disambiguation for future planned request interfaces.</li>
+<li><code>ChatResponse</code> → <code>ChatCompletionResponse</code> for the same reason as the input interface.</li>
+<li><code>metadata</code> fields within <code>ChatRequest</code> and <code>ChatResponse</code> → <code>custom_inputs</code> and <code>custom_outputs</code>, respectively.</li>
+</ul>
+</li>
+<li><strong>Streaming Updates</strong>:<!-- -->
+<ul>
+<li><code>predict_stream</code> will be updated to enable true streaming for custom GenAI applications. Currently, it returns a generator with synchronous outputs from predict. In a future release, it will return a generator of <code>ChatCompletionChunks</code>, enabling asynchronous streaming. While the API call structure will remain the same, the returned data payload will change significantly, aligning with LangChain’s implementation.</li>
+</ul>
+</li>
+<li><strong>Legacy Dataclass Deprecation</strong>:<!-- -->
+<ul>
+<li>Dataclasses in <code>mlflow.models.rag_signatures</code> will be deprecated, merging into unified <code>ChatCompletionRequest</code>, <code>ChatCompletionResponse</code>, and <code>ChatCompletionChunks</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Other Features:</p>
+<p>Here is the updated section with links to each PR ID and author:</p>
+<p>markdown
+Copy code
+Other Features:</p>
+<ul>
+<li>[Evaluate] Add Huggingface BLEU metrics to MLflow Evaluate (<a href="https://github.com/mlflow/mlflow/pull/12799" target="_blank" rel="noopener noreferrer">#12799</a>, <a href="https://github.com/nebrass" target="_blank" rel="noopener noreferrer">@nebrass</a>)</li>
+<li>[Models / Databricks] Add support for <code>spark_udf</code> when running on Databricks Serverless runtime, Databricks Connect, and prebuilt Python environments (<a href="https://github.com/mlflow/mlflow/pull/13276" target="_blank" rel="noopener noreferrer">#13276</a>, <a href="https://github.com/mlflow/mlflow/pull/13496" target="_blank" rel="noopener noreferrer">#13496</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
+<li>[Scoring] Add a <code>model_config</code> parameter for <code>pyfunc.spark_udf</code> for customization of batch inference payload submission (<a href="https://github.com/mlflow/mlflow/pull/13517" target="_blank" rel="noopener noreferrer">#13517</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
+<li>[Tracing] Standardize retriever span outputs to a list of MLflow <code>Document</code>s (<a href="https://github.com/mlflow/mlflow/pull/13242" target="_blank" rel="noopener noreferrer">#13242</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
+<li>[UI] Add support for visualizing and comparing nested parameters within the MLflow UI (<a href="https://github.com/mlflow/mlflow/pull/13012" target="_blank" rel="noopener noreferrer">#13012</a>, <a href="https://github.com/jescalada" target="_blank" rel="noopener noreferrer">@jescalada</a>)</li>
+<li>[UI] Add support for comparing logged artifacts within the Compare Run page in the MLflow UI (<a href="https://github.com/mlflow/mlflow/pull/13145" target="_blank" rel="noopener noreferrer">#13145</a>, <a href="https://github.com/jescalada" target="_blank" rel="noopener noreferrer">@jescalada</a>)</li>
+<li>[Databricks] Add support for <code>resources</code> definitions for <code>LangChain</code> model logging (<a href="https://github.com/mlflow/mlflow/pull/13315" target="_blank" rel="noopener noreferrer">#13315</a>, <a href="https://github.com/sunishsheth2009" target="_blank" rel="noopener noreferrer">@sunishsheth2009</a>)</li>
+<li>[Databricks] Add support for defining multiple retrievers within <code>dependencies</code> for Agent definitions (<a href="https://github.com/mlflow/mlflow/pull/13246" target="_blank" rel="noopener noreferrer">#13246</a>, <a href="https://github.com/sunishsheth2009" target="_blank" rel="noopener noreferrer">@sunishsheth2009</a>)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Database] Cascade deletes to datasets when deleting experiments to fix a bug in MLflow's <code>gc</code> command when deleting experiments with logged datasets (<a href="https://github.com/mlflow/mlflow/pull/13741" target="_blank" rel="noopener noreferrer">#13741</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
+<li>[Models] Fix a bug with <code>LangChain</code>'s <code>pyfunc</code> predict input conversion (<a href="https://github.com/mlflow/mlflow/pull/13652" target="_blank" rel="noopener noreferrer">#13652</a>, <a href="https://github.com/serena-ruan" target="_blank" rel="noopener noreferrer">@serena-ruan</a>)</li>
+<li>[Models] Fix signature inference for subclasses and <code>Optional</code> dataclasses that define a model's signature (<a href="https://github.com/mlflow/mlflow/pull/13440" target="_blank" rel="noopener noreferrer">#13440</a>, <a href="https://github.com/bbqiu" target="_blank" rel="noopener noreferrer">@bbqiu</a>)</li>
+<li>[Tracking] Fix an issue with async logging batch splitting validation rules (<a href="https://github.com/mlflow/mlflow/pull/13722" target="_blank" rel="noopener noreferrer">#13722</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
+<li>[Tracking] Fix an issue with <code>LangChain</code>'s autologging thread-safety behavior (<a href="https://github.com/mlflow/mlflow/pull/13672" target="_blank" rel="noopener noreferrer">#13672</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+<li>[Tracking] Disable support for running Spark autologging in a threadpool due to limitations in Spark (<a href="https://github.com/mlflow/mlflow/pull/13599" target="_blank" rel="noopener noreferrer">#13599</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
+<li>[Tracking] Mark <code>role</code> and <code>index</code> as required for chat schema (<a href="https://github.com/mlflow/mlflow/pull/13279" target="_blank" rel="noopener noreferrer">#13279</a>, <a href="https://github.com/chenmoneygithub" target="_blank" rel="noopener noreferrer">@chenmoneygithub</a>)</li>
+<li>[Tracing] Handle raw response in OpenAI autolog (<a href="https://github.com/mlflow/mlflow/pull/13802" target="_blank" rel="noopener noreferrer">#13802</a>, <a href="https://github.com/harupy" target="_blank" rel="noopener noreferrer">@harupy</a>)</li>
+<li>[Tracing] Fix a bug with tracing source run behavior when running inference with multithreading on <code>LangChain</code> models (<a href="https://github.com/mlflow/mlflow/pull/13610" target="_blank" rel="noopener noreferrer">#13610</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Docs] Add docstring warnings for upcoming changes to ChatModel (<a href="https://github.com/mlflow/mlflow/pull/13730" target="_blank" rel="noopener noreferrer">#13730</a>, <a href="https://github.com/stevenchen-db" target="_blank" rel="noopener noreferrer">@stevenchen-db</a>)</li>
+<li>[Docs] Add a contributor's guide for implementing tracing integrations (<a href="https://github.com/mlflow/mlflow/pull/13333" target="_blank" rel="noopener noreferrer">#13333</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+<li>[Docs] Add guidance in the use of <code>model_config</code> when logging models as code (<a href="https://github.com/mlflow/mlflow/pull/13631" target="_blank" rel="noopener noreferrer">#13631</a>, <a href="https://github.com/sunishsheth2009" target="_blank" rel="noopener noreferrer">@sunishsheth2009</a>)</li>
+<li>[Docs] Add documentation for the use of custom library artifacts with the <code>code_paths</code> model logging feature (<a href="https://github.com/mlflow/mlflow/pull/13702" target="_blank" rel="noopener noreferrer">#13702</a>, <a href="https://github.com/TomeHirata" target="_blank" rel="noopener noreferrer">@TomeHirata</a>)</li>
+<li>[Docs] Improve <code>SparkML</code> <code>log_model</code> documentation with guidance on how to return probabilities from classification models (<a href="https://github.com/mlflow/mlflow/pull/13684" target="_blank" rel="noopener noreferrer">#13684</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.18.0" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content>
+        <author>
+            <name>MLflow maintainers</name>
+            <uri>https://github.com/mlflow/mlflow.git</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MLflow 2.17.2]]></title>
+        <id>https://your-docusaurus-site.example.com/mlflow-website/releases/2.17.2</id>
+        <link href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.17.2"/>
+        <updated>2024-10-31T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[MLflow 2.17.2 includes several major features and improvements]]></summary>
+        <content type="html"><![CDATA[<p>MLflow 2.17.2 includes several major features and improvements</p>
+<p>Features:</p>
+<ul>
+<li>[Model Registry] DatabricksSDKModelsArtifactRepository support (<a href="https://github.com/mlflow/mlflow/pull/13203" target="_blank" rel="noopener noreferrer">#13203</a>, <a href="https://github.com/shichengzhou-db" target="_blank" rel="noopener noreferrer">@shichengzhou-db</a>)</li>
+<li>[Tracking] Support extracting new UCFunctionToolkit as model resources (<a href="https://github.com/mlflow/mlflow/pull/13567" target="_blank" rel="noopener noreferrer">#13567</a>, <a href="https://github.com/serena-ruan" target="_blank" rel="noopener noreferrer">@serena-ruan</a>)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Models] Fix RunnableBinding saving (<a href="https://github.com/mlflow/mlflow/pull/13566" target="_blank" rel="noopener noreferrer">#13566</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+<li>[Models] Pin numpy when pandas &lt; 2.1.2 in pip requirements (<a href="https://github.com/mlflow/mlflow/pull/13580" target="_blank" rel="noopener noreferrer">#13580</a>, <a href="https://github.com/serena-ruan" target="_blank" rel="noopener noreferrer">@serena-ruan</a>)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Docs] ChatModel tool calling tutorial (<a href="https://github.com/mlflow/mlflow/pull/13542" target="_blank" rel="noopener noreferrer">#13542</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.17.2" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content>
+        <author>
+            <name>MLflow maintainers</name>
+            <uri>https://github.com/mlflow/mlflow.git</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MLflow 2.17.1]]></title>
+        <id>https://your-docusaurus-site.example.com/mlflow-website/releases/2.17.1</id>
+        <link href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.17.1"/>
+        <updated>2024-10-25T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2.17.1 (2024-10-25)]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="2171-2024-10-25">2.17.1 (2024-10-25)<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.17.1#2171-2024-10-25" class="hash-link" aria-label="Direct link to 2.17.1 (2024-10-25)" title="Direct link to 2.17.1 (2024-10-25)">​</a></h2>
+<p>MLflow 2.17.1 includes several major features and improvements</p>
+<p>Features:</p>
+<ul>
+<li>[Tracking] Support custom chat endpoint without endpoint type set as llm judge (<a href="https://github.com/mlflow/mlflow/pull/13538" target="_blank" rel="noopener noreferrer">#13538</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+<li>[Tracking] Support tracing for OpenAI Swarm (<a href="https://github.com/mlflow/mlflow/pull/13497" target="_blank" rel="noopener noreferrer">#13497</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+<li>[Tracking] Support UC Connections as model dependency and resources (<a href="https://github.com/mlflow/mlflow/pull/13481" target="_blank" rel="noopener noreferrer">#13481</a>, <a href="https://github.com/mlflow/mlflow/pull/13491" target="_blank" rel="noopener noreferrer">#13491</a> <a href="https://github.com/sunishsheth2009" target="_blank" rel="noopener noreferrer">@sunishsheth2009</a>)</li>
+<li>[Tracking] Support Genie Spaces as model resources (<a href="https://github.com/mlflow/mlflow/pull/13441" target="_blank" rel="noopener noreferrer">#13441</a>, <a href="https://github.com/aravind-segu" target="_blank" rel="noopener noreferrer">@aravind-segu</a>)</li>
+<li>[Models] Support new Transformers task for llm/v1/embedding (<a href="https://github.com/mlflow/mlflow/pull/13468" target="_blank" rel="noopener noreferrer">#13468</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+</ul>
+<p>Bug fixes:</p>
+<ul>
+<li>[Tracking] Fix tool span inputs/outputs format in LangChain autolog (<a href="https://github.com/mlflow/mlflow/pull/13527" target="_blank" rel="noopener noreferrer">#13527</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+<li>[Models] Fix code_path handling for LlamaIndex flavor (<a href="https://github.com/mlflow/mlflow/pull/13486" target="_blank" rel="noopener noreferrer">#13486</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+<li>[Models] Fix signature inference for subclass and optional dataclasses (<a href="https://github.com/mlflow/mlflow/pull/13440" target="_blank" rel="noopener noreferrer">#13440</a>, <a href="https://github.com/bbqiu" target="_blank" rel="noopener noreferrer">@bbqiu</a>)</li>
+<li>[Tracking] Fix error thrown in set_retriever_schema's behavior when it's called twice (<a href="https://github.com/mlflow/mlflow/pull/13422" target="_blank" rel="noopener noreferrer">#13422</a>, <a href="https://github.com/sunishsheth2009" target="_blank" rel="noopener noreferrer">@sunishsheth2009</a>)</li>
+<li>[Tracking] Fix dependency extraction from RunnableCallables (<a href="https://github.com/mlflow/mlflow/pull/13423" target="_blank" rel="noopener noreferrer">#13423</a>, <a href="https://github.com/aravind-segu" target="_blank" rel="noopener noreferrer">@aravind-segu</a>)</li>
+</ul>
+<p>Documentation updates:</p>
+<ul>
+<li>[Docs] Fixed typo in docs: endpoing -&gt; endpoint (<a href="https://github.com/mlflow/mlflow/pull/13478" target="_blank" rel="noopener noreferrer">#13478</a>, <a href="https://github.com/JAMNESIA" target="_blank" rel="noopener noreferrer">@JAMNESIA</a>)</li>
+<li>[Docs] Improve CLI docs - attention about setting MLFLOW_TRACKING_URI (<a href="https://github.com/mlflow/mlflow/pull/13465" target="_blank" rel="noopener noreferrer">#13465</a>, <a href="https://github.com/BartoszLitwiniuk" target="_blank" rel="noopener noreferrer">@BartoszLitwiniuk</a>)</li>
+<li>[Docs] Add documentation for infer_signature usage with GenAI flavors (<a href="https://github.com/mlflow/mlflow/pull/13407" target="_blank" rel="noopener noreferrer">#13407</a>, <a href="https://github.com/serena-ruan" target="_blank" rel="noopener noreferrer">@serena-ruan</a>)</li>
+</ul>
+<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.17.1" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content>
+        <author>
+            <name>MLflow maintainers</name>
+            <uri>https://github.com/mlflow/mlflow.git</uri>
+        </author>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[MLflow 2.17.0]]></title>
         <id>https://your-docusaurus-site.example.com/mlflow-website/releases/2.17.0</id>
         <link href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.17.0"/>
-        <updated>2024-09-26T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[2.17.0 (2024-09-26)]]></summary>
-        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="2170-2024-09-26">2.17.0 (2024-09-26)<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.17.0#2170-2024-09-26" class="hash-link" aria-label="Direct link to 2.17.0 (2024-09-26)" title="Direct link to 2.17.0 (2024-09-26)">​</a></h2>
-<p>MLflow 2.17.0rc0 is a release candidate for 2.17.0. To install, run the following command:</p>
-<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#9CDCFE;--prism-background-color:#1E1E1E"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#9CDCFE;background-color:#1E1E1E"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#9CDCFE"><span class="token plain">pip install mlflow==2.17.0rc0</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>We are excited to announce the release of MLflow 2.17.0. This release includes several enhancements to extend the
-functionality of MLflow's <code>ChatModel</code> interface to further extend its versatility for handling custom GenAI application use cases.
+        <updated>2024-10-11T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2.17.0 (2024-10-11)]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="2170-2024-10-11">2.17.0 (2024-10-11)<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.17.0#2170-2024-10-11" class="hash-link" aria-label="Direct link to 2.17.0 (2024-10-11)" title="Direct link to 2.17.0 (2024-10-11)">​</a></h2>
+<p>We are excited to announce the release of MLflow 2.17.0! This release includes several enhancements to extend the
+functionality of MLflow's ChatModel interface to further extend its versatility for handling custom GenAI application use cases.
+Additionally, we've improved the interface within the tracing UI to provide a structured output for retrieved documents,
+enhancing the ability to read the contents of those documents within the UI.
 We're also starting the work on improving both the utility and the versatility of MLflow's evaluate functionality for GenAI,
 initially with support for callable GenAI evaluation metrics.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="major-features-and-notifications">Major Features and notifications<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.17.0#major-features-and-notifications" class="hash-link" aria-label="Direct link to Major Features and notifications" title="Direct link to Major Features and notifications">​</a></h3>
@@ -46,11 +267,15 @@ MLflow Deployments Server, but have reconsidered and reverted the naming and nam
 </ul>
 <p>Features:</p>
 <ul>
+<li>[Tracing] Add Standardization to retriever span outputs within MLflow tracing (<a href="https://github.com/mlflow/mlflow/pull/13242" target="_blank" rel="noopener noreferrer">#13242</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
+<li>[Models] Add support for LlamaIndex <code>Workflows</code> objects to be serialized when calling <code>log_model()</code> (<a href="https://github.com/mlflow/mlflow/pull/13277" target="_blank" rel="noopener noreferrer">#13277</a>, <a href="https://github.com/mlflow/mlflow/pull/13305" target="_blank" rel="noopener noreferrer">#13305</a>, <a href="https://github.com/mlflow/mlflow/pull/13336" target="_blank" rel="noopener noreferrer">#13336</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
 <li>[Models] Add tool calling support for ChatModel (<a href="https://github.com/mlflow/mlflow/pull/13191" target="_blank" rel="noopener noreferrer">#13191</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
 <li>[Models] Add <code>from_dict()</code> function to ChatModel dataclasses (<a href="https://github.com/mlflow/mlflow/pull/13180" target="_blank" rel="noopener noreferrer">#13180</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
 <li>[Models] Add metadata field for ChatModel (<a href="https://github.com/mlflow/mlflow/pull/13143" target="_blank" rel="noopener noreferrer">#13143</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
 <li>[Models] Update ChatCompletionResponse to populate object type (<a href="https://github.com/mlflow/mlflow/pull/13102" target="_blank" rel="noopener noreferrer">#13102</a>, <a href="https://github.com/BenWilson2" target="_blank" rel="noopener noreferrer">@BenWilson2</a>)</li>
 <li>[Models] Add support for LLM response refusal (<a href="https://github.com/mlflow/mlflow/pull/13071" target="_blank" rel="noopener noreferrer">#13071</a>, <a href="https://github.com/BenWilson2" target="_blank" rel="noopener noreferrer">@BenWilson2</a>)</li>
+<li>[Models] Add support for resources to be passed in via <code>langchain.log_model()</code> (<a href="https://github.com/mlflow/mlflow/pull/13315" target="_blank" rel="noopener noreferrer">#13315</a>, <a href="https://github.com/sunishsheth2009" target="_blank" rel="noopener noreferrer">@sunishsheth2009</a>)</li>
+<li>[Tracking] Add support for setting multiple retrievers' schema via <code>set_retriever_schema</code> (<a href="https://github.com/mlflow/mlflow/pull/13246" target="_blank" rel="noopener noreferrer">#13246</a>, <a href="https://github.com/sunishsheth2009" target="_blank" rel="noopener noreferrer">@sunishsheth2009</a>)</li>
 <li>[Eval] Make Evaluation metrics callable (<a href="https://github.com/mlflow/mlflow/pull/13144" target="_blank" rel="noopener noreferrer">#13144</a>, <a href="https://github.com/serena-ruan" target="_blank" rel="noopener noreferrer">@serena-ruan</a>)</li>
 <li>[UI] Add audio support to artifact viewer UI (<a href="https://github.com/mlflow/mlflow/pull/13017" target="_blank" rel="noopener noreferrer">#13017</a>, <a href="https://github.com/sydneyw-spotify" target="_blank" rel="noopener noreferrer">@sydneyw-spotify</a>)</li>
 <li>[Databricks] Add support for route_optimized parameter in databricks deployment client (<a href="https://github.com/mlflow/mlflow/pull/13222" target="_blank" rel="noopener noreferrer">#13222</a>, <a href="https://github.com/prabhatkgupta" target="_blank" rel="noopener noreferrer">@prabhatkgupta</a>)</li>
@@ -58,6 +283,8 @@ MLflow Deployments Server, but have reconsidered and reverted the naming and nam
 <p>Bug fixes:</p>
 <ul>
 <li>[Tracking] Fix tracing for LangGraph (<a href="https://github.com/mlflow/mlflow/pull/13215" target="_blank" rel="noopener noreferrer">#13215</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+<li>[Tracking] Fix an issue with <code>presigned_url_artifact</code> requests being in the wrong format (<a href="https://github.com/mlflow/mlflow/pull/13366" target="_blank" rel="noopener noreferrer">#13366</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
+<li>[Models] Update Databricks dependency extraction functionality to work with the <code>langchain-databricks</code> partner package. (<a href="https://github.com/mlflow/mlflow/pull/13266" target="_blank" rel="noopener noreferrer">#13266</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
 <li>[Model Registry] Fix retry and credential refresh issues with artifact downloads from the model registry (<a href="https://github.com/mlflow/mlflow/pull/12935" target="_blank" rel="noopener noreferrer">#12935</a>, <a href="https://github.com/rohitarun-db" target="_blank" rel="noopener noreferrer">@rohitarun-db</a>)</li>
 <li>[Tracking] Fix LangChain autologging so that langchain-community is not required for partner packages (<a href="https://github.com/mlflow/mlflow/pull/13172" target="_blank" rel="noopener noreferrer">#13172</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
 <li>[Artifacts] Fix issues with file removal for the local artifact repository (<a href="https://github.com/mlflow/mlflow/pull/13005" target="_blank" rel="noopener noreferrer">#13005</a>, <a href="https://github.com/rzalawad" target="_blank" rel="noopener noreferrer">@rzalawad</a>)</li>
@@ -67,6 +294,8 @@ MLflow Deployments Server, but have reconsidered and reverted the naming and nam
 <li>[Docs] Add guide for building custom GenAI apps with ChatModel (<a href="https://github.com/mlflow/mlflow/pull/13207" target="_blank" rel="noopener noreferrer">#13207</a>, <a href="https://github.com/BenWilson2" target="_blank" rel="noopener noreferrer">@BenWilson2</a>)</li>
 <li>[Docs] Add updates to the MLflow AI Gateway documentation (<a href="https://github.com/mlflow/mlflow/pull/13217" target="_blank" rel="noopener noreferrer">#13217</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
 <li>[Docs] Remove MLflow AI Gateway deprecation status (<a href="https://github.com/mlflow/mlflow/pull/13153" target="_blank" rel="noopener noreferrer">#13153</a>, <a href="https://github.com/BenWilson2" target="_blank" rel="noopener noreferrer">@BenWilson2</a>)</li>
+<li>[Docs] Add contribution guide for MLflow tracing integrations (<a href="https://github.com/mlflow/mlflow/pull/13333" target="_blank" rel="noopener noreferrer">#13333</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
+<li>[Docs] Add documentation regarding the <code>run_id</code> parameter within the <code>search_trace</code> API (<a href="https://github.com/mlflow/mlflow/pull/13251" target="_blank" rel="noopener noreferrer">#13251</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
 </ul>
 <p>Please try it out and report any issues on <a href="https://github.com/mlflow/mlflow/issues" target="_blank" rel="noopener noreferrer">the issue tracker</a>.</p>]]></content>
         <author>
@@ -640,161 +869,6 @@ MLflow Deployments Server, but have reconsidered and reverted the naming and nam
         <updated>2024-04-16T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[MLflow 2.12.0 has been yanked from PyPI due to a packaging issue. MLflow 2.12.1, with fixes applied, is its replacement.]]></summary>
         <content type="html"><![CDATA[<p>MLflow 2.12.0 has been yanked from PyPI due to a packaging issue. MLflow 2.12.1, with fixes applied, is its replacement.</p>]]></content>
-        <author>
-            <name>MLflow maintainers</name>
-            <uri>https://github.com/mlflow/mlflow.git</uri>
-        </author>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[MLflow 2.11.3]]></title>
-        <id>https://your-docusaurus-site.example.com/mlflow-website/releases/2.11.3</id>
-        <link href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.11.3"/>
-        <updated>2024-03-21T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[MLflow 2.11.3 is a patch release that addresses a security exploit with the Open Source MLflow tracking server and miscellaneous Databricks integration fixes]]></summary>
-        <content type="html"><![CDATA[<p>MLflow 2.11.3 is a patch release that addresses a security exploit with the Open Source MLflow tracking server and miscellaneous Databricks integration fixes</p>
-<p>Bug fixes:</p>
-<ul>
-<li>[Security] Address an LFI exploit related to misuse of url parameters (<a href="https://github.com/mlflow/mlflow/pull/11473" target="_blank" rel="noopener noreferrer">#11473</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
-<li>[Databricks] Fix an issue with Databricks Runtime version acquisition when deploying a model using Databricks Docker Container Services (<a href="https://github.com/mlflow/mlflow/pull/11483" target="_blank" rel="noopener noreferrer">#11483</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
-<li>[Databricks] Correct an issue with credential management within Databricks Model Serving (<a href="https://github.com/mlflow/mlflow/pull/11468" target="_blank" rel="noopener noreferrer">#11468</a>, <a href="https://github.com/victorsun123" target="_blank" rel="noopener noreferrer">@victorsun123</a>)</li>
-<li>[Models] Fix an issue with chat request validation for LangChain flavor (<a href="https://github.com/mlflow/mlflow/pull/11478" target="_blank" rel="noopener noreferrer">#11478</a>, <a href="https://github.com/BenWilson2" target="_blank" rel="noopener noreferrer">@BenWilson2</a>)</li>
-<li>[Models] Fixes for LangChain models that are logged as code (<a href="https://github.com/mlflow/mlflow/pull/11494" target="_blank" rel="noopener noreferrer">#11494</a>, <a href="https://github.com/mlflow/mlflow/pull/11436" target="_blank" rel="noopener noreferrer">#11436</a> <a href="https://github.com/sunishsheth2009" target="_blank" rel="noopener noreferrer">@sunishsheth2009</a>)</li>
-</ul>
-<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.11.3" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content>
-        <author>
-            <name>MLflow maintainers</name>
-            <uri>https://github.com/mlflow/mlflow.git</uri>
-        </author>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[MLflow 2.11.2]]></title>
-        <id>https://your-docusaurus-site.example.com/mlflow-website/releases/2.11.2</id>
-        <link href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.11.2"/>
-        <updated>2024-03-19T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[MLflow 2.11.2 is a patch release that introduces corrections for the support of custom transformer models, resolves LangChain integration problems, and includes several fixes to enhance stability.]]></summary>
-        <content type="html"><![CDATA[<p>MLflow 2.11.2 is a patch release that introduces corrections for the support of custom transformer models, resolves LangChain integration problems, and includes several fixes to enhance stability.</p>
-<p>Bug fixes:</p>
-<ul>
-<li>[Security] Address LFI exploit (<a href="https://github.com/mlflow/mlflow/pull/11376" target="_blank" rel="noopener noreferrer">#11376</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
-<li>[Models] Fix transformers models implementation to allow for custom model and component definitions to be loaded properly (<a href="https://github.com/mlflow/mlflow/pull/11412" target="_blank" rel="noopener noreferrer">#11412</a>, <a href="https://github.com/mlflow/mlflow/pull/11428" target="_blank" rel="noopener noreferrer">#11428</a> <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
-<li>[Models] Fix the LangChain flavor implementation to support defining an MLflow model as code (<a href="https://github.com/mlflow/mlflow/pull/11370" target="_blank" rel="noopener noreferrer">#11370</a>, <a href="https://github.com/sunishsheth2009" target="_blank" rel="noopener noreferrer">@sunishsheth2009</a>)</li>
-<li>[Models] Fix LangChain VectorSearch parsing errors (<a href="https://github.com/mlflow/mlflow/pull/11438" target="_blank" rel="noopener noreferrer">#11438</a>, <a href="https://github.com/victorsun123" target="_blank" rel="noopener noreferrer">@victorsun123</a>)</li>
-<li>[Models] Fix LangChain import issue with the community package (<a href="https://github.com/mlflow/mlflow/pull/11450" target="_blank" rel="noopener noreferrer">#11450</a>, <a href="https://github.com/sunishsheth2009" target="_blank" rel="noopener noreferrer">@sunishsheth2009</a>)</li>
-<li>[Models] Fix serialization errors with RunnableAssign in the LangChain flavor (<a href="https://github.com/mlflow/mlflow/pull/11358" target="_blank" rel="noopener noreferrer">#11358</a>, <a href="https://github.com/serena-ruan" target="_blank" rel="noopener noreferrer">@serena-ruan</a>)</li>
-<li>[Models] Address import issues with LangChain community for Databricks models (<a href="https://github.com/mlflow/mlflow/pull/11350" target="_blank" rel="noopener noreferrer">#11350</a>, <a href="https://github.com/liangz1" target="_blank" rel="noopener noreferrer">@liangz1</a>)</li>
-<li>[Registry] Fix model metadata sharing within Databricks Unity Catalog (<a href="https://github.com/mlflow/mlflow/pull/11357" target="_blank" rel="noopener noreferrer">#11357</a>, <a href="https://github.com/mlflow/mlflow/pull/11392" target="_blank" rel="noopener noreferrer">#11392</a> <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
-</ul>
-<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.11.2" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content>
-        <author>
-            <name>MLflow maintainers</name>
-            <uri>https://github.com/mlflow/mlflow.git</uri>
-        </author>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[MLflow 2.11.1]]></title>
-        <id>https://your-docusaurus-site.example.com/mlflow-website/releases/2.11.1</id>
-        <link href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.11.1"/>
-        <updated>2024-03-06T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[MLflow 2.11.1 is a patch release, containing fixes for some Databricks integrations and other various issues.]]></summary>
-        <content type="html"><![CDATA[<p>MLflow 2.11.1 is a patch release, containing fixes for some Databricks integrations and other various issues.</p>
-<p>Bug fixes:</p>
-<ul>
-<li>[UI] Add git commit hash back to the run page UI (<a href="https://github.com/mlflow/mlflow/pull/11324" target="_blank" rel="noopener noreferrer">#11324</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
-<li>[Databricks Integration] Explicitly import vectorstores and embeddings in databricks_dependencies (<a href="https://github.com/mlflow/mlflow/pull/11334" target="_blank" rel="noopener noreferrer">#11334</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
-<li>[Databricks Integration] Modify DBR version parsing logic (<a href="https://github.com/mlflow/mlflow/pull/11328" target="_blank" rel="noopener noreferrer">#11328</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
-</ul>
-<p>Small bug fixes and documentation updates:</p>
-<p><a href="https://github.com/mlflow/mlflow/pull/11336" target="_blank" rel="noopener noreferrer">#11336</a>, <a href="https://github.com/mlflow/mlflow/pull/11335" target="_blank" rel="noopener noreferrer">#11335</a>, <a href="https://github.com/harupy" target="_blank" rel="noopener noreferrer">@harupy</a>; <a href="https://github.com/mlflow/mlflow/pull/11303" target="_blank" rel="noopener noreferrer">#11303</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>; <a href="https://github.com/mlflow/mlflow/pull/11319" target="_blank" rel="noopener noreferrer">#11319</a>, <a href="https://github.com/BenWilson2" target="_blank" rel="noopener noreferrer">@BenWilson2</a>; <a href="https://github.com/mlflow/mlflow/pull/11306" target="_blank" rel="noopener noreferrer">#11306</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a></p>
-<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.11.1" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content>
-        <author>
-            <name>MLflow maintainers</name>
-            <uri>https://github.com/mlflow/mlflow.git</uri>
-        </author>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[MLflow 2.11.0]]></title>
-        <id>https://your-docusaurus-site.example.com/mlflow-website/releases/2.11.0</id>
-        <link href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.11.0"/>
-        <updated>2024-03-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[MLflow 2.11.0 includes several major features and improvements]]></summary>
-        <content type="html"><![CDATA[<p>MLflow 2.11.0 includes several major features and improvements</p>
-<p>With the MLflow 2.11.0 release, we're excited to bring a series of large and impactful features that span both GenAI and Deep Learning use cases.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="new-deep-learning-focused-improvements-in-the-mlflow-ui">New Deep Learning Focused Improvements in the MLflow UI<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.11.0#new-deep-learning-focused-improvements-in-the-mlflow-ui" class="hash-link" aria-label="Direct link to New Deep Learning Focused Improvements in the MLflow UI" title="Direct link to New Deep Learning Focused Improvements in the MLflow UI">​</a></h3>
-<p>The MLflow Tracking UI got an overhaul to better support the review and comparison of training runs for Deep Learning workloads. From grouping to large-scale metric plotting throughout
-the iterations of a DL model's training cycle, there are a large number of quality of life improvements to enhance your Deep Learning MLOps workflow.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="support-for-peft-unrestrictive-pipeline-logging-and-weight-less-model-logging-in-transformers">Support for PEFT, unrestrictive Pipeline logging, and weight-less model logging in transformers<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.11.0#support-for-peft-unrestrictive-pipeline-logging-and-weight-less-model-logging-in-transformers" class="hash-link" aria-label="Direct link to Support for PEFT, unrestrictive Pipeline logging, and weight-less model logging in transformers" title="Direct link to Support for PEFT, unrestrictive Pipeline logging, and weight-less model logging in transformers">​</a></h3>
-<p>Support for the popular <a href="https://www.mlflow.org/docs/latest/llms/transformers/guide/index.html#peft-models-in-mlflow-transformers-flavor" target="_blank" rel="noopener noreferrer">PEFT</a> library from HuggingFace is now available
-in the <code>mlflow.transformers</code> flavor. In addition to PEFT support, we've removed the restrictions on Pipeline types
-that can be logged to MLflow, as well as the ability to, when developing and testing models, log a transformers pipeline without copying foundational model weights. These
-enhancements strive to make the transformers flavor more useful for cutting-edge GenAI models, new pipeline types, and to simplify the development process of prompt engineering, fine-tuning,
-and to make iterative development faster and cheaper. Give the updated flavor a try today! (<a href="https://github.com/mlflow/mlflow/pull/11240" target="_blank" rel="noopener noreferrer">#11240</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="autologging-for-tensorflow-and-pytorch-now-supports-checkpointing-of-model-weights">Autologging for TensorFlow and PyTorch now supports checkpointing of model weights<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.11.0#autologging-for-tensorflow-and-pytorch-now-supports-checkpointing-of-model-weights" class="hash-link" aria-label="Direct link to Autologging for TensorFlow and PyTorch now supports checkpointing of model weights" title="Direct link to Autologging for TensorFlow and PyTorch now supports checkpointing of model weights">​</a></h3>
-<p>We've added support to both <a href="https://www.mlflow.org/docs/latest/python_api/mlflow.pytorch.html#mlflow.pytorch.autolog" target="_blank" rel="noopener noreferrer">PyTorch</a> and
-<a href="https://www.mlflow.org/docs/latest/python_api/mlflow.tensorflow.html#mlflow.tensorflow.autolog" target="_blank" rel="noopener noreferrer">TensorFlow</a> for automatic model weights checkpointing (including resumption from a
-previous state) for the auto logging implementations within both flavors. This highly requested feature allows you to automatically configure long-running Deep Learning training
-runs to keep a safe storage of your best epoch, eliminating the risk of a failure late in training from losing the state of the model optimization. (<a href="https://github.com/mlflow/mlflow/pull/11197" target="_blank" rel="noopener noreferrer">#11197</a>, <a href="https://github.com/mlflow/mlflow/pull/10935" target="_blank" rel="noopener noreferrer">#10935</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="chatmodel-interface-for-a-unified-chat-experience-with-pyfunc-models">ChatModel interface for a unified Chat experience with pyfunc models<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.11.0#chatmodel-interface-for-a-unified-chat-experience-with-pyfunc-models" class="hash-link" aria-label="Direct link to ChatModel interface for a unified Chat experience with pyfunc models" title="Direct link to ChatModel interface for a unified Chat experience with pyfunc models">​</a></h3>
-<p>We've added a new interface to Pyfunc for GenAI workloads. The new <code>ChatModel</code> interface allows for interacting with a deployed GenAI chat model as you would with any other provider.
-The simplified interface (no longer requiring conformance to a Pandas DataFrame input type) strives to unify the API interface experience. (<a href="https://github.com/mlflow/mlflow/pull/10820" target="_blank" rel="noopener noreferrer">#10820</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="keras-3-support-in-mlflow">Keras 3 support in MLflow<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.11.0#keras-3-support-in-mlflow" class="hash-link" aria-label="Direct link to Keras 3 support in MLflow" title="Direct link to Keras 3 support in MLflow">​</a></h3>
-<p>We now support Keras 3. This large overhaul of the Keras library introduced new fundamental changes to how Keras integrates with different DL frameworks, bringing with it
-a host of new functionality and interoperability. To learn more, see the <a href="https://www.mlflow.org/docs/latest/deep-learning/keras/quickstart/quickstart_keras.html" target="_blank" rel="noopener noreferrer">Keras 3.0 Tutorial</a>
-to start using the updated model flavor today! (<a href="https://github.com/mlflow/mlflow/pull/10830" target="_blank" rel="noopener noreferrer">#10830</a>, <a href="https://github.com/chenmoneygithub" target="_blank" rel="noopener noreferrer">@chenmoneygithub</a>)</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mistral-ai-models-are-now-available-in-the-mlflow-deployments-server">Mistral AI models are now available in the MLflow Deployments Server<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.11.0#mistral-ai-models-are-now-available-in-the-mlflow-deployments-server" class="hash-link" aria-label="Direct link to Mistral AI models are now available in the MLflow Deployments Server" title="Direct link to Mistral AI models are now available in the MLflow Deployments Server">​</a></h3>
-<p><a href="https://mistral.ai/" target="_blank" rel="noopener noreferrer">Mistral AI</a> has been added as a native <a href="https://www.mlflow.org/docs/latest/llms/deployments/index.html#providers" target="_blank" rel="noopener noreferrer">provider</a> for the MLflow Deployments Server. You can
-now create proxied connections to the Mistral AI services for completions and embeddings with their powerful GenAI models. (<a href="https://github.com/mlflow/mlflow/pull/11020" target="_blank" rel="noopener noreferrer">#11020</a>, <a href="https://github.com/thnguyendn" target="_blank" rel="noopener noreferrer">@thnguyendn</a>)</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mlflow-now-supports-the-openai-1x-sdk">MLflow now supports the OpenAI 1.x SDK<a href="https://your-docusaurus-site.example.com/mlflow-website/releases/2.11.0#mlflow-now-supports-the-openai-1x-sdk" class="hash-link" aria-label="Direct link to MLflow now supports the OpenAI 1.x SDK" title="Direct link to MLflow now supports the OpenAI 1.x SDK">​</a></h3>
-<p>We've added compatibility support for the OpenAI 1.x SDK. Whether you're using an OpenAI LLM for model evaluation or calling OpenAI within a LangChain model, you'll now be able to
-utilize the 1.x family of the OpenAI SDK without having to point to deprecated legacy APIs. (<a href="https://github.com/mlflow/mlflow/pull/11123" target="_blank" rel="noopener noreferrer">#11123</a>, <a href="https://github.com/harupy" target="_blank" rel="noopener noreferrer">@harupy</a>)</p>
-<p>Features:</p>
-<ul>
-<li>[UI] Revamp the MLflow Tracking UI for Deep Learning workflows, offering a more intuitive and efficient user experience (<a href="https://github.com/mlflow/mlflow/pull/11233" target="_blank" rel="noopener noreferrer">#11233</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
-<li>[Data] Introduce the ability to log datasets without loading them into memory, optimizing resource usage and processing time (<a href="https://github.com/mlflow/mlflow/pull/11172" target="_blank" rel="noopener noreferrer">#11172</a>, <a href="https://github.com/chenmoneygithub" target="_blank" rel="noopener noreferrer">@chenmoneygithub</a>)</li>
-<li>[Models] Introduce logging frequency controls for TensorFlow, aligning it with Keras for consistent performance monitoring (<a href="https://github.com/mlflow/mlflow/pull/11094" target="_blank" rel="noopener noreferrer">#11094</a>, <a href="https://github.com/chenmoneygithub" target="_blank" rel="noopener noreferrer">@chenmoneygithub</a>)</li>
-<li>[Models] Add PySpark DataFrame support in <code>mlflow.pyfunc.predict</code>, enhancing data compatibility and analysis options for batch inference (<a href="https://github.com/mlflow/mlflow/pull/10939" target="_blank" rel="noopener noreferrer">#10939</a>, <a href="https://github.com/ernestwong-db" target="_blank" rel="noopener noreferrer">@ernestwong-db</a>)</li>
-<li>[Models] Introduce new CLI commands for updating model requirements, facilitating easier maintenance, validation and updating of models without having to re-log (<a href="https://github.com/mlflow/mlflow/pull/11061" target="_blank" rel="noopener noreferrer">#11061</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
-<li>[Models] Update Embedding API for sentence transformers to ensure compatibility with OpenAI format, broadening model application scopes (<a href="https://github.com/mlflow/mlflow/pull/11019" target="_blank" rel="noopener noreferrer">#11019</a>, <a href="https://github.com/lu-wang-dl" target="_blank" rel="noopener noreferrer">@lu-wang-dl</a>)</li>
-<li>[Models] Improve input and signature support for text-generation models, optimizing for Chat and Completions tasks (<a href="https://github.com/mlflow/mlflow/pull/11027" target="_blank" rel="noopener noreferrer">#11027</a>, <a href="https://github.com/es94129" target="_blank" rel="noopener noreferrer">@es94129</a>)</li>
-<li>[Models] Enable chat and completions task outputs in the text-generation pipeline, expanding interactive capabilities (<a href="https://github.com/mlflow/mlflow/pull/10872" target="_blank" rel="noopener noreferrer">#10872</a>, <a href="https://github.com/es94129" target="_blank" rel="noopener noreferrer">@es94129</a>)</li>
-<li>[Tracking] Add node id to system metrics for enhanced logging in multi-node setups, improving diagnostics and monitoring (<a href="https://github.com/mlflow/mlflow/pull/11021" target="_blank" rel="noopener noreferrer">#11021</a>, <a href="https://github.com/chenmoneygithub" target="_blank" rel="noopener noreferrer">@chenmoneygithub</a>)</li>
-<li>[Tracking] Implement <code>mlflow.config.enable_async_logging</code> for asynchronous logging, improving log handling and system performance (<a href="https://github.com/mlflow/mlflow/pull/11138" target="_blank" rel="noopener noreferrer">#11138</a>, <a href="https://github.com/chenmoneygithub" target="_blank" rel="noopener noreferrer">@chenmoneygithub</a>)</li>
-<li>[Evaluate] Enhance model evaluation with endpoint URL support, streamlining performance assessments and integrations (<a href="https://github.com/mlflow/mlflow/pull/11262" target="_blank" rel="noopener noreferrer">#11262</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
-<li>[Deployments] Implement chat &amp; chat streaming support for Cohere, enhancing interactive model deployment capabilities (<a href="https://github.com/mlflow/mlflow/pull/10976" target="_blank" rel="noopener noreferrer">#10976</a>, <a href="https://github.com/gabrielfu" target="_blank" rel="noopener noreferrer">@gabrielfu</a>)</li>
-<li>[Deployments] Enable Cohere streaming support, allowing real-time interaction functionalities for the MLflow Deployments server with the Cohere provider (<a href="https://github.com/mlflow/mlflow/pull/10856" target="_blank" rel="noopener noreferrer">#10856</a>, <a href="https://github.com/gabrielfu" target="_blank" rel="noopener noreferrer">@gabrielfu</a>)</li>
-<li>[Docker / Scoring] Optimize Docker images for model serving, ensuring more efficient deployment and scalability (<a href="https://github.com/mlflow/mlflow/pull/10954" target="_blank" rel="noopener noreferrer">#10954</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
-<li>[Scoring] Support completions (<code>prompt</code>) and embeddings (<code>input</code>) format inputs in the scoring server, increasing model interaction flexibility (<a href="https://github.com/mlflow/mlflow/pull/10958" target="_blank" rel="noopener noreferrer">#10958</a>, <a href="https://github.com/es94129" target="_blank" rel="noopener noreferrer">@es94129</a>)</li>
-</ul>
-<p>Bug Fixes:</p>
-<ul>
-<li>[Model Registry] Correct the oversight of not utilizing the default credential file in model registry setups (<a href="https://github.com/mlflow/mlflow/pull/11261" target="_blank" rel="noopener noreferrer">#11261</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
-<li>[Model Registry] Address the visibility issue of aliases in the model versions table within the registered model detail page (<a href="https://github.com/mlflow/mlflow/pull/11223" target="_blank" rel="noopener noreferrer">#11223</a>, <a href="https://github.com/smurching" target="_blank" rel="noopener noreferrer">@smurching</a>)</li>
-<li>[Models] Ensure <code>load_context()</code> is called when enforcing <code>ChatModel</code> outputs so that all required external references are included in the model object instance (<a href="https://github.com/mlflow/mlflow/pull/11150" target="_blank" rel="noopener noreferrer">#11150</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
-<li>[Models] Rectify the keras output dtype in signature mismatches, ensuring data consistency and accuracy (<a href="https://github.com/mlflow/mlflow/pull/11230" target="_blank" rel="noopener noreferrer">#11230</a>, <a href="https://github.com/chenmoneygithub" target="_blank" rel="noopener noreferrer">@chenmoneygithub</a>)</li>
-<li>[Models] Resolve spark model loading failures, enhancing model reliability and accessibility (<a href="https://github.com/mlflow/mlflow/pull/11227" target="_blank" rel="noopener noreferrer">#11227</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
-<li>[Models] Eliminate false warnings for missing signatures in Databricks, improving the user experience and model validation processes (<a href="https://github.com/mlflow/mlflow/pull/11181" target="_blank" rel="noopener noreferrer">#11181</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
-<li>[Models] Implement a timeout for signature/requirement inference during Transformer model logging, optimizing the logging process and avoiding delays (<a href="https://github.com/mlflow/mlflow/pull/11037" target="_blank" rel="noopener noreferrer">#11037</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
-<li>[Models] Address the missing dtype issue for transformer pipelines, ensuring data integrity and model accuracy (<a href="https://github.com/mlflow/mlflow/pull/10979" target="_blank" rel="noopener noreferrer">#10979</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
-<li>[Models] Correct non-idempotent predictions due to in-place updates to model-config, stabilizing model outputs (<a href="https://github.com/mlflow/mlflow/pull/11014" target="_blank" rel="noopener noreferrer">#11014</a>, <a href="https://github.com/B-Step62" target="_blank" rel="noopener noreferrer">@B-Step62</a>)</li>
-<li>[Models] Fix an issue where specifying <code>torch.dtype</code> as a string was not being applied correctly to the underlying transformers model (<a href="https://github.com/mlflow/mlflow/pull/11297" target="_blank" rel="noopener noreferrer">#11297</a>, <a href="https://github.com/mlflow/mlflow/pull/11295" target="_blank" rel="noopener noreferrer">#11295</a>, <a href="https://github.com/harupy" target="_blank" rel="noopener noreferrer">@harupy</a>)</li>
-<li>[Tracking] Fix <code>mlflow.evaluate</code> <code>col_mapping</code> bug for non-LLM/custom metrics, ensuring accurate evaluation and metric calculation (<a href="https://github.com/mlflow/mlflow/pull/11156" target="_blank" rel="noopener noreferrer">#11156</a>, <a href="https://github.com/sunishsheth2009" target="_blank" rel="noopener noreferrer">@sunishsheth2009</a>)</li>
-<li>[Tracking] Resolve the <code>TensorInfo</code> TypeError exception message issue, ensuring clarity and accuracy in error reporting for users (<a href="https://github.com/mlflow/mlflow/pull/10953" target="_blank" rel="noopener noreferrer">#10953</a>, <a href="https://github.com/leecs0503" target="_blank" rel="noopener noreferrer">@leecs0503</a>)</li>
-<li>[Tracking] Enhance <code>RestException</code> objects to be picklable, improving their usability in distributed computing scenarios where serialization is essential (<a href="https://github.com/mlflow/mlflow/pull/10936" target="_blank" rel="noopener noreferrer">#10936</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
-<li>[Tracking] Address the handling of unrecognized response error codes, ensuring robust error processing and improved user feedback in edge cases (<a href="https://github.com/mlflow/mlflow/pull/10918" target="_blank" rel="noopener noreferrer">#10918</a>, <a href="https://github.com/chenmoneygithub" target="_blank" rel="noopener noreferrer">@chenmoneygithub</a>)</li>
-<li>[Spark] Update hardcoded <code>io.delta:delta-spark_2.12:3.0.0</code> dependency to the correct scala version, aligning dependencies with project requirements (<a href="https://github.com/mlflow/mlflow/pull/11149" target="_blank" rel="noopener noreferrer">#11149</a>, <a href="https://github.com/WeichenXu123" target="_blank" rel="noopener noreferrer">@WeichenXu123</a>)</li>
-<li>[Server-infra] Adapt to newer versions of python by avoiding <code>importlib.metadata.entry_points().get</code>, enhancing compatibility and stability (<a href="https://github.com/mlflow/mlflow/pull/10752" target="_blank" rel="noopener noreferrer">#10752</a>, <a href="https://github.com/raphaelauv" target="_blank" rel="noopener noreferrer">@raphaelauv</a>)</li>
-<li>[Server-infra / Tracking] Introduce an environment variable to disable mlflow configuring logging on import, improving configurability and user control (<a href="https://github.com/mlflow/mlflow/pull/11137" target="_blank" rel="noopener noreferrer">#11137</a>, <a href="https://github.com/jmahlik" target="_blank" rel="noopener noreferrer">@jmahlik</a>)</li>
-<li>[Auth] Enhance auth validation for <code>mlflow.login()</code>, streamlining the authentication process and improving security (<a href="https://github.com/mlflow/mlflow/pull/11039" target="_blank" rel="noopener noreferrer">#11039</a>, <a href="https://github.com/chenmoneygithub" target="_blank" rel="noopener noreferrer">@chenmoneygithub</a>)</li>
-</ul>
-<p>Documentation Updates:</p>
-<ul>
-<li>[Docs] Introduce a comprehensive notebook demonstrating the use of ChatModel with Transformers and Pyfunc, providing users with practical insights and guidelines for leveraging these models (<a href="https://github.com/mlflow/mlflow/pull/11239" target="_blank" rel="noopener noreferrer">#11239</a>, <a href="https://github.com/daniellok-db" target="_blank" rel="noopener noreferrer">@daniellok-db</a>)</li>
-<li>[Tracking / Docs] Stabilize the dataset logging APIs, removing the experimental status (<a href="https://github.com/mlflow/mlflow/pull/11229" target="_blank" rel="noopener noreferrer">#11229</a>, <a href="https://github.com/dbczumar" target="_blank" rel="noopener noreferrer">@dbczumar</a>)</li>
-<li>[Docs] Revise and update the documentation on authentication database configuration, offering clearer instructions and better support for setting up secure authentication mechanisms (<a href="https://github.com/mlflow/mlflow/pull/11176" target="_blank" rel="noopener noreferrer">#11176</a>, <a href="https://github.com/gabrielfu" target="_blank" rel="noopener noreferrer">@gabrielfu</a>)</li>
-<li>[Docs] Publish a new guide and tutorial for MLflow data logging and <code>log_input</code>, enriching the documentation with actionable advice and examples for effective data handling (<a href="https://github.com/mlflow/mlflow/pull/10956" target="_blank" rel="noopener noreferrer">#10956</a>, <a href="https://github.com/BenWilson2" target="_blank" rel="noopener noreferrer">@BenWilson2</a>)</li>
-<li>[Docs] Upgrade the documentation visuals by replacing low-resolution and poorly dithered GIFs with high-quality HTML5 videos, significantly enhancing the learning experience (<a href="https://github.com/mlflow/mlflow/pull/11051" target="_blank" rel="noopener noreferrer">#11051</a>, <a href="https://github.com/BenWilson2" target="_blank" rel="noopener noreferrer">@BenWilson2</a>)</li>
-<li>[Docs / Examples] Correct the compatibility matrix for OpenAI in MLflow Deployments Server documentation, providing users with accurate integration details and supporting smoother deployments (<a href="https://github.com/mlflow/mlflow/pull/11015" target="_blank" rel="noopener noreferrer">#11015</a>, <a href="https://github.com/BenWilson2" target="_blank" rel="noopener noreferrer">@BenWilson2</a>)</li>
-</ul>
-<p>For a comprehensive list of changes, see the <a href="https://github.com/mlflow/mlflow/releases/tag/v2.11.0" target="_blank" rel="noopener noreferrer">release change log</a>, and check out the latest documentation on <a href="http://mlflow.org/" target="_blank" rel="noopener noreferrer">mlflow.org</a>.</p>]]></content>
         <author>
             <name>MLflow maintainers</name>
             <uri>https://github.com/mlflow/mlflow.git</uri>

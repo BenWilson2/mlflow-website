@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="MLflow 2.17.1.dev0 documentation" href="../../index.html"/>
+    <link rel="top" title="MLflow 2.19.1.dev0 documentation" href="../../index.html"/>
         <link rel="up" title="LLMs" href="../index.html"/>
         <link rel="next" title="Building a Tool-calling Agent with LlamaIndex Workflow and MLflow" href="/notebooks/llama_index_workflow_tutorial.html"/>
         <link rel="prev" title="LangChain within MLflow (Experimental)" href="/../langchain/guide/index.html"/> 
@@ -75,7 +75,7 @@
     <a href="../../index.html" class="wy-nav-top-logo"
       ><img src="../../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.17.1.dev0</span>
+    <span class="version">2.19.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -135,6 +135,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#faq">FAQ</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../dspy/index.html">MLflow DSPy Flavor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../index.html#explore-the-native-llm-flavors">Explore the Native LLM Flavors</a></li>
 </ul>
 </li>
@@ -296,7 +297,7 @@ query and returns a response based on the index. The <code class="docutils liter
 <h3><code class="docutils literal notranslate"><span class="pre">Settings</span></code><a class="headerlink" href="#settings" title="Permalink to this headline"> </a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">Settings</span></code> object is a global service context that bundles commonly used resources throughout the
 LlamaIndex application. It includes settings such as the LLM model, embedding model, callbacks, and more. When logging a LlamaIndex index/engine/workflow, MLflow tracks
-the state of the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> object so that you can easily reproduce the same result when loading the model back for inference.</p>
+the state of the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> object so that you can easily reproduce the same result when loading the model back for inference (note that some objects like API keys, non-serializable objects, etc., are not tracked).</p>
 </div>
 </div>
 <div class="section" id="usage">
@@ -598,7 +599,7 @@ models to be used by engines.</p>
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../../',
-      VERSION:'2.17.1.dev0',
+      VERSION:'2.19.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

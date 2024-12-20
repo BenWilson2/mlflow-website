@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="#"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="MLflow 2.17.1.dev0 documentation" href="index.html"/> 
+    <link rel="top" title="MLflow 2.19.1.dev0 documentation" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -73,7 +73,7 @@
     <a href="index.html" class="wy-nav-top-logo"
       ><img src="_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.17.1.dev0</span>
+    <span class="version">2.19.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -477,6 +477,13 @@
 </li>
       </ul></li>
       <li>
+    --env &lt;env&gt;
+
+      <ul>
+        <li><a href="cli.html#cmdoption-mlflow-models-predict-env">mlflow-models-predict command line option</a>
+</li>
+      </ul></li>
+      <li>
     --env-manager &lt;env_manager&gt;
 
       <ul>
@@ -849,6 +856,8 @@
         <li><a href="cli.html#cmdoption-mlflow-run-P">mlflow-run command line option</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     --pip-requirements-override &lt;pip_requirements_override&gt;
 
@@ -856,8 +865,6 @@
         <li><a href="cli.html#cmdoption-mlflow-models-predict-r">mlflow-models-predict command line option</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     --port &lt;port&gt;
 
@@ -1514,14 +1521,16 @@
 </li>
       <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.AnthropicConfig">AnthropicConfig (class in mlflow.gateway.config)</a>
 </li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.schema.AnyType">AnyType (class in mlflow.types.schema)</a>
+</li>
       <li><a href="python_api/mlflow.metrics.html#mlflow.metrics.ari_grade_level">ari_grade_level() (in module mlflow.metrics)</a>
+</li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Array">Array (class in mlflow.types.schema)</a>
 </li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.Experiment.artifact_location">artifact_location() (mlflow.entities.Experiment property)</a>
 </li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.model.ModelInfo.artifact_path">artifact_path() (mlflow.models.model.ModelInfo property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.RunInfo.artifact_uri">artifact_uri() (mlflow.entities.RunInfo property)</a>
 </li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.EvaluationResult.artifacts">artifacts() (mlflow.models.EvaluationResult property)</a>
@@ -1530,26 +1539,38 @@
         <li><a href="python_api/mlflow.pyfunc.html#mlflow.pyfunc.PythonModelContext.artifacts">(mlflow.pyfunc.PythonModelContext property)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="python_api/mlflow.types.html#mlflow.types.Schema.as_spark_schema">as_spark_schema() (mlflow.types.Schema method)</a>
 </li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.SpanEvent.attributes">attributes (mlflow.entities.SpanEvent attribute)</a>
 </li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.Span.attributes">attributes() (mlflow.entities.Span property)</a>
 </li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.AudioContentPart">AudioContentPart (class in mlflow.types.chat)</a>
+</li>
       <li><a href="auth/python-api.html#mlflow.server.auth.client.AuthServiceClient">AuthServiceClient (class in mlflow.server.auth.client)</a>
 </li>
       <li><a href="python_api/mlflow.html#mlflow.autolog">autolog() (in module mlflow)</a>
 
       <ul>
+        <li><a href="python_api/mlflow.anthropic.html#mlflow.anthropic.autolog">(in module mlflow.anthropic)</a>
+</li>
         <li><a href="python_api/mlflow.autogen.html#mlflow.autogen.autolog">(in module mlflow.autogen)</a>
+</li>
+        <li><a href="python_api/mlflow.crewai.html#mlflow.crewai.autolog">(in module mlflow.crewai)</a>
+</li>
+        <li><a href="python_api/mlflow.dspy.html#mlflow.dspy.autolog">(in module mlflow.dspy)</a>
 </li>
         <li><a href="python_api/mlflow.fastai.html#mlflow.fastai.autolog">(in module mlflow.fastai)</a>
 </li>
-        <li><a href="python_api/mlflow.gluon.html#mlflow.gluon.autolog">(in module mlflow.gluon)</a>
+        <li><a href="python_api/mlflow.gemini.html#mlflow.gemini.autolog">(in module mlflow.gemini)</a>
 </li>
         <li><a href="python_api/mlflow.langchain.html#mlflow.langchain.autolog">(in module mlflow.langchain)</a>
 </li>
         <li><a href="python_api/mlflow.lightgbm.html#mlflow.lightgbm.autolog">(in module mlflow.lightgbm)</a>
+</li>
+        <li><a href="python_api/mlflow.litellm.html#mlflow.litellm.autolog">(in module mlflow.litellm)</a>
 </li>
         <li><a href="python_api/mlflow.llama_index.html#mlflow.llama_index.autolog">(in module mlflow.llama_index)</a>
 </li>
@@ -1606,19 +1627,25 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="python_api/mlflow.deployments.html#mlflow.deployments.BaseDeploymentClient">BaseDeploymentClient (class in mlflow.deployments)</a>
 </li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.BaseModel">BaseModel (class in mlflow.types.chat)</a>
+</li>
       <li><a href="python_api/mlflow.recipes.html#mlflow.recipes.recipe.BaseRecipe">BaseRecipe (class in mlflow.recipes.recipe)</a>
 </li>
       <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.Provider.BEDROCK">BEDROCK (mlflow.gateway.config.Provider attribute)</a>
 </li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.DataType.binary">binary (mlflow.types.DataType attribute)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="python_api/mlflow.types.html#mlflow.types.DataType.binary">binary (mlflow.types.DataType attribute)</a>
+      <li><a href="python_api/mlflow.metrics.html#mlflow.metrics.bleu">bleu() (in module mlflow.metrics)</a>
 </li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.DataType.boolean">boolean (mlflow.types.DataType attribute)</a>
 </li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.build_docker">build_docker() (in module mlflow.models)</a>
 </li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.FlavorBackend.build_image">build_image() (mlflow.models.FlavorBackend method)</a>
+</li>
+      <li><a href="python_api/mlflow.pyfunc.html#mlflow.pyfunc.build_model_env">build_model_env() (in module mlflow.pyfunc)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1640,7 +1667,17 @@
 </li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ChatChoice">ChatChoice (class in mlflow.types.llm)</a>
 </li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ChatChoiceDelta">ChatChoiceDelta (class in mlflow.types.llm)</a>
+</li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ChatChoiceLogProbs">ChatChoiceLogProbs (class in mlflow.types.llm)</a>
+</li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ChatChunkChoice">ChatChunkChoice (class in mlflow.types.llm)</a>
+</li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ChatCompletionChunk">ChatCompletionChunk (class in mlflow.types.llm)</a>
+</li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ChatCompletionRequest">ChatCompletionRequest (class in mlflow.types.llm)</a>
+</li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ChatCompletionResponse">ChatCompletionResponse (class in mlflow.types.llm)</a>
 </li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ChatMessage">ChatMessage (class in mlflow.types.llm)</a>
 </li>
@@ -1648,9 +1685,9 @@
 </li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ChatParams">ChatParams (class in mlflow.types.llm)</a>
 </li>
-      <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ChatRequest">ChatRequest (class in mlflow.types.llm)</a>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.ChatTool">ChatTool (class in mlflow.types.chat)</a>
 </li>
-      <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ChatResponse">ChatResponse (class in mlflow.types.llm)</a>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.ChatTools">ChatTools (class in mlflow.types.chat)</a>
 </li>
       <li><a href="python_api/mlflow.recipes.html#mlflow.recipes.recipe.BaseRecipe.clean">clean() (mlflow.recipes.recipe.BaseRecipe method)</a>
 </li>
@@ -1670,14 +1707,14 @@
 </li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.EvaluationArtifact.content">content() (mlflow.models.EvaluationArtifact property)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.NoOpSpan.context">context() (mlflow.entities.NoOpSpan property)</a>
 </li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.convert_input_example_to_serving_input">convert_input_example_to_serving_input() (in module mlflow.models)</a>
 </li>
       <li><a href="python_api/mlflow.client.html#mlflow.client.MlflowClient.copy_model_version">copy_model_version() (mlflow.client.MlflowClient method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="python_api/mlflow.deployments.html#mlflow.deployments.BaseDeploymentClient.create_deployment">create_deployment() (mlflow.deployments.BaseDeploymentClient method)</a>
 
       <ul>
@@ -1824,8 +1861,6 @@
 </li>
       <li><a href="auth/python-api.html#mlflow.server.auth.client.AuthServiceClient.delete_registered_model_permission">delete_registered_model_permission() (mlflow.server.auth.client.AuthServiceClient method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="python_api/mlflow.client.html#mlflow.client.MlflowClient.delete_registered_model_tag">delete_registered_model_tag() (mlflow.client.MlflowClient method)</a>
 </li>
       <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.delete_route">delete_route() (in module mlflow.gateway)</a>
@@ -1836,6 +1871,8 @@
         <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.MlflowGatewayClient.delete_route">(mlflow.gateway.MlflowGatewayClient method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="python_api/mlflow.html#mlflow.delete_run">delete_run() (in module mlflow)</a>
 
       <ul>
@@ -1890,6 +1927,8 @@
       </ul></li>
       <li><a href="python_api/mlflow.tracing.html#mlflow.tracing.disable">disable() (in module mlflow.tracing)</a>
 </li>
+      <li><a href="python_api/mlflow.tracing.html#mlflow.tracing.disable_notebook_display">disable_notebook_display() (in module mlflow.tracing)</a>
+</li>
       <li><a href="python_api/mlflow.html#mlflow.disable_system_metrics_logging">disable_system_metrics_logging() (in module mlflow)</a>
 
       <ul>
@@ -1913,7 +1952,13 @@
       <li><a href="python_api/mlflow.data.html#mlflow.data.huggingface_dataset.HuggingFaceDataset.ds">ds() (mlflow.data.huggingface_dataset.HuggingFaceDataset property)</a>
 </li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.ParamSpec.dtype">dtype() (mlflow.types.ParamSpec property)</a>
+
+      <ul>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Array.dtype">(mlflow.types.schema.Array property)</a>
 </li>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Property.dtype">(mlflow.types.schema.Property property)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -1925,6 +1970,8 @@
       <li><a href="python_api/mlflow.tracing.html#mlflow.tracing.enable">enable() (in module mlflow.tracing)</a>
 </li>
       <li><a href="python_api/mlflow.config.html#mlflow.config.enable_async_logging">enable_async_logging() (in module mlflow.config)</a>
+</li>
+      <li><a href="python_api/mlflow.tracing.html#mlflow.tracing.enable_notebook_display">enable_notebook_display() (in module mlflow.tracing)</a>
 </li>
       <li><a href="python_api/mlflow.html#mlflow.enable_system_metrics_logging">enable_system_metrics_logging() (in module mlflow)</a>
 
@@ -1952,6 +1999,12 @@
 </li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.ParamSpec.enforce_param_datatype">enforce_param_datatype() (mlflow.types.ParamSpec class method)</a>
 </li>
+      <li><a href="python_api/mlflow.models.html#mlflow.models.Model.env_vars">env_vars() (mlflow.models.Model property)</a>
+
+      <ul>
+        <li><a href="python_api/mlflow.models.html#mlflow.models.model.ModelInfo.env_vars">(mlflow.models.model.ModelInfo property)</a>
+</li>
+      </ul></li>
       <li><a href="python_api/mlflow.pyfunc.html#mlflow.pyfunc.EnvType">EnvType (class in mlflow.pyfunc)</a>
 </li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.SpanStatusCode.ERROR">ERROR (mlflow.entities.SpanStatusCode attribute)</a>
@@ -1962,10 +2015,10 @@
         <li><a href="python_api/mlflow.models.html#mlflow.models.evaluate">(in module mlflow.models)</a>
 </li>
       </ul></li>
-      <li><a href="python_api/mlflow.models.html#mlflow.models.EvaluationArtifact">EvaluationArtifact (class in mlflow.models)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="python_api/mlflow.models.html#mlflow.models.EvaluationArtifact">EvaluationArtifact (class in mlflow.models)</a>
+</li>
       <li><a href="python_api/mlflow.data.html#mlflow.data.evaluation_dataset.EvaluationDataset">EvaluationDataset (class in mlflow.data.evaluation_dataset)</a>
 </li>
       <li><a href="python_api/mlflow.metrics.html#mlflow.metrics.genai.EvaluationExample">EvaluationExample (class in mlflow.metrics.genai)</a>
@@ -2109,6 +2162,14 @@
       <ul>
         <li><a href="python_api/mlflow.types.html#mlflow.types.ParamSpec.from_json_dict">(mlflow.types.ParamSpec class method)</a>
 </li>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Array.from_json_dict">(mlflow.types.schema.Array class method)</a>
+</li>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Map.from_json_dict">(mlflow.types.schema.Map class method)</a>
+</li>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Object.from_json_dict">(mlflow.types.schema.Object class method)</a>
+</li>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Property.from_json_dict">(mlflow.types.schema.Property class method)</a>
+</li>
         <li><a href="python_api/mlflow.types.html#mlflow.types.TensorSpec.from_json_dict">(mlflow.types.TensorSpec class method)</a>
 </li>
       </ul></li>
@@ -2174,12 +2235,20 @@
       </ul></li>
       <li><a href="python_api/mlflow.data.html#mlflow.data.tensorflow_dataset.from_tensorflow">from_tensorflow() (in module mlflow.data.tensorflow_dataset)</a>
 </li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.Function">Function (class in mlflow.types.chat)</a>
+</li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.ResourceType.FUNCTION">FUNCTION (mlflow.models.ResourceType attribute)</a>
+</li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.FunctionParams">FunctionParams (class in mlflow.types.chat)</a>
 </li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.llm.FunctionToolCallArguments">FunctionToolCallArguments (class in mlflow.types.llm)</a>
 </li>
-      <li><a href="python_api/mlflow.types.html#mlflow.types.llm.FunctionToolDefinition">FunctionToolDefinition (class in mlflow.types.llm)</a>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.FunctionToolDefinition">FunctionToolDefinition (class in mlflow.types.chat)</a>
+
+      <ul>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.llm.FunctionToolDefinition">(class in mlflow.types.llm)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -2197,6 +2266,8 @@
       <li><a href="python_api/mlflow.models.html#mlflow.models.FlavorBackend.generate_dockerfile">generate_dockerfile() (mlflow.models.FlavorBackend method)</a>
 </li>
       <li><a href="python_api/mlflow.transformers.html#mlflow.transformers.generate_signature_output">generate_signature_output() (in module mlflow.transformers)</a>
+</li>
+      <li><a href="python_api/mlflow.models.html#mlflow.models.ResourceType.GENIE_SPACE">GENIE_SPACE (mlflow.models.ResourceType attribute)</a>
 </li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.ModelConfig.get">get() (mlflow.models.ModelConfig method)</a>
 </li>
@@ -2220,8 +2291,6 @@
         <li><a href="python_api/mlflow.dspy.html#mlflow.dspy.get_default_conda_env">(in module mlflow.dspy)</a>
 </li>
         <li><a href="python_api/mlflow.fastai.html#mlflow.fastai.get_default_conda_env">(in module mlflow.fastai)</a>
-</li>
-        <li><a href="python_api/mlflow.gluon.html#mlflow.gluon.get_default_conda_env">(in module mlflow.gluon)</a>
 </li>
         <li><a href="python_api/mlflow.h2o.html#mlflow.h2o.get_default_conda_env">(in module mlflow.h2o)</a>
 </li>
@@ -2278,8 +2347,6 @@
         <li><a href="python_api/mlflow.dspy.html#mlflow.dspy.get_default_pip_requirements">(in module mlflow.dspy)</a>
 </li>
         <li><a href="python_api/mlflow.fastai.html#mlflow.fastai.get_default_pip_requirements">(in module mlflow.fastai)</a>
-</li>
-        <li><a href="python_api/mlflow.gluon.html#mlflow.gluon.get_default_pip_requirements">(in module mlflow.gluon)</a>
 </li>
         <li><a href="python_api/mlflow.h2o.html#mlflow.h2o.get_default_pip_requirements">(in module mlflow.h2o)</a>
 </li>
@@ -2528,6 +2595,10 @@
 </li>
       <li><a href="python_api/mlflow.html#mlflow.Image">Image (class in mlflow)</a>
 </li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.ImageContentPart">ImageContentPart (class in mlflow.types.chat)</a>
+</li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.ImageUrl">ImageUrl (class in mlflow.types.chat)</a>
+</li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.infer_pip_requirements">infer_pip_requirements() (in module mlflow.models)</a>
 </li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.infer_signature">infer_signature() (in module mlflow.models)</a>
@@ -2543,6 +2614,8 @@
       <li><a href="python_api/mlflow.types.html#mlflow.types.Schema.input_types">input_types() (mlflow.types.Schema method)</a>
 </li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.Schema.input_types_dict">input_types_dict() (mlflow.types.Schema method)</a>
+</li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.InputAudio">InputAudio (class in mlflow.types.chat)</a>
 </li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.Run.inputs">inputs() (mlflow.entities.Run property)</a>
 
@@ -2624,6 +2697,8 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ChatParams.keys">keys() (mlflow.types.llm.ChatParams class method)</a>
+</li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.RunStatus.KILLED">KILLED (mlflow.entities.RunStatus attribute)</a>
 </li>
   </ul></td>
@@ -2757,8 +2832,6 @@
 </li>
         <li><a href="python_api/mlflow.fastai.html#mlflow.fastai.load_model">(in module mlflow.fastai)</a>
 </li>
-        <li><a href="python_api/mlflow.gluon.html#mlflow.gluon.load_model">(in module mlflow.gluon)</a>
-</li>
         <li><a href="python_api/mlflow.h2o.html#mlflow.h2o.load_model">(in module mlflow.h2o)</a>
 </li>
         <li><a href="python_api/mlflow.johnsnowlabs.html#mlflow.johnsnowlabs.load_model">(in module mlflow.johnsnowlabs)</a>
@@ -2879,8 +2952,6 @@
 </li>
         <li><a href="python_api/mlflow.fastai.html#mlflow.fastai.log_model">(in module mlflow.fastai)</a>
 </li>
-        <li><a href="python_api/mlflow.gluon.html#mlflow.gluon.log_model">(in module mlflow.gluon)</a>
-</li>
         <li><a href="python_api/mlflow.h2o.html#mlflow.h2o.log_model">(in module mlflow.h2o)</a>
 </li>
         <li><a href="python_api/mlflow.johnsnowlabs.html#mlflow.johnsnowlabs.log_model">(in module mlflow.johnsnowlabs)</a>
@@ -2970,6 +3041,8 @@
         <li><a href="python_api/mlflow.models.html#mlflow.models.make_metric">(in module mlflow.models)</a>
 </li>
       </ul></li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Map">Map (class in mlflow.types.schema)</a>
+</li>
       <li><a href="python_api/mlflow.metrics.html#mlflow.metrics.mape">mape() (in module mlflow.metrics)</a>
 </li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.LifecycleStage.matches_view_type">matches_view_type() (mlflow.entities.LifecycleStage class method)</a>
@@ -3491,6 +3564,8 @@
       <ul>
         <li><a href="cli.html#cmdoption-mlflow-models-predict-t">--content-type &lt;content_type&gt;</a>
 </li>
+        <li><a href="cli.html#cmdoption-mlflow-models-predict-env">--env &lt;env&gt;</a>
+</li>
         <li><a href="cli.html#cmdoption-mlflow-models-predict-env-manager">--env-manager &lt;env_manager&gt;</a>
 </li>
         <li><a href="cli.html#cmdoption-mlflow-models-predict-i">--input-path &lt;input_path&gt;</a>
@@ -3858,6 +3933,8 @@
         <li><a href="cli.html#cmdoption-mlflow-sagemaker-terminate-transform-job-r">-r</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     mlflow-server command line option
 
@@ -3901,8 +3978,13 @@
         <li><a href="cli.html#cmdoption-mlflow-server-w">-w</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    mlflow.anthropic
+
+      <ul>
+        <li><a href="python_api/mlflow.anthropic.html#module-mlflow.anthropic">module</a>
+</li>
+      </ul></li>
       <li>
     mlflow.artifacts
 
@@ -3936,6 +4018,13 @@
 
       <ul>
         <li><a href="python_api/mlflow.config.html#module-mlflow.config">module</a>
+</li>
+      </ul></li>
+      <li>
+    mlflow.crewai
+
+      <ul>
+        <li><a href="python_api/mlflow.crewai.html#module-mlflow.crewai">module</a>
 </li>
       </ul></li>
       <li>
@@ -4025,10 +4114,10 @@
 </li>
       </ul></li>
       <li>
-    mlflow.gluon
+    mlflow.gemini
 
       <ul>
-        <li><a href="python_api/mlflow.gluon.html#module-mlflow.gluon">module</a>
+        <li><a href="python_api/mlflow.gemini.html#module-mlflow.gemini">module</a>
 </li>
       </ul></li>
       <li>
@@ -4085,6 +4174,13 @@
 
       <ul>
         <li><a href="python_api/mlflow.lightgbm.html#module-mlflow.lightgbm">module</a>
+</li>
+      </ul></li>
+      <li>
+    mlflow.litellm
+
+      <ul>
+        <li><a href="python_api/mlflow.litellm.html#module-mlflow.litellm">module</a>
 </li>
       </ul></li>
       <li>
@@ -4305,6 +4401,13 @@
 </li>
       </ul></li>
       <li>
+    mlflow.types.chat
+
+      <ul>
+        <li><a href="python_api/mlflow.types.html#module-mlflow.types.chat">module</a>
+</li>
+      </ul></li>
+      <li>
     mlflow.types.llm
 
       <ul>
@@ -4316,6 +4419,13 @@
 
       <ul>
         <li><a href="python_api/mlflow.types.html#module-mlflow.types.llm._BaseDataclass">module</a>
+</li>
+      </ul></li>
+      <li>
+    mlflow.types.schema
+
+      <ul>
+        <li><a href="python_api/mlflow.types.html#module-mlflow.types.schema">module</a>
 </li>
       </ul></li>
       <li>
@@ -4613,54 +4723,6 @@
         <li><a href="python_api/mlflow.pyfunc.html#mlflow.pyfunc.PythonModelContext.model_config">(mlflow.pyfunc.PythonModelContext property)</a>
 </li>
       </ul></li>
-      <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.AI21LabsConfig.model_fields">model_fields (mlflow.gateway.config.AI21LabsConfig attribute)</a>
-
-      <ul>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.AliasedConfigModel.model_fields">(mlflow.gateway.config.AliasedConfigModel attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.AmazonBedrockConfig.model_fields">(mlflow.gateway.config.AmazonBedrockConfig attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.AnthropicConfig.model_fields">(mlflow.gateway.config.AnthropicConfig attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.AWSBaseConfig.model_fields">(mlflow.gateway.config.AWSBaseConfig attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.AWSIdAndKey.model_fields">(mlflow.gateway.config.AWSIdAndKey attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.AWSRole.model_fields">(mlflow.gateway.config.AWSRole attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.CohereConfig.model_fields">(mlflow.gateway.config.CohereConfig attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.GatewayConfig.model_fields">(mlflow.gateway.config.GatewayConfig attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.HuggingFaceTextGenerationInferenceConfig.model_fields">(mlflow.gateway.config.HuggingFaceTextGenerationInferenceConfig attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.Limit.model_fields">(mlflow.gateway.config.Limit attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.LimitsConfig.model_fields">(mlflow.gateway.config.LimitsConfig attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.MistralConfig.model_fields">(mlflow.gateway.config.MistralConfig attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.MlflowModelServingConfig.model_fields">(mlflow.gateway.config.MlflowModelServingConfig attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.Model.model_fields">(mlflow.gateway.config.Model attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.ModelInfo.model_fields">(mlflow.gateway.config.ModelInfo attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.MosaicMLConfig.model_fields">(mlflow.gateway.config.MosaicMLConfig attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.OpenAIConfig.model_fields">(mlflow.gateway.config.OpenAIConfig attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.PaLMConfig.model_fields">(mlflow.gateway.config.PaLMConfig attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.Route.model_fields">(mlflow.gateway.config.Route attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.RouteConfig.model_fields">(mlflow.gateway.config.RouteConfig attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.RouteModelInfo.model_fields">(mlflow.gateway.config.RouteModelInfo attribute)</a>
-</li>
-        <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.TogetherAIConfig.model_fields">(mlflow.gateway.config.TogetherAIConfig attribute)</a>
-</li>
-      </ul></li>
       <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.MlflowModelServingConfig.model_server_url">model_server_url (mlflow.gateway.config.MlflowModelServingConfig attribute)</a>
 </li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.Model.model_size_bytes">model_size_bytes() (mlflow.models.Model property)</a>
@@ -4691,6 +4753,8 @@
       <ul>
         <li><a href="python_api/mlflow.html#module-mlflow">mlflow</a>
 </li>
+        <li><a href="python_api/mlflow.anthropic.html#module-mlflow.anthropic">mlflow.anthropic</a>
+</li>
         <li><a href="python_api/mlflow.artifacts.html#module-mlflow.artifacts">mlflow.artifacts</a>
 </li>
         <li><a href="python_api/mlflow.autogen.html#module-mlflow.autogen">mlflow.autogen</a>
@@ -4700,6 +4764,8 @@
         <li><a href="python_api/mlflow.client.html#module-mlflow.client">mlflow.client</a>
 </li>
         <li><a href="python_api/mlflow.config.html#module-mlflow.config">mlflow.config</a>
+</li>
+        <li><a href="python_api/mlflow.crewai.html#module-mlflow.crewai">mlflow.crewai</a>
 </li>
         <li><a href="python_api/mlflow.deployments.html#module-mlflow.deployments">mlflow.deployments</a>
 </li>
@@ -4725,7 +4791,7 @@
 </li>
         <li><a href="python_api/mlflow.gateway.html#module-mlflow.gateway.config">mlflow.gateway.config</a>
 </li>
-        <li><a href="python_api/mlflow.gluon.html#module-mlflow.gluon">mlflow.gluon</a>
+        <li><a href="python_api/mlflow.gemini.html#module-mlflow.gemini">mlflow.gemini</a>
 </li>
         <li><a href="python_api/mlflow.h2o.html#module-mlflow.h2o">mlflow.h2o</a>
 </li>
@@ -4742,6 +4808,8 @@
         <li><a href="python_api/mlflow.langchain.html#module-mlflow.langchain">mlflow.langchain</a>
 </li>
         <li><a href="python_api/mlflow.lightgbm.html#module-mlflow.lightgbm">mlflow.lightgbm</a>
+</li>
+        <li><a href="python_api/mlflow.litellm.html#module-mlflow.litellm">mlflow.litellm</a>
 </li>
         <li><a href="python_api/mlflow.llama_index.html#module-mlflow.llama_index">mlflow.llama_index</a>
 </li>
@@ -4805,9 +4873,13 @@
 </li>
         <li><a href="python_api/mlflow.types.html#module-mlflow.types">mlflow.types</a>
 </li>
+        <li><a href="python_api/mlflow.types.html#module-mlflow.types.chat">mlflow.types.chat</a>
+</li>
         <li><a href="python_api/mlflow.types.html#module-mlflow.types.llm">mlflow.types.llm</a>
 </li>
         <li><a href="python_api/mlflow.types.html#module-mlflow.types.llm._BaseDataclass">mlflow.types.llm._BaseDataclass</a>
+</li>
+        <li><a href="python_api/mlflow.types.html#module-mlflow.types.schema">mlflow.types.schema</a>
 </li>
         <li><a href="python_api/mlflow.utils.html#module-mlflow.utils.async_logging">mlflow.utils.async_logging</a>
 </li>
@@ -4871,6 +4943,8 @@
 </li>
         <li><a href="python_api/mlflow.types.html#mlflow.types.ParamSpec.name">(mlflow.types.ParamSpec property)</a>
 </li>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Property.name">(mlflow.types.schema.Property property)</a>
+</li>
         <li><a href="python_api/mlflow.types.html#mlflow.types.TensorSpec.name">(mlflow.types.TensorSpec property)</a>
 </li>
       </ul></li>
@@ -4894,6 +4968,8 @@
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Object">Object (class in mlflow.types.schema)</a>
+</li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.SpanStatusCode.OK">OK (mlflow.entities.SpanStatusCode attribute)</a>
 </li>
       <li><a href="python_api/mlflow.keras.html#mlflow.keras.callback.MlflowCallback.on_batch_end">on_batch_end() (mlflow.keras.callback.MlflowCallback method)</a>
@@ -4926,10 +5002,10 @@
         <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.Provider.OPENAI">(mlflow.gateway.config.Provider attribute)</a>
 </li>
       </ul></li>
-      <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.OpenAIConfig.openai_api_base">openai_api_base (mlflow.gateway.config.OpenAIConfig attribute)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.OpenAIConfig.openai_api_base">openai_api_base (mlflow.gateway.config.OpenAIConfig attribute)</a>
+</li>
       <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.OpenAIConfig.openai_api_key">openai_api_key (mlflow.gateway.config.OpenAIConfig attribute)</a>
 </li>
       <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.OpenAIConfig.openai_api_type">openai_api_type (mlflow.gateway.config.OpenAIConfig attribute)</a>
@@ -4953,8 +5029,6 @@
         <li><a href="cli.html#cmdoption-mlflow-models-update-pip-requirements-arg-OPERATION">mlflow-models-update-pip-requirements command line option</a>
 </li>
       </ul></li>
-      <li><a href="python_api/mlflow.types.html#mlflow.types.ColSpec.optional">optional() (mlflow.types.ColSpec property)</a>
-</li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.Schema.optional_input_names">optional_input_names() (mlflow.types.Schema method)</a>
 </li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.Span.outputs">outputs() (mlflow.entities.Span property)</a>
@@ -4983,8 +5057,12 @@
 </li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.Param">Param (class in mlflow.entities)</a>
 </li>
-      <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ParamProperty">ParamProperty (class in mlflow.types.llm)</a>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.ParamProperty">ParamProperty (class in mlflow.types.chat)</a>
+
+      <ul>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ParamProperty">(class in mlflow.types.llm)</a>
 </li>
+      </ul></li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.RunData.params">params() (mlflow.entities.RunData property)</a>
 
       <ul>
@@ -4997,8 +5075,12 @@
 </li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.ParamSpec.ParamSpecTypedDict">ParamSpec.ParamSpecTypedDict (class in mlflow.types)</a>
 </li>
-      <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ParamType">ParamType (class in mlflow.types.llm)</a>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.ParamType">ParamType (class in mlflow.types.chat)</a>
+
+      <ul>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ParamType">(class in mlflow.types.llm)</a>
 </li>
+      </ul></li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.NoOpSpan.parent_id">parent_id() (mlflow.entities.NoOpSpan property)</a>
 
       <ul>
@@ -5101,6 +5183,10 @@
       </ul></li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.SourceType.PROJECT">PROJECT (mlflow.entities.SourceType attribute)</a>
 </li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Object.properties">properties() (mlflow.types.schema.Object property)</a>
+</li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Property">Property (class in mlflow.types.schema)</a>
+</li>
       <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.Provider">Provider (class in mlflow.gateway.config)</a>
 </li>
       <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.Model.provider">provider (mlflow.gateway.config.Model attribute)</a>
@@ -5187,9 +5273,13 @@
       </ul></li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.TraceInfo.request_metadata">request_metadata (mlflow.entities.TraceInfo attribute)</a>
 </li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.RequestMessage">RequestMessage (class in mlflow.types.chat)</a>
+</li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.ColSpec.required">required() (mlflow.types.ColSpec property)</a>
 
       <ul>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Property.required">(mlflow.types.schema.Property property)</a>
+</li>
         <li><a href="python_api/mlflow.types.html#mlflow.types.TensorSpec.required">(mlflow.types.TensorSpec property)</a>
 </li>
       </ul></li>
@@ -5218,10 +5308,10 @@
 </li>
       <li><a href="python_api/mlflow.client.html#mlflow.client.MlflowClient.restore_experiment">restore_experiment() (mlflow.client.MlflowClient method)</a>
 </li>
-      <li><a href="python_api/mlflow.client.html#mlflow.client.MlflowClient.restore_run">restore_run() (mlflow.client.MlflowClient method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="python_api/mlflow.client.html#mlflow.client.MlflowClient.restore_run">restore_run() (mlflow.client.MlflowClient method)</a>
+</li>
       <li><a href="python_api/mlflow.metrics.html#mlflow.metrics.genai.retrieve_custom_metrics">retrieve_custom_metrics() (in module mlflow.metrics.genai)</a>
 </li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.SpanType.RETRIEVER">RETRIEVER (mlflow.entities.SpanType attribute)</a>
@@ -5329,8 +5419,6 @@
 </li>
         <li><a href="python_api/mlflow.fastai.html#mlflow.fastai.save_model">(in module mlflow.fastai)</a>
 </li>
-        <li><a href="python_api/mlflow.gluon.html#mlflow.gluon.save_model">(in module mlflow.gluon)</a>
-</li>
         <li><a href="python_api/mlflow.h2o.html#mlflow.h2o.save_model">(in module mlflow.h2o)</a>
 </li>
         <li><a href="python_api/mlflow.johnsnowlabs.html#mlflow.johnsnowlabs.save_model">(in module mlflow.johnsnowlabs)</a>
@@ -5436,6 +5524,8 @@
         <li><a href="python_api/mlflow.client.html#mlflow.client.MlflowClient.search_runs">(mlflow.client.MlflowClient method)</a>
 </li>
       </ul></li>
+      <li><a href="python_api/mlflow.entities.html#mlflow.entities.Trace.search_spans">search_spans() (mlflow.entities.Trace method)</a>
+</li>
       <li><a href="python_api/mlflow.html#mlflow.search_traces">search_traces() (in module mlflow)</a>
 
       <ul>
@@ -5490,10 +5580,10 @@
         <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.MlflowGatewayClient.set_limits">(mlflow.gateway.MlflowGatewayClient method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="python_api/mlflow.models.html#mlflow.models.set_model">set_model() (in module mlflow.models)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="python_api/mlflow.client.html#mlflow.client.MlflowClient.set_model_version_tag">set_model_version_tag() (mlflow.client.MlflowClient method)</a>
 </li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.LiveSpan.set_outputs">set_outputs() (mlflow.entities.LiveSpan method)</a>
@@ -5515,6 +5605,12 @@
       <li><a href="python_api/mlflow.models.html#mlflow.models.set_retriever_schema">set_retriever_schema() (in module mlflow.models)</a>
 </li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.set_signature">set_signature() (in module mlflow.models)</a>
+</li>
+      <li><a href="python_api/mlflow.tracing.html#mlflow.tracing.set_span_chat_messages">set_span_chat_messages() (in module mlflow.tracing)</a>
+</li>
+      <li><a href="python_api/mlflow.tracing.html#mlflow.tracing.set_span_chat_tools">set_span_chat_tools() (in module mlflow.tracing)</a>
+</li>
+      <li><a href="python_api/mlflow.entities.html#mlflow.entities.LiveSpan.set_span_type">set_span_type() (mlflow.entities.LiveSpan method)</a>
 </li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.LiveSpan.set_status">set_status() (mlflow.entities.LiveSpan method)</a>
 
@@ -5680,6 +5776,8 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="python_api/mlflow.models.html#mlflow.models.ResourceType.TABLE">TABLE (mlflow.models.ResourceType attribute)</a>
+</li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.EvaluationResult.tables">tables() (mlflow.models.EvaluationResult property)</a>
 </li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.TraceInfo.tags">tags (mlflow.entities.TraceInfo attribute)</a>
@@ -5702,7 +5800,7 @@
       </ul></li>
       <li><a href="python_api/mlflow.sagemaker.html#mlflow.sagemaker.target_help">target_help() (in module mlflow.sagemaker)</a>
 </li>
-      <li><a href="python_api/mlflow.models.html#mlflow.models.Resource.target_uri">target_uri (mlflow.models.Resource attribute)</a>
+      <li><a href="python_api/mlflow.models.html#mlflow.models.Resource.target_uri">target_uri() (mlflow.models.Resource property)</a>
 </li>
       <li><a href="python_api/mlflow.data.html#mlflow.data.huggingface_dataset.HuggingFaceDataset.targets">targets() (mlflow.data.huggingface_dataset.HuggingFaceDataset property)</a>
 
@@ -5723,6 +5821,8 @@
       <li><a href="python_api/mlflow.types.html#mlflow.types.TensorSpec">TensorSpec (class in mlflow.types)</a>
 </li>
       <li><a href="python_api/mlflow.sagemaker.html#mlflow.sagemaker.terminate_transform_job">terminate_transform_job() (in module mlflow.sagemaker)</a>
+</li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.TextContentPart">TextContentPart (class in mlflow.types.chat)</a>
 </li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.MetricThreshold.threshold">threshold() (mlflow.models.MetricThreshold property)</a>
 </li>
@@ -5771,6 +5871,8 @@
 </li>
         <li><a href="python_api/mlflow.models.html#mlflow.models.Model.to_dict">(mlflow.models.Model method)</a>
 </li>
+        <li><a href="python_api/mlflow.models.html#mlflow.models.ModelConfig.to_dict">(mlflow.models.ModelConfig method)</a>
+</li>
         <li><a href="python_api/mlflow.models.html#mlflow.models.ModelSignature.to_dict">(mlflow.models.ModelSignature method)</a>
 </li>
         <li><a href="python_api/mlflow.models.html#mlflow.models.Resource.to_dict">(mlflow.models.Resource method)</a>
@@ -5778,6 +5880,16 @@
         <li><a href="python_api/mlflow.types.html#mlflow.types.ParamSchema.to_dict">(mlflow.types.ParamSchema method)</a>
 </li>
         <li><a href="python_api/mlflow.types.html#mlflow.types.Schema.to_dict">(mlflow.types.Schema method)</a>
+</li>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.schema.AnyType.to_dict">(mlflow.types.schema.AnyType method)</a>
+</li>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Array.to_dict">(mlflow.types.schema.Array method)</a>
+</li>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Map.to_dict">(mlflow.types.schema.Map method)</a>
+</li>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Object.to_dict">(mlflow.types.schema.Object method)</a>
+</li>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Property.to_dict">(mlflow.types.schema.Property method)</a>
 </li>
       </ul></li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.Metric.to_dictionary">to_dictionary() (mlflow.entities.Metric method)</a>
@@ -5908,8 +6020,12 @@
 </li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.SpanType.TOOL">TOOL (mlflow.entities.SpanType attribute)</a>
 </li>
-      <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ToolCall">ToolCall (class in mlflow.types.llm)</a>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.ToolCall">ToolCall (class in mlflow.types.chat)</a>
+
+      <ul>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ToolCall">(class in mlflow.types.llm)</a>
 </li>
+      </ul></li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ToolDefinition">ToolDefinition (class in mlflow.types.llm)</a>
 </li>
       <li><a href="python_api/mlflow.types.html#mlflow.types.llm.ToolParamsSchema">ToolParamsSchema (class in mlflow.types.llm)</a>
@@ -5930,11 +6046,11 @@
 </li>
       <li><a href="python_api/mlflow.client.html#mlflow.client.MlflowClient.transition_model_version_stage">transition_model_version_stage() (mlflow.client.MlflowClient method)</a>
 </li>
-      <li><a href="python_api/mlflow.models.html#mlflow.models.Resource.type">type (mlflow.models.Resource attribute)</a>
-</li>
-      <li><a href="python_api/mlflow.types.html#mlflow.types.ColSpec.type">type() (mlflow.types.ColSpec property)</a>
+      <li><a href="python_api/mlflow.models.html#mlflow.models.Resource.type">type() (mlflow.models.Resource property)</a>
 
       <ul>
+        <li><a href="python_api/mlflow.types.html#mlflow.types.ColSpec.type">(mlflow.types.ColSpec property)</a>
+</li>
         <li><a href="python_api/mlflow.types.html#mlflow.types.TensorSpec.type">(mlflow.types.TensorSpec property)</a>
 </li>
       </ul></li>
@@ -5944,6 +6060,10 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="python_api/mlflow.models.html#mlflow.models.ResourceType.UC_CONNECTION">UC_CONNECTION (mlflow.models.ResourceType attribute)</a>
+</li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.chat.UnityCatalogFunctionToolDefinition">UnityCatalogFunctionToolDefinition (class in mlflow.types.chat)</a>
+</li>
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.SourceType.UNKNOWN">UNKNOWN (mlflow.entities.SourceType attribute)</a>
 
       <ul>
@@ -5953,6 +6073,8 @@
       <li><a href="python_api/mlflow.entities.html#mlflow.entities.SpanStatusCode.UNSET">UNSET (mlflow.entities.SpanStatusCode attribute)</a>
 </li>
       <li><a href="python_api/mlflow.pyfunc.html#mlflow.pyfunc.PyFuncModel.unwrap_python_model">unwrap_python_model() (mlflow.pyfunc.PyFuncModel method)</a>
+</li>
+      <li><a href="python_api/mlflow.html#mlflow.update_current_trace">update_current_trace() (in module mlflow)</a>
 </li>
       <li><a href="python_api/mlflow.deployments.html#mlflow.deployments.BaseDeploymentClient.update_deployment">update_deployment() (mlflow.deployments.BaseDeploymentClient method)</a>
 
@@ -5978,14 +6100,24 @@
         <li><a href="python_api/mlflow.sagemaker.html#mlflow.sagemaker.SageMakerDeploymentClient.update_endpoint">(mlflow.sagemaker.SageMakerDeploymentClient method)</a>
 </li>
       </ul></li>
+      <li><a href="python_api/mlflow.deployments.html#mlflow.deployments.DatabricksDeploymentClient.update_endpoint_ai_gateway">update_endpoint_ai_gateway() (mlflow.deployments.DatabricksDeploymentClient method)</a>
+</li>
+      <li><a href="python_api/mlflow.deployments.html#mlflow.deployments.DatabricksDeploymentClient.update_endpoint_config">update_endpoint_config() (mlflow.deployments.DatabricksDeploymentClient method)</a>
+</li>
+      <li><a href="python_api/mlflow.deployments.html#mlflow.deployments.DatabricksDeploymentClient.update_endpoint_rate_limits">update_endpoint_rate_limits() (mlflow.deployments.DatabricksDeploymentClient method)</a>
+</li>
+      <li><a href="python_api/mlflow.deployments.html#mlflow.deployments.DatabricksDeploymentClient.update_endpoint_tags">update_endpoint_tags() (mlflow.deployments.DatabricksDeploymentClient method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="auth/python-api.html#mlflow.server.auth.client.AuthServiceClient.update_experiment_permission">update_experiment_permission() (mlflow.server.auth.client.AuthServiceClient method)</a>
+</li>
+      <li><a href="python_api/mlflow.models.html#mlflow.models.update_model_requirements">update_model_requirements() (in module mlflow.models)</a>
 </li>
       <li><a href="python_api/mlflow.client.html#mlflow.client.MlflowClient.update_model_version">update_model_version() (mlflow.client.MlflowClient method)</a>
 </li>
       <li><a href="python_api/mlflow.client.html#mlflow.client.MlflowClient.update_registered_model">update_registered_model() (mlflow.client.MlflowClient method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="auth/python-api.html#mlflow.server.auth.client.AuthServiceClient.update_registered_model_permission">update_registered_model_permission() (mlflow.server.auth.client.AuthServiceClient method)</a>
 </li>
       <li><a href="python_api/mlflow.client.html#mlflow.client.MlflowClient.update_run">update_run() (mlflow.client.MlflowClient method)</a>
@@ -6096,6 +6228,8 @@
         <li><a href="python_api/mlflow.entities.html#mlflow.entities.RunTag.value">(mlflow.entities.RunTag property)</a>
 </li>
       </ul></li>
+      <li><a href="python_api/mlflow.types.html#mlflow.types.schema.Map.value_type">value_type() (mlflow.types.schema.Map property)</a>
+</li>
       <li><a href="python_api/mlflow.gateway.html#mlflow.gateway.config.Provider.values">values() (mlflow.gateway.config.Provider class method)</a>
 </li>
       <li><a href="python_api/mlflow.models.html#mlflow.models.ResourceType.VECTOR_SEARCH_INDEX">VECTOR_SEARCH_INDEX (mlflow.models.ResourceType attribute)</a>
@@ -6157,7 +6291,7 @@
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'./',
-      VERSION:'2.17.1.dev0',
+      VERSION:'2.19.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

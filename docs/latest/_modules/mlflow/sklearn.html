@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="MLflow 2.17.1.dev0 documentation" href="../../index.html"/>
+    <link rel="top" title="MLflow 2.19.1.dev0 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -74,7 +74,7 @@
     <a href="../../index.html" class="wy-nav-top-logo"
       ><img src="../../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.17.1.dev0</span>
+    <span class="version">2.19.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -210,7 +210,7 @@
 <span class="kn">import</span> <span class="nn">weakref</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span><span class="p">,</span> <span class="n">defaultdict</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">yaml</span>
@@ -719,7 +719,7 @@
     <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">data</span><span class="p">,</span>
-        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
@@ -864,7 +864,7 @@
 <span class="sd">          then they will be assigned different name (via appending index to the</span>
 <span class="sd">          eval_dataset_var_name) when autologging.</span>
 <span class="sd">    (4) _metric_api_call_info, it is a double level map:</span>
-<span class="sd">       `_metric_api_call_info[run_id][metric_name]` wil get a list of tuples, each tuple is:</span>
+<span class="sd">       `_metric_api_call_info[run_id][metric_name]` will get a list of tuples, each tuple is:</span>
 <span class="sd">         (logged_metric_key, metric_call_command_string)</span>
 <span class="sd">        each call command string is like `metric_fn(arg1, arg2, ...)`</span>
 <span class="sd">        This data structure is used for:</span>
@@ -1004,10 +1004,11 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            self_obj: If the metric_fn is a method of an instance (e.g. `model.score`),</span>
-<span class="sd">            the `self_obj` represent the instance.</span>
+<span class="sd">                the `self_obj` represent the instance.</span>
 <span class="sd">            metric_fn: metric function.</span>
 <span class="sd">            call_pos_args: the positional arguments of the metric function call. If `metric_fn`</span>
-<span class="sd">            is instance method, then the `call_pos_args` should exclude the first `self` argument.</span>
+<span class="sd">                is instance method, then the `call_pos_args` should exclude the first `self`</span>
+<span class="sd">                argument.</span>
 <span class="sd">            call_kwargs: the keyword arguments of the metric function call.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -2149,7 +2150,7 @@
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../../',
-      VERSION:'2.17.1.dev0',
+      VERSION:'2.19.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

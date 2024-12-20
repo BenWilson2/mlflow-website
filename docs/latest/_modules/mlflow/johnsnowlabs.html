@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="MLflow 2.17.1.dev0 documentation" href="../../index.html"/>
+    <link rel="top" title="MLflow 2.19.1.dev0 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -74,7 +74,7 @@
     <a href="../../index.html" class="wy-nav-top-logo"
       ><img src="../../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.17.1.dev0</span>
+    <span class="version">2.19.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -206,7 +206,7 @@
 <span class="sd">This flavor gives you access to `20.000+ state-of-the-art enterprise NLP models in 200+ languages</span>
 <span class="sd">&lt;https://nlp.johnsnowlabs.com/models&gt;`_ for medical, finance, legal and many more domains.</span>
 <span class="sd">Features include: LLM&#39;s, Text Summarization, Question Answering, Named Entity Recognition, Relation</span>
-<span class="sd">Extration, Sentiment Analysis, Spell Checking, Image Classification, Automatic Speech Recognition</span>
+<span class="sd">Extraction, Sentiment Analysis, Spell Checking, Image Classification, Automatic Speech Recognition</span>
 <span class="sd">and much more, powered by the latest Transformer Architectures. The models are provided by</span>
 <span class="sd">`John Snow Labs &lt;https://www.johnsnowlabs.com/&gt;`_ and requires a `John Snow Labs</span>
 <span class="sd">&lt;https://www.johnsnowlabs.com/&gt;`_ Enterprise NLP License. `You can reach out to us</span>
@@ -243,7 +243,7 @@
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span> <span class="nn">yaml</span>
 
@@ -412,8 +412,6 @@
 <span class="sd">    Args:</span>
 <span class="sd">        spark_model: NLUPipeline obtained via `nlp.load()</span>
 <span class="sd">            &lt;https://nlp.johnsnowlabs.com/docs/en/jsl/load_api&gt;`_</span>
-<span class="sd">        store_license: If True, the license will be stored with the model and used and re-loading</span>
-<span class="sd">            it.</span>
 <span class="sd">        artifact_path: Run relative artifact path.</span>
 <span class="sd">        conda_env: Either a dictionary representation of a Conda environment or the path to a</span>
 <span class="sd">            Conda environment yaml file. If provided, this describes the environment</span>
@@ -466,6 +464,8 @@
 <span class="sd">        pip_requirements: {{ pip_requirements }}</span>
 <span class="sd">        extra_pip_requirements: {{ extra_pip_requirements }}</span>
 <span class="sd">        metadata:  {{ metadata }}</span>
+<span class="sd">        store_license: If True, the license will be stored with the model and used and re-loading</span>
+<span class="sd">            it.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        A :py:class:`ModelInfo &lt;mlflow.models.model.ModelInfo&gt;` instance that contains the</span>
@@ -701,8 +701,6 @@
 <span class="sd">    is also serialized in MLeap format and the MLeap flavor is added.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        store_license: If True, the license will be stored with the model and used and</span>
-<span class="sd">            re-loading it.</span>
 <span class="sd">        spark_model: Either a pyspark.ml.pipeline.PipelineModel or nlu.NLUPipeline object to be</span>
 <span class="sd">            saved. `Every johnsnowlabs model &lt;https://nlp.johnsnowlabs.com/models&gt;`_</span>
 <span class="sd">            is a PipelineModel and loadable as nlu.NLUPipeline.</span>
@@ -752,6 +750,8 @@
 <span class="sd">        pip_requirements: {{ pip_requirements }}</span>
 <span class="sd">        extra_pip_requirements: {{ extra_pip_requirements }}</span>
 <span class="sd">        metadata: {{ metadata }}</span>
+<span class="sd">        store_license: If True, the license will be stored with the model and used and</span>
+<span class="sd">            re-loading it.</span>
 
 <span class="sd">    .. code-block:: python</span>
 <span class="sd">        :caption: Example</span>
@@ -1066,7 +1066,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">spark_model</span>
 
-    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate predictions given input data in a pandas DataFrame.</span>
 
 <span class="sd">        Args:</span>
@@ -1109,7 +1109,7 @@
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../../',
-      VERSION:'2.17.1.dev0',
+      VERSION:'2.19.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

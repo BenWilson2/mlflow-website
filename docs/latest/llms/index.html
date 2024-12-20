@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="MLflow 2.17.1.dev0 documentation" href="../index.html"/>
+    <link rel="top" title="MLflow 2.19.1.dev0 documentation" href="../index.html"/>
         <link rel="next" title="Retrieval Augmented Generation (RAG)" href="/rag/index.html"/>
         <link rel="prev" title="New Features" href="/../new-features/index.html"/> 
 
@@ -74,7 +74,7 @@
     <a href="../index.html" class="wy-nav-top-logo"
       ><img src="../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.17.1.dev0</span>
+    <span class="version">2.19.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -119,14 +119,17 @@
 <li class="toctree-l3"><a class="reference internal" href="rag/index.html">Retrieval Augmented Generation (RAG)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="custom-pyfunc-for-llms/index.html">Deploying Advanced LLMs with Custom PyFuncs in MLflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="llm-evaluate/notebooks/index.html">LLM Evaluation Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chat-model-intro/index.html">Tutorial: Getting Started with ChatModel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="chat-model-guide/index.html">Tutorial: Custom GenAI Models using ChatModel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/chat-model-tool-calling.html">Build a tool-calling model with <code class="docutils literal notranslate"><span class="pre">mlflow.pyfunc.ChatModel</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">MLflow Tracing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tracing/index.html">Introduction to MLflow Tracing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tracing/index.html">MLflow Tracing for LLM Observability</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tracing/overview.html">Tracing Concepts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tracing/tracing-schema.html">MLflow Tracing Schema</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tracing/contribute.html">Contributing to MLflow Tracing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tracing/search-traces.html">Searching and Retrieving Traces</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">MLflow AI Gateway for LLMs</a><ul>
@@ -151,15 +154,13 @@
 <li class="toctree-l3"><a class="reference internal" href="sentence-transformers/index.html">MLflow Sentence-Transformers Flavor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="langchain/index.html">MLflow LangChain Flavor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="llama-index/index.html">MLflow LlamaIndex Flavor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dspy/index.html">MLflow DSPy Flavor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#explore-the-native-llm-flavors">Explore the Native LLM Flavors</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">LLM Tracking in MLflow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="llm-tracking/index.html">MLflow’s LLM Tracking Capabilities</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#benefits-of-the-mlflow-llm-tracking-system">Benefits of the MLflow LLM Tracking System</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="gateway/index.html">MLflow AI Gateway (Experimental)</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#benefits-of-the-mlflow-llm-tracking-system">Benefits of the MLflow LLM Tracking System</a></li>
 </ul>
 </li>
 </ul>
@@ -254,12 +255,32 @@ capabilities into their applications.</p>
 <section>
     <article class="simple-grid">
         <div class="simple-card">
-            <a href="chat-model-guide/index.html" >
+            <a href="chat-model-intro/index.html" >
                 <div class="header">
-                    Simplified Custom GenAI Models
+                    Custom GenAI Models with ChatModel
                 </div>
                 <p>
-                    Learn how to build a custom GenAI Agent with a simplified developer experience using MLflow's <code>ChatModel</code>.
+                    Learn the basics of creating custom chat models using MLflow's <code>ChatModel</code> by wrapping a local LLM provider.
+                </p>
+            </a>
+        </div>
+        <div class="simple-card">
+            <a href="chat-model-guide/index.html" >
+                <div class="header">
+                    Advanced ChatModel Development
+                </div>
+                <p>
+                    Take an in-depth look at the full range of <code>ChatModel</code> features, such as tracing and configuration management.
+                </p>
+            </a>
+        </div>
+        <div class="simple-card">
+            <a href="notebooks/chat-model-tool-calling.html" >
+                <div class="header">
+                    Tool Calling Models
+                </div>
+                <p>
+                    Learn how to build a simple tool-calling model using MLflow's <code>ChatModel</code>.
                 </p>
             </a>
         </div>
@@ -297,10 +318,6 @@ capabilities into their applications.</p>
 </section></div>
 <div class="section" id="id1">
 <h2><a class="reference external" href="tracing/index.html">MLflow Tracing</a><a class="headerlink" href="#id1" title="Permalink to this headline"> </a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>MLflow Tracing is currently in <strong>Experimental Status</strong> and is subject to change without deprecation warning or notification.</p>
-</div>
 <p>MLflow offers comprehensive tracing capabilities to monitor and analyze the execution of GenAI applications. This includes automated tracing GenAI frameworks such as
 LangChain, OpenAI, LlamaIndex, manual trace instrumentation using high-level fluent APIs, and low-level client APIs for fine-grained control. This functionality
 allows you to capture detailed trace data, enabling better debugging, performance monitoring, and insights into complex workflows.
@@ -316,6 +333,9 @@ of your GenAI models and retain your traced data within the tracking server for 
 <p>To learn more about what tracing is, see our <a class="reference external" href="tracing/overview.html">Tracing Concepts Overview</a> guide. For an in-depth exploration into the structure of
 MLflow traces and their schema, see the <a class="reference external" href="tracing/tracing-schema.html">Tracing Schema</a> guide.</p>
 <p>If you’re interested in contributing to the development of MLflow Tracing, please refer to the <a class="reference external" href="tracing/contribute.html">Contribute to MLflow Tracing</a> guide.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/tracing-top.gif"><img alt="Tracing Gateway Video" src="../_images/tracing-top.gif" style="width: 80%;" /></a>
+</div>
 </div>
 <div class="section" id="id2">
 <h2><a class="reference external" href="deployments/index.html">MLflow AI Gateway for LLMs</a><a class="headerlink" href="#id2" title="Permalink to this headline"> </a></h2>
@@ -358,7 +378,7 @@ APIs may change as this new feature is refined and its functionality is expanded
 <h3>Explore the Native Providers of the MLflow AI Gateway<a class="headerlink" href="#explore-the-native-providers-of-the-mlflow-ai-gateway" title="Permalink to this headline"> </a></h3>
 <p>The MLflow AI Gateway supports a large range of foundational models from popular SaaS model vendors, as well as providing a means of self-hosting your
 own open source model via an integration with MLflow model serving.</p>
-<p>Please refer to <a class="reference external" href="deployments/index.html#providers">Supported Provider Models</a> for the full list of supported providers and models.</p>
+<p>Please refer to <a class="reference external" href="deployments/index.html#providers">Supported Providers</a> for the full list of supported providers and models.</p>
 <p>If you’re interested in learning about how to set up the MLflow AI Gateway for a specific provider, follow the links below for our up-to-date
 documentation on GitHub. Each link will take you to a README file that will explain how to set up a route for the provider. In the same directory as
 the README, you will find a runnable example of how to query the routes that the example creates, providing you with a quick reference for getting started
@@ -557,6 +577,17 @@ Features and interfaces may evolve as feedback is gathered and the tool is refin
                 </p>
             </a>
         </div>
+        <div class="simple-card">
+            <a href="dspy/index.html">
+                <div class="header-with-image">
+                    <img src="../_static/images/logos/dspy-logo.png" alt="DSPy Logo" style="width: 90%"/>
+                </div>
+                <p>
+                    Learn about MLflow's native integration with DSPy and see example notebooks that leverage
+                    MLflow and DSPy to optimize your GenAI applications.
+                </p>
+            </a>
+        </div>
     </article>
 </section></div>
 </div>
@@ -589,8 +620,6 @@ premier solution for managing and analyzing interactions with Large Language Mod
 </ul>
 </li>
 </ul>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 </div>
 </div>
@@ -633,7 +662,7 @@ premier solution for managing and analyzing interactions with Large Language Mod
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../',
-      VERSION:'2.17.1.dev0',
+      VERSION:'2.19.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',

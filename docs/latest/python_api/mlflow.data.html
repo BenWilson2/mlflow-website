@@ -47,10 +47,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="MLflow 2.17.1.dev0 documentation" href="../index.html"/>
+    <link rel="top" title="MLflow 2.19.1.dev0 documentation" href="../index.html"/>
         <link rel="up" title="Python API" href="index.html"/>
         <link rel="next" title="mlflow.deployments" href="/mlflow.deployments.html"/>
-        <link rel="prev" title="mlflow.config" href="/mlflow.config.html"/> 
+        <link rel="prev" title="mlflow.crewai" href="/mlflow.crewai.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -75,7 +75,7 @@
     <a href="../index.html" class="wy-nav-top-logo"
       ><img src="../_static/MLflow-logo-final-black.png" alt="MLflow"
     /></a>
-    <span class="version">2.17.1.dev0</span>
+    <span class="version">2.19.1.dev0</span>
   </li>
 </ul>
   </nav>
@@ -135,11 +135,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Python API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="mlflow.html">mlflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.html#mlflow-tracing-apis">MLflow Tracing APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.anthropic.html">mlflow.anthropic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.artifacts.html">mlflow.artifacts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.autogen.html">mlflow.autogen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.catboost.html">mlflow.catboost</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.client.html">mlflow.client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.config.html">mlflow.config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.crewai.html">mlflow.crewai</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">mlflow.data</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#pandas">pandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#numpy">NumPy</a></li>
@@ -156,12 +158,13 @@
 <li class="toctree-l2"><a class="reference internal" href="mlflow.environment_variables.html">mlflow.environment_variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.fastai.html">mlflow.fastai</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.gateway.html">mlflow.gateway</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mlflow.gluon.html">mlflow.gluon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.gemini.html">mlflow.gemini</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.h2o.html">mlflow.h2o</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.johnsnowlabs.html">mlflow.johnsnowlabs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.keras.html">mlflow.keras</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.langchain.html">mlflow.langchain</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.lightgbm.html">mlflow.lightgbm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlflow.litellm.html">mlflow.litellm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.llama_index.html">mlflow.llama_index</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.metrics.html">mlflow.metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mlflow.mleap.html">mlflow.mleap</a></li>
@@ -350,7 +353,7 @@ was derived.</p>
 
 <dl class="py method">
 <dt id="mlflow.data.dataset.Dataset.to_dict">
-<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/mlflow/data/dataset.html#Dataset.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.dataset.Dataset.to_dict" title="Permalink to this definition"> </a></dt>
+<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="reference internal" href="../_modules/mlflow/data/dataset.html#Dataset.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.dataset.Dataset.to_dict" title="Permalink to this definition"> </a></dt>
 <dd><p>Create config dictionary for the dataset.</p>
 <p>Subclasses should override this method to provide additional fields in the config dict,
 e.g., schema, profile, etc.</p>
@@ -384,7 +387,7 @@ cloud storage location, delta table name / version, etc.</p>
 
 <dl class="py method">
 <dt id="mlflow.data.dataset_source.DatasetSource.from_dict">
-<em class="property"><span class="pre">abstract</span> <span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mlflow.data.dataset_source.DatasetSource" title="mlflow.data.dataset_source.DatasetSource"><span class="pre">mlflow.data.dataset_source.DatasetSource</span></a><a class="reference internal" href="../_modules/mlflow/data/dataset_source.html#DatasetSource.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.dataset_source.DatasetSource.from_dict" title="Permalink to this definition"> </a></dt>
+<em class="property"><span class="pre">abstract</span> <span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mlflow.data.dataset_source.DatasetSource" title="mlflow.data.dataset_source.DatasetSource"><span class="pre">mlflow.data.dataset_source.DatasetSource</span></a><a class="reference internal" href="../_modules/mlflow/data/dataset_source.html#DatasetSource.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.dataset_source.DatasetSource.from_dict" title="Permalink to this definition"> </a></dt>
 <dd><p>Constructs an instance of the DatasetSource from a dictionary representation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -412,7 +415,7 @@ DataFrame, etc.</p>
 
 <dl class="py method">
 <dt id="mlflow.data.dataset_source.DatasetSource.to_dict">
-<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/mlflow/data/dataset_source.html#DatasetSource.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.dataset_source.DatasetSource.to_dict" title="Permalink to this definition"> </a></dt>
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="reference internal" href="../_modules/mlflow/data/dataset_source.html#DatasetSource.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.dataset_source.DatasetSource.to_dict" title="Permalink to this definition"> </a></dt>
 <dd><p>Obtains a JSON-compatible dictionary representation of the DatasetSource.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -486,7 +489,7 @@ must be present in the dataframe (<code class="docutils literal notranslate"><sp
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="p">[[</span><span class="s2">&quot;tom&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;nick&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;juli&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+    <span class="p">[[</span><span class="s2">&quot;tom&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;nick&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;july&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="s2">&quot;Label&quot;</span><span class="p">,</span> <span class="s2">&quot;ModelOutput&quot;</span><span class="p">],</span>
 <span class="p">)</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="s2">&quot;Label&quot;</span><span class="p">,</span> <span class="n">predictions</span><span class="o">=</span><span class="s2">&quot;ModelOutput&quot;</span><span class="p">)</span>
@@ -538,7 +541,7 @@ must be present in the dataframe (<code class="docutils literal notranslate"><sp
 
 <dl class="py method">
 <dt id="mlflow.data.pandas_dataset.PandasDataset.to_dict">
-<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/mlflow/data/pandas_dataset.html#PandasDataset.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.pandas_dataset.PandasDataset.to_dict" title="Permalink to this definition"> </a></dt>
+<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="reference internal" href="../_modules/mlflow/data/pandas_dataset.html#PandasDataset.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.pandas_dataset.PandasDataset.to_dict" title="Permalink to this definition"> </a></dt>
 <dd><p>Create config dictionary for the dataset.</p>
 <p>Returns a string dictionary containing the following fields: name, digest, source, source
 type, schema, and profile.</p>
@@ -551,7 +554,7 @@ type, schema, and profile.</p>
 <h2>NumPy<a class="headerlink" href="#numpy" title="Permalink to this headline"> </a></h2>
 <dl class="py function">
 <dt id="mlflow.data.from_numpy">
-<code class="sig-prename descclassname"><span class="pre">mlflow.data.</span></code><code class="sig-name descname"><span class="pre">from_numpy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#mlflow.data.dataset_source.DatasetSource" title="mlflow.data.dataset_source.DatasetSource"><span class="pre">mlflow.data.dataset_source.DatasetSource</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digest</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mlflow.data.numpy_dataset.NumpyDataset" title="mlflow.data.numpy_dataset.NumpyDataset"><span class="pre">mlflow.data.numpy_dataset.NumpyDataset</span></a><a class="reference internal" href="../_modules/mlflow/data/numpy_dataset.html#from_numpy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.from_numpy" title="Permalink to this definition"> </a></dt>
+<code class="sig-prename descclassname"><span class="pre">mlflow.data.</span></code><code class="sig-name descname"><span class="pre">from_numpy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#mlflow.data.dataset_source.DatasetSource" title="mlflow.data.dataset_source.DatasetSource"><span class="pre">mlflow.data.dataset_source.DatasetSource</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digest</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mlflow.data.numpy_dataset.NumpyDataset" title="mlflow.data.numpy_dataset.NumpyDataset"><span class="pre">mlflow.data.numpy_dataset.NumpyDataset</span></a><a class="reference internal" href="../_modules/mlflow/data/numpy_dataset.html#from_numpy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.from_numpy" title="Permalink to this definition"> </a></dt>
 <dd><p>Constructs a <a class="reference internal" href="#mlflow.data.numpy_dataset.NumpyDataset" title="mlflow.data.numpy_dataset.NumpyDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">NumpyDataset</span></code></a> object from
 NumPy features, optional targets, and source. If the source is path like, then this will
 construct a DatasetSource object from the source path. Otherwise, the source is assumed to
@@ -636,7 +639,7 @@ np.ndarrays.</p></li>
 
 <dl class="py method">
 <dt id="mlflow.data.numpy_dataset.NumpyDataset.to_dict">
-<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/mlflow/data/numpy_dataset.html#NumpyDataset.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.numpy_dataset.NumpyDataset.to_dict" title="Permalink to this definition"> </a></dt>
+<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="reference internal" href="../_modules/mlflow/data/numpy_dataset.html#NumpyDataset.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.numpy_dataset.NumpyDataset.to_dict" title="Permalink to this definition"> </a></dt>
 <dd><p>Create config dictionary for the dataset.</p>
 <p>Returns a string dictionary containing the following fields: name, digest, source, source
 type, schema, and profile.</p>
@@ -784,7 +787,7 @@ learning.</p>
 
 <dl class="py method">
 <dt id="mlflow.data.spark_dataset.SparkDataset.to_dict">
-<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/mlflow/data/spark_dataset.html#SparkDataset.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.spark_dataset.SparkDataset.to_dict" title="Permalink to this definition"> </a></dt>
+<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="reference internal" href="../_modules/mlflow/data/spark_dataset.html#SparkDataset.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.spark_dataset.SparkDataset.to_dict" title="Permalink to this definition"> </a></dt>
 <dd><p>Create config dictionary for the dataset.</p>
 <p>Returns a string dictionary containing the following fields: name, digest, source, source
 type, schema, and profile.</p>
@@ -883,7 +886,7 @@ learning.</p>
 
 <dl class="py method">
 <dt id="mlflow.data.huggingface_dataset.HuggingFaceDataset.to_dict">
-<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/mlflow/data/huggingface_dataset.html#HuggingFaceDataset.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.huggingface_dataset.HuggingFaceDataset.to_dict" title="Permalink to this definition"> </a></dt>
+<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="reference internal" href="../_modules/mlflow/data/huggingface_dataset.html#HuggingFaceDataset.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.huggingface_dataset.HuggingFaceDataset.to_dict" title="Permalink to this definition"> </a></dt>
 <dd><p>Create config dictionary for the dataset.</p>
 <p>Returns a string dictionary containing the following fields: name, digest, source, source
 type, schema, and profile.</p>
@@ -962,7 +965,7 @@ automatically.</p></li>
 
 <dl class="py method">
 <dt id="mlflow.data.tensorflow_dataset.TensorFlowDataset.to_dict">
-<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/mlflow/data/tensorflow_dataset.html#TensorFlowDataset.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.tensorflow_dataset.TensorFlowDataset.to_dict" title="Permalink to this definition"> </a></dt>
+<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="reference internal" href="../_modules/mlflow/data/tensorflow_dataset.html#TensorFlowDataset.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.tensorflow_dataset.TensorFlowDataset.to_dict" title="Permalink to this definition"> </a></dt>
 <dd><p>Create config dictionary for the dataset.</p>
 <p>Returns a string dictionary containing the following fields: name, digest, source, source
 type, schema, and profile.</p>
@@ -1071,7 +1074,7 @@ name.</p>
 blob storage services like S3, etc.</p>
 <dl class="py method">
 <dt id="mlflow.data.filesystem_dataset_source.FileSystemDatasetSource.from_dict">
-<em class="property"><span class="pre">abstract</span> <span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mlflow.data.filesystem_dataset_source.FileSystemDatasetSource" title="mlflow.data.filesystem_dataset_source.FileSystemDatasetSource"><span class="pre">mlflow.data.filesystem_dataset_source.FileSystemDatasetSource</span></a><a class="reference internal" href="../_modules/mlflow/data/filesystem_dataset_source.html#FileSystemDatasetSource.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.filesystem_dataset_source.FileSystemDatasetSource.from_dict" title="Permalink to this definition"> </a></dt>
+<em class="property"><span class="pre">abstract</span> <span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mlflow.data.filesystem_dataset_source.FileSystemDatasetSource" title="mlflow.data.filesystem_dataset_source.FileSystemDatasetSource"><span class="pre">mlflow.data.filesystem_dataset_source.FileSystemDatasetSource</span></a><a class="reference internal" href="../_modules/mlflow/data/filesystem_dataset_source.html#FileSystemDatasetSource.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.filesystem_dataset_source.FileSystemDatasetSource.from_dict" title="Permalink to this definition"> </a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>source_dict</strong> – A dictionary representation of the FileSystemDatasetSource.</p>
@@ -1100,7 +1103,7 @@ directly.</p>
 
 <dl class="py method">
 <dt id="mlflow.data.filesystem_dataset_source.FileSystemDatasetSource.to_dict">
-<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/mlflow/data/filesystem_dataset_source.html#FileSystemDatasetSource.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.filesystem_dataset_source.FileSystemDatasetSource.to_dict" title="Permalink to this definition"> </a></dt>
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="reference internal" href="../_modules/mlflow/data/filesystem_dataset_source.html#FileSystemDatasetSource.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.filesystem_dataset_source.FileSystemDatasetSource.to_dict" title="Permalink to this definition"> </a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>A JSON-compatible dictionary representation of the FileSystemDatasetSource.</p>
@@ -1129,7 +1132,7 @@ e.g “s3://mybucket/path/to/mydataset”, “/tmp/path/to/my/dataset” etc.</p
 by an HTTP or HTTPS URL.</p>
 <dl class="py method">
 <dt id="mlflow.data.http_dataset_source.HTTPDatasetSource.from_dict">
-<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mlflow.data.http_dataset_source.HTTPDatasetSource" title="mlflow.data.http_dataset_source.HTTPDatasetSource"><span class="pre">mlflow.data.http_dataset_source.HTTPDatasetSource</span></a><a class="reference internal" href="../_modules/mlflow/data/http_dataset_source.html#HTTPDatasetSource.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.http_dataset_source.HTTPDatasetSource.from_dict" title="Permalink to this definition"> </a></dt>
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mlflow.data.http_dataset_source.HTTPDatasetSource" title="mlflow.data.http_dataset_source.HTTPDatasetSource"><span class="pre">mlflow.data.http_dataset_source.HTTPDatasetSource</span></a><a class="reference internal" href="../_modules/mlflow/data/http_dataset_source.html#HTTPDatasetSource.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.http_dataset_source.HTTPDatasetSource.from_dict" title="Permalink to this definition"> </a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>source_dict</strong> – A dictionary representation of the HTTPDatasetSource.</p>
@@ -1156,7 +1159,7 @@ directory on the local filesystem.</p>
 
 <dl class="py method">
 <dt id="mlflow.data.http_dataset_source.HTTPDatasetSource.to_dict">
-<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/mlflow/data/http_dataset_source.html#HTTPDatasetSource.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.http_dataset_source.HTTPDatasetSource.to_dict" title="Permalink to this definition"> </a></dt>
+<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="reference internal" href="../_modules/mlflow/data/http_dataset_source.html#HTTPDatasetSource.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.http_dataset_source.HTTPDatasetSource.to_dict" title="Permalink to this definition"> </a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>A JSON-compatible dictionary representation of the HTTPDatasetSource.</p>
@@ -1183,7 +1186,7 @@ directory on the local filesystem.</p>
 <dd><p>Represents the source of a Hugging Face dataset used in MLflow Tracking.</p>
 <dl class="py method">
 <dt id="mlflow.data.huggingface_dataset_source.HuggingFaceDatasetSource.from_dict">
-<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mlflow.data.huggingface_dataset_source.HuggingFaceDatasetSource" title="mlflow.data.huggingface_dataset_source.HuggingFaceDatasetSource"><span class="pre">mlflow.data.huggingface_dataset_source.HuggingFaceDatasetSource</span></a><a class="reference internal" href="../_modules/mlflow/data/huggingface_dataset_source.html#HuggingFaceDatasetSource.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.huggingface_dataset_source.HuggingFaceDatasetSource.from_dict" title="Permalink to this definition"> </a></dt>
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mlflow.data.huggingface_dataset_source.HuggingFaceDatasetSource" title="mlflow.data.huggingface_dataset_source.HuggingFaceDatasetSource"><span class="pre">mlflow.data.huggingface_dataset_source.HuggingFaceDatasetSource</span></a><a class="reference internal" href="../_modules/mlflow/data/huggingface_dataset_source.html#HuggingFaceDatasetSource.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.huggingface_dataset_source.HuggingFaceDatasetSource.from_dict" title="Permalink to this definition"> </a></dt>
 <dd><p>Constructs an instance of the DatasetSource from a dictionary representation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1212,7 +1215,7 @@ directory on the local filesystem.</p>
 
 <dl class="py method">
 <dt id="mlflow.data.huggingface_dataset_source.HuggingFaceDatasetSource.to_dict">
-<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/mlflow/data/huggingface_dataset_source.html#HuggingFaceDatasetSource.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.huggingface_dataset_source.HuggingFaceDatasetSource.to_dict" title="Permalink to this definition"> </a></dt>
+<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="reference internal" href="../_modules/mlflow/data/huggingface_dataset_source.html#HuggingFaceDatasetSource.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.huggingface_dataset_source.HuggingFaceDatasetSource.to_dict" title="Permalink to this definition"> </a></dt>
 <dd><p>Obtains a JSON-compatible dictionary representation of the DatasetSource.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1244,7 +1247,7 @@ directory on the local filesystem.</p>
 
 <dl class="py method">
 <dt id="mlflow.data.delta_dataset_source.DeltaDatasetSource.from_dict">
-<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mlflow.data.delta_dataset_source.DeltaDatasetSource" title="mlflow.data.delta_dataset_source.DeltaDatasetSource"><span class="pre">mlflow.data.delta_dataset_source.DeltaDatasetSource</span></a><a class="reference internal" href="../_modules/mlflow/data/delta_dataset_source.html#DeltaDatasetSource.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.delta_dataset_source.DeltaDatasetSource.from_dict" title="Permalink to this definition"> </a></dt>
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mlflow.data.delta_dataset_source.DeltaDatasetSource" title="mlflow.data.delta_dataset_source.DeltaDatasetSource"><span class="pre">mlflow.data.delta_dataset_source.DeltaDatasetSource</span></a><a class="reference internal" href="../_modules/mlflow/data/delta_dataset_source.html#DeltaDatasetSource.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.delta_dataset_source.DeltaDatasetSource.from_dict" title="Permalink to this definition"> </a></dt>
 <dd><p>Constructs an instance of the DatasetSource from a dictionary representation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1274,7 +1277,7 @@ directory on the local filesystem.</p>
 
 <dl class="py method">
 <dt id="mlflow.data.delta_dataset_source.DeltaDatasetSource.to_dict">
-<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/mlflow/data/delta_dataset_source.html#DeltaDatasetSource.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.delta_dataset_source.DeltaDatasetSource.to_dict" title="Permalink to this definition"> </a></dt>
+<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="reference internal" href="../_modules/mlflow/data/delta_dataset_source.html#DeltaDatasetSource.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.delta_dataset_source.DeltaDatasetSource.to_dict" title="Permalink to this definition"> </a></dt>
 <dd><p>Obtains a JSON-compatible dictionary representation of the DatasetSource.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1291,7 +1294,7 @@ directory on the local filesystem.</p>
 <dd><p>Represents the source of a dataset stored in a spark table.</p>
 <dl class="py method">
 <dt id="mlflow.data.spark_dataset_source.SparkDatasetSource.from_dict">
-<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mlflow.data.spark_dataset_source.SparkDatasetSource" title="mlflow.data.spark_dataset_source.SparkDatasetSource"><span class="pre">mlflow.data.spark_dataset_source.SparkDatasetSource</span></a><a class="reference internal" href="../_modules/mlflow/data/spark_dataset_source.html#SparkDatasetSource.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.spark_dataset_source.SparkDatasetSource.from_dict" title="Permalink to this definition"> </a></dt>
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mlflow.data.spark_dataset_source.SparkDatasetSource" title="mlflow.data.spark_dataset_source.SparkDatasetSource"><span class="pre">mlflow.data.spark_dataset_source.SparkDatasetSource</span></a><a class="reference internal" href="../_modules/mlflow/data/spark_dataset_source.html#SparkDatasetSource.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.spark_dataset_source.SparkDatasetSource.from_dict" title="Permalink to this definition"> </a></dt>
 <dd><p>Constructs an instance of the DatasetSource from a dictionary representation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1316,7 +1319,7 @@ directory on the local filesystem.</p>
 
 <dl class="py method">
 <dt id="mlflow.data.spark_dataset_source.SparkDatasetSource.to_dict">
-<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/mlflow/data/spark_dataset_source.html#SparkDatasetSource.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.spark_dataset_source.SparkDatasetSource.to_dict" title="Permalink to this definition"> </a></dt>
+<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="reference internal" href="../_modules/mlflow/data/spark_dataset_source.html#SparkDatasetSource.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mlflow.data.spark_dataset_source.SparkDatasetSource.to_dict" title="Permalink to this definition"> </a></dt>
 <dd><p>Obtains a JSON-compatible dictionary representation of the DatasetSource.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1337,7 +1340,7 @@ directory on the local filesystem.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mlflow.config.html" class="btn btn-neutral" title="mlflow.config" accesskey="p"><span class="db-icon db-icon-chevron-left"></span> Previous</a>
+        <a href="mlflow.crewai.html" class="btn btn-neutral" title="mlflow.crewai" accesskey="p"><span class="db-icon db-icon-chevron-left"></span> Previous</a>
       
       
         <a href="mlflow.deployments.html" class="btn btn-neutral" title="mlflow.deployments" accesskey="n">Next <span class="db-icon db-icon-chevron-right"></span></a>
@@ -1368,7 +1371,7 @@ directory on the local filesystem.</p>
   <script type="text/javascript">
     var DOCUMENTATION_OPTIONS = {
       URL_ROOT:'../',
-      VERSION:'2.17.1.dev0',
+      VERSION:'2.19.1.dev0',
       COLLAPSE_INDEX:false,
       FILE_SUFFIX:'.html',
       LINK_SUFFIX: '.html',
